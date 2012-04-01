@@ -10,5 +10,6 @@ reference.
 
 Credits
 -------
-The `Rakefile` is based on @ryanb dotfiles, with some changes. Some
-stuff is taken from @garybernhardt because it's awesome!
+The `Rakefile` is based on [ryanb dotfiles](https://github.com/ryanb/dotfiles),
+with some changes. Some stuff is taken from
+[garybernhardt](https://github.com/garybernhardt/dotfiles) because it's awesome!
