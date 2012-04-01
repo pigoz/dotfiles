@@ -31,6 +31,8 @@ task :install do
   end
 end
 
+task :default => [:install]
+
 def no_copy_files_list
   %w[Rakefile README.md LICENSE]
 end
