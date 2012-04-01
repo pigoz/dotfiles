@@ -1,15 +1,15 @@
 # vim: syntax=gitconfig
 
 [user]
-	name = Stefano Pigozzi
-	email = stefano.pigozzi@gmail.com
+  name = Stefano Pigozzi
+  email = stefano.pigozzi@gmail.com
 [color]
-	branch = auto
-	diff = auto
-	interactive = auto
-	status = auto
+  branch = auto
+  diff = auto
+  interactive = auto
+  status = auto
 [core]
-	excludesfile = ~/.gitignore
+  excludesfile = ~/.gitignore
   editor = vim
 [merge]
   tool = opendiff
