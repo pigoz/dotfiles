@@ -6,7 +6,7 @@ source $ZSH/oh-my-zsh.sh
 # PATH Definition
 PATH=/opt/X11/bin:/usr/X11/bin:$PATH
 PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH
-PATH=$HOME/bin/:$HOME/Library/Haskell/bin:$PATH
+PATH=$HOME/.cabal/bin:$HOME/bin/:$HOME/Library/Haskell/bin:$PATH
 export PATH
 
 bindkey '^[^[[D' backward-word
