@@ -1,0 +1,1 @@
+call janus#disable_plugin('syntastic', 'slow as hell')
