@@ -3,6 +3,9 @@ export ZSH_THEME="jreese"
 plugins=(rails git ruby textmate)
 source $ZSH/oh-my-zsh.sh
 
+# point java_home to system java
+export JAVA_HOME=$(/usr/libexec/java_home)
+
 # ec2 configuration
 export EC2_PRIVATE_KEY=$HOME/.ec2/pk-1.pem
 export EC2_CERT=$HOME/.ec2/cert-1.pem
