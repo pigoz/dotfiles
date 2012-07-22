@@ -50,6 +50,7 @@ vo=gl3:pbo:fbo-format=rgb16f:icc-profile=/Library/ColorSync/Profiles/Displays/iM
 ################################################################################
 channels=2                    # two channels by default
 volume=100                    # default volume
+af-add=bs2b
 # http://en.wikipedia.org/wiki/Surround_sound#Standard_speaker_channels
 # FLAC 6.1
 #channels=7
