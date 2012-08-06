@@ -18,6 +18,8 @@ PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH
 PATH=$HOME/.cabal/bin:$HOME/bin/:$HOME/Library/Haskell/bin:$PATH
 export PATH=$EC2_HOME/bin:$PATH
 
+export PKG_CONFIG_PATH=/opt/X11/lib/pkgconfig
+
 bindkey '^[^[[D' backward-word
 bindkey '^[^[[C' forward-word
 bindkey '^[[5D' beginning-of-line
