@@ -5,6 +5,7 @@ source $ZSH/oh-my-zsh.sh
 
 # point java_home to system java
 export JAVA_HOME=$(/usr/libexec/java_home)
+alias -g be='bundle exec'
 
 # ec2 configuration
 export EC2_PRIVATE_KEY=$HOME/.ec2/pk-1.pem
