@@ -14,6 +14,8 @@ Bundle 'gmarik/vundle'
 Bundle 'pigoz/herald'
 Bundle 'kien/ctrlp.vim'
 Bundle 'mileszs/ack.vim'
+Bundle 'ervandew/supertab'
+Bundle 'tpope/vim-fugitive'
 
 " Colorscheme
 syntax on
