@@ -1,6 +1,12 @@
 require 'rake'
 require 'erb'
 
+task :vim do
+  unless File.exists?(File.expand_path('~/.vim/bundle/vundle'))
+    `git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle`
+  end
+end
+
 desc "install the dot files into user's home directory"
 task :install do
   replace_all = false

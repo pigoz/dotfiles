@@ -1,4 +1,23 @@
+" Basic stuff
+set nocompatible
+set number
+filetype off             " Reuired by Vundle
+set fileformat=unix
+
+" Vundles
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+" required! 
+Bundle 'gmarik/vundle'
+Bundle 'pigoz/herald'
+Bundle 'kien/ctrlp.vim'
+Bundle 'mileszs/ack.vim'
+
 " Colorscheme
+syntax on
+set t_Co=256
 set background=dark
 colorscheme herald
 
@@ -6,12 +25,13 @@ colorscheme herald
 set gfn=Inconsolata\ 16
 set guifont=Inconsolata:h16
 
-" Various preferences
+" Hide MacVim GUI elements
 set go-=T
 set go-=m
-set virtualedit=all
+
+set virtualedit=all      " Allow to move cursor anywhere
 set clipboard=unnamed    " Uses system clipboard
-let mapleader = ","
+let mapleader = '\'
 
 " Folding options
 set foldmethod=syntax
@@ -26,7 +46,7 @@ set ignorecase
 set smartcase
 
 set colorcolumn=80
-set winwidth=83          " 79+4 for line numbers
+set winwidth=83          " 79(+4 for line numbers)
 set cursorline           " Highlight current line
 set cmdheight=2          " Command buffer height = 2
 
@@ -43,11 +63,7 @@ set modeline
 set modelines=2
 
 " Change the color column to black
-if has('gui_running')
-  highlight ColorColumn guibg=Black
-else
-  highlight ColorColumn ctermbg=7
-endif
+highlight ColorColumn ctermbg=7
 
 " Prevent Vim from clobbering the scrollback buffer. See
 " http://www.shallowsky.com/linux/noaltscreen.html
@@ -86,10 +102,6 @@ map <D-e> :CtrlPBuffer<CR>
 imap <D-e> :CtrlPBuffer<CR>
 map <D-r> :CtrlPMRU<CR>
 imap <D-r> :CtrlPMRU<CR>
-
-if has('gui_running')
-  unmap! <D-t>
-endif
 map <D-t> :CtrlP<CR>
 imap <D-t> :CtrlP<CR>
 
@@ -98,11 +110,11 @@ map <D-w> :BD<CR>
 imap <D-w> <Esc>:BD<CR>
 
 " Toggle drawer bindings
-map <D-d> :NERDTreeToggle<CR>
-imap <D-d> <Esc>:NERDTreeToggle<CR>
+" map <D-d> :NERDTreeToggle<CR>
+" imap <D-d> <Esc>:NERDTreeToggle<CR>
 
 " Show dotfiles in NERDTree
-let NERDTreeShowHidden=1
+" let NERDTreeShowHidden=1
 
 " Language specific customazions
 " Handle C like languages correctly
