@@ -17,6 +17,9 @@ Bundle 'mileszs/ack.vim'
 Bundle 'ervandew/supertab'
 Bundle 'tpope/vim-fugitive'
 
+" languages packages
+Bundle 'b4winckler/vim-objc'
+
 " Colorscheme
 syntax on
 set t_Co=256
