@@ -124,6 +124,10 @@ imap <D-w> <Esc>:BD<CR>
 " Show dotfiles in NERDTree
 " let NERDTreeShowHidden=1
 
-" Language specific customazions
-" Handle C like languages correctly
-autocmd FileType c,m,h,objc,python set sw=4 sts=4 et
+" Turn on auto indentation
+filetype indent on
+
+" Use 2 spaces softtabs for everything except for languages where the
+" convention is 4spaces softtabs
+set ts=4 sw=4 sts=4 expandtab
+autocmd FileType c,m,h,objc,python set ts=4 sw=4 sts=4 expandtab
