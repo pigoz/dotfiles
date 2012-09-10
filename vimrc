@@ -44,7 +44,6 @@ set listchars=tab:▸·,eol:¬,trail:·
 highlight NonText ctermfg=236 guifg=#303030
 highlight SpecialKey ctermfg=236 guifg=#303030
 highlight ColorColumn ctermbg=0
-
 highlight CursorLine term=none gui=none
 
 set cursorline           " Highlight current line
