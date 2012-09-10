@@ -9,7 +9,7 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 " let Vundle manage Vundle
-" required! 
+" required!
 Bundle 'gmarik/vundle'
 Bundle 'pigoz/herald'
 Bundle 'kien/ctrlp.vim'
@@ -23,11 +23,32 @@ Bundle 'vim-scripts/buftabs'
 Bundle 'b4winckler/vim-objc'
 Bundle 'derekwyatt/vim-scala'
 
+" Turn on auto indentation
+filetype indent on
+
+" Use 2 spaces softtabs for everything except for languages where the
+" convention is 4spaces softtabs
+set ts=4 sw=4 sts=4 expandtab
+autocmd FileType c,m,h,objc,python set ts=4 sw=4 sts=4 expandtab
+
 " Colorscheme
 syntax on
 set t_Co=256
 set background=dark
 colorscheme herald
+
+set listchars=tab:▸·,eol:¬,trail:·
+
+" The following assume t_Co == 256 for term colors
+" For a color table check http://en.wikipedia.org/wiki/Xterm
+highlight NonText ctermfg=236 guifg=#303030
+highlight SpecialKey ctermfg=236 guifg=#303030
+highlight ColorColumn ctermbg=0
+
+highlight CursorLine term=none gui=none
+
+set cursorline           " Highlight current line
+set list                 " Activate listchars configuration
 
 " Setting fonts
 set gfn=Inconsolata\ 16
@@ -55,7 +76,6 @@ set smartcase
 
 set colorcolumn=80
 set winwidth=83          " 79(+4 for line numbers)
-set cursorline           " Highlight current line
 set cmdheight=2          " Command buffer height = 2
 
 set title                " Change the terminal's title
@@ -69,9 +89,6 @@ set pastetoggle=<F2>     " Allows to enter 'paste mode'
 
 set modeline
 set modelines=2
-
-" Change the color column to black
-highlight ColorColumn ctermbg=7
 
 " Prevent Vim from clobbering the scrollback buffer. See
 " http://www.shallowsky.com/linux/noaltscreen.html
@@ -123,11 +140,3 @@ imap <D-w> <Esc>:BD<CR>
 
 " Show dotfiles in NERDTree
 " let NERDTreeShowHidden=1
-
-" Turn on auto indentation
-filetype indent on
-
-" Use 2 spaces softtabs for everything except for languages where the
-" convention is 4spaces softtabs
-set ts=4 sw=4 sts=4 expandtab
-autocmd FileType c,m,h,objc,python set ts=4 sw=4 sts=4 expandtab
