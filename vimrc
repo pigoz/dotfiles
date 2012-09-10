@@ -16,9 +16,12 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'mileszs/ack.vim'
 Bundle 'ervandew/supertab'
 Bundle 'tpope/vim-fugitive'
+Bundle 'vim-scripts/bufkill.vim'
+Bundle 'vim-scripts/buftabs'
 
 " languages packages
 Bundle 'b4winckler/vim-objc'
+Bundle 'derekwyatt/vim-scala'
 
 " Colorscheme
 syntax on
