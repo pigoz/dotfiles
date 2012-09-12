@@ -28,7 +28,7 @@ filetype indent on
 
 " Use 2 spaces softtabs for everything except for languages where the
 " convention is 4spaces softtabs
-set ts=4 sw=4 sts=4 expandtab
+set ts=2 sw=2 sts=2 expandtab
 autocmd FileType c,m,h,objc,python set ts=4 sw=4 sts=4 expandtab
 
 " Colorscheme
