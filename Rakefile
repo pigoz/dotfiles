@@ -1,7 +1,11 @@
 require 'rake'
 require 'erb'
 
-task :vim do
+task :install_vim do
+  `brew install macvim --override-system-vim`
+end
+
+task :install_vundle do
   unless File.exists?(File.expand_path('~/.vim/bundle/vundle'))
     `git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle`
   end
