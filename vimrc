@@ -96,7 +96,7 @@ set t_ti= t_te=
 set scrolloff=3
 
 " Ignore these  files when using CtrlP
-set wildignore+=*/build/*,*/.git/*,*/.hg/*,*/.svn/*,*.d*
+set wildignore+=*/build/*,*/.git/*,*/.hg/*,*/.svn/*,*.d*,*.o*
 
 " Really useful to save a file with sudo
 cmap w!! w !sudo tee % >/dev/null
