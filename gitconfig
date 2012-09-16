@@ -10,7 +10,7 @@
   status = auto
 [core]
   excludesfile = ~/.gitignore
-  editor = vim
+  editor = /usr/local/bin/vim
 [merge]
   tool = opendiff
 [mergetool "mvim"]
