@@ -18,10 +18,16 @@ Bundle 'ervandew/supertab'
 Bundle 'tpope/vim-fugitive'
 Bundle 'vim-scripts/bufkill.vim'
 Bundle 'vim-scripts/buftabs'
+Bundle 'scrooloose/nerdtree'
 
 " languages packages
 Bundle 'b4winckler/vim-objc'
 Bundle 'derekwyatt/vim-scala'
+Bundle 'cakebaker/scss-syntax.vim'
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'pangloss/vim-javascript'
+Bundle 'wlangstroth/vim-haskell'
+Bundle 'kchmck/vim-coffee-script'
 
 " Turn on auto indentation
 filetype indent on
@@ -134,8 +140,8 @@ map <D-w> :BD<CR>
 imap <D-w> <Esc>:BD<CR>
 
 " Toggle drawer bindings
-" map <D-d> :NERDTreeToggle<CR>
-" imap <D-d> <Esc>:NERDTreeToggle<CR>
+map <D-d> :NERDTreeToggle<CR>
+imap <D-d> <Esc>:NERDTreeToggle<CR>
 
-" Show dotfiles in NERDTree
-" let NERDTreeShowHidden=1
+let NERDTreeShowHidden=1      " Show dotfiles in NERDTree
+let NERDTreeHijackNetrw = 0   " Don't hijack Netrw
