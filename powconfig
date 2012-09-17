@@ -1,0 +1,4 @@
+# vim: syntax=sh
+
+export HOME=/Users/$(whoami)
+export PATH="$HOME/.rbenv/shims:$HOME/.rbenv/bin:/usr/local/bin:$PATH"
