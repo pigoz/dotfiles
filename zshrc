@@ -17,7 +17,7 @@ export EC2_HOME=$HOME/ec2-api-tools
 
 # PATH Definition
 PATH=/opt/X11/bin:/usr/X11/bin:$PATH
-PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH
+PATH=/usr/local/bin:$PATH
 PATH=$HOME/.cabal/bin:$HOME/bin/:$HOME/Library/Haskell/bin:$PATH
 export PATH=$EC2_HOME/bin:$PATH
 
@@ -30,11 +30,3 @@ bindkey '^[[5C' end-of-line
 
 # Aliases
 source ~/.localrc
-
-# Load RVM
-[[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
-export PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-
-# Load rbenv
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init - zsh)"

@@ -1,4 +1,5 @@
 # vim: syntax=sh
 
-export HOME=/Users/$(whoami)
+export HOME=/Users/stefano.pigozzi
 export PATH="$HOME/.rbenv/shims:$HOME/.rbenv/bin:/usr/local/bin:$PATH"
+eval "$(rbenv init -)"
