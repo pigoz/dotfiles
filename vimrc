@@ -121,6 +121,10 @@ nnoremap <c-up> <c-w>k
 nnoremap <c-left> <c-w>h
 nnoremap <c-right> <c-w>l
 
+" Ack bindigns
+map <D-F> :Ack<space>
+imap <D-F> <Esc>:Ack<space>
+
 " Next/prev buffer bindings
 map <D-M-Left> :bprev<CR>
 imap <D-M-Left> <Esc>:bprev<CR>
