@@ -4,10 +4,20 @@
   name = Stefano Pigozzi
   email = stefano.pigozzi@gmail.com
 [color]
-  branch = auto
-  diff = auto
-  interactive = auto
-  status = auto
+  ui = auto
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
 [core]
   excludesfile = ~/.gitignore
   editor = /usr/local/bin/vim
@@ -33,6 +43,8 @@
   noff = merge --no-ff
   l = "!source ~/.githelpers && pretty_git_log"
   la = !git l --all
+  lol = log --graph --decorate --pretty=oneline --abbrev-commit
+  lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
   div = divergence
   gn = goodness
   gnc = goodness --cached
@@ -42,3 +54,6 @@
   ds = diff --stat=160,120
   dh1 = diff HEAD~1
   wc = whatchanged -p --abbrev-commit --pretty=medium
+[i18n]
+  commitencoding = UTF-8
+  logoutputencoding = UTF-8
