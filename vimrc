@@ -36,7 +36,7 @@ filetype indent on
 " Use 2 spaces softtabs for everything except for languages where the
 " convention is 4spaces softtabs
 autocmd FileType * set ts=2 sw=2 sts=2 expandtab
-autocmd FileType c,m,h,cpp,hpp,objc,python set ts=4 sw=4 sts=4 expandtab
+autocmd FileType c,m,h,cpp,hpp,glsl,objc,python set ts=4 sw=4 sts=4 expandtab
 
 " Colorscheme
 syntax on
