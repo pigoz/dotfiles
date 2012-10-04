@@ -28,6 +28,7 @@ Bundle 'vim-ruby/vim-ruby'
 Bundle 'pangloss/vim-javascript'
 Bundle 'wlangstroth/vim-haskell'
 Bundle 'kchmck/vim-coffee-script'
+Bundle 'Nemo157/glsl.vim'
 
 " Turn on auto indentation
 filetype indent on
