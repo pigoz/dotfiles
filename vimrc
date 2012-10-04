@@ -143,6 +143,8 @@ imap <D-t> :CtrlP<CR>
 map <D-w> :BD<CR>
 imap <D-w> <Esc>:BD<CR>
 
+map ù :! /usr/local/bin/ctags -R .<CR>
+
 " Toggle drawer bindings
 map <D-d> :NERDTreeToggle<CR>
 imap <D-d> <Esc>:NERDTreeToggle<CR>
