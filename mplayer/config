@@ -3,7 +3,6 @@
 ################################################################################
 # General
 ################################################################################
-use-filename-title=yes        # shows filename in the window title
 use-filedir-conf=yes          # load config file from file directory
 correct-pts=yes
 msgcolor=yes                  # FABULOUS!!
@@ -11,12 +10,13 @@ msgcolor=yes                  # FABULOUS!!
 ################################################################################
 # Subtitles setup
 ################################################################################
-fontconfig=yes
+#fontconfig=yes
 embeddedfonts=yes
 ass-force-style=Kerning=yes
-subfont="Proxima Nova"
-font="Proxima Nova"
-subfont-osd-scale=4
+subfont="Myriad Pro Semibold"
+font="Myriad Pro Semibold"
+subfont-osd-scale=4.5
+subfont-text-scale=4.5
 ass-color=FFFFFF19
 ass-border-color=00000019
 
@@ -25,7 +25,6 @@ ass-border-color=00000019
 ################################################################################
 slang=eng,it
 alang=jp,jpn,en,it
-noidx=yes
 
 ################################################################################
 # Software scaling
@@ -42,12 +41,13 @@ noidx=yes
 ################################################################################
 # Video Output
 ################################################################################
-vo=gl3:pbo:fbo-format=rgb16f:icc-profile=/Library/ColorSync/Profiles/Displays/iMac-00000610-0000-9C6A-0000-000004271A80.icc
+vo=opengl-hq:icc-profile=/Library/ColorSync/Profiles/Displays/iMac-00000610-0000-9C6A-0000-000004271A80.icc
 #vo=gl3:pbo:srgb
 
 ################################################################################
 # Audio
 ################################################################################
+ao=portaudio
 channels=2                    # two channels by default
 volume=100                    # default volume
 af-add=bs2b
