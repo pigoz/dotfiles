@@ -145,6 +145,7 @@ map <D-w> :BD<CR>
 imap <D-w> <Esc>:BD<CR>
 
 map ù :! /usr/local/bin/ctags -R .<CR>
+map à <C-]>
 
 " Toggle drawer bindings
 map <D-d> :NERDTreeToggle<CR>
