@@ -18,6 +18,7 @@ Bundle 'ervandew/supertab'
 Bundle 'tpope/vim-fugitive'
 Bundle 'vim-scripts/bufkill.vim'
 Bundle 'vim-scripts/buftabs'
+Bundle 'vim-scripts/taglist.vim'
 Bundle 'scrooloose/nerdtree'
 
 " languages packages
@@ -144,6 +145,7 @@ imap <D-t> :CtrlP<CR>
 map <D-w> :BD<CR>
 imap <D-w> <Esc>:BD<CR>
 
+map è :TlistToggle<CR>
 map ù :! /usr/local/bin/ctags -R .<CR>
 map à <C-]>
 
