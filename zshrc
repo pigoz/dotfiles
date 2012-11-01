@@ -10,6 +10,11 @@ export JAVA_HOME=$(/usr/libexec/java_home)
 alias -g be='bundle exec'
 alias -g sudo='nocorrect sudo'
 
+# $1 search
+# $2 replace
+prjreplace() {
+  ack -l "$1" | xargs perl -pi -E "s/$1/$2/g"
+}
 
 bindkey '^[^[[D' backward-word
 bindkey '^[^[[C' forward-word
