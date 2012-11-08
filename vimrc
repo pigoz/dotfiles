@@ -46,7 +46,12 @@ autocmd FileType c,m,h,cpp,hpp,glsl,objc,python set ts=4 sw=4 sts=4 expandtab
 syntax on
 set t_Co=256
 set background=dark
-colorscheme base16-tomorrow
+
+if has("gui_running")
+  colorscheme base16-tomorrow
+else
+  colorscheme herald
+endif
 
 set listchars=tab:▸·,eol:¬,trail:·
 
