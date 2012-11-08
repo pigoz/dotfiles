@@ -48,7 +48,7 @@ colorscheme herald
 set listchars=tab:▸·,eol:¬,trail:·
 
 " The following assume t_Co == 256 for term colors
-" For a color table check http://en.wikipedia.org/wiki/Xterm
+ "For a color table check http://en.wikipedia.org/wiki/Xterm
 highlight NonText ctermfg=236 guifg=#303030
 highlight SpecialKey ctermfg=236 guifg=#303030
 highlight ColorColumn ctermbg=0
@@ -59,6 +59,7 @@ set list                 " Activate listchars configuration
 set ruler                " Show row / column
 set showcmd              " Shows selection
 set incsearch            " Use incremental search
+set hlsearch
 
 " Setting fonts
 set gfn=Inconsolata\ 16
