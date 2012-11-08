@@ -11,7 +11,6 @@ call vundle#rc()
 " let Vundle manage Vundle
 " required!
 Bundle 'gmarik/vundle'
-Bundle 'pigoz/herald'
 Bundle 'kien/ctrlp.vim'
 Bundle 'mileszs/ack.vim'
 Bundle 'ervandew/supertab'
@@ -20,6 +19,10 @@ Bundle 'vim-scripts/bufkill.vim'
 Bundle 'vim-scripts/buftabs'
 Bundle 'vim-scripts/taglist.vim'
 Bundle 'scrooloose/nerdtree'
+
+" colorschemes
+Bundle 'pigoz/herald'
+Bundle 'chriskempson/base16-vim'
 
 " languages packages
 Bundle 'b4winckler/vim-objc'
@@ -43,7 +46,7 @@ autocmd FileType c,m,h,cpp,hpp,glsl,objc,python set ts=4 sw=4 sts=4 expandtab
 syntax on
 set t_Co=256
 set background=dark
-colorscheme herald
+colorscheme base16-tomorrow
 
 set listchars=tab:▸·,eol:¬,trail:·
 
