@@ -56,6 +56,9 @@ highlight CursorLine term=none gui=none
 
 set cursorline           " Highlight current line
 set list                 " Activate listchars configuration
+set ruler                " Show row / column
+set showcmd              " Shows selection
+set incsearch            " Use incremental search
 
 " Setting fonts
 set gfn=Inconsolata\ 16
