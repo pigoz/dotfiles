@@ -2,6 +2,7 @@ export ZSH=$HOME/.oh-my-zsh
 export ZSH_THEME="jreese"
 plugins=(rails git ruby textmate)
 source $ZSH/oh-my-zsh.sh
+unsetopt correct_all
 
 # point java_home to system java
 export JAVA_HOME=$(/usr/libexec/java_home)
