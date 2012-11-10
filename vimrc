@@ -22,7 +22,7 @@ Bundle 'scrooloose/nerdtree'
 
 " colorschemes
 Bundle 'pigoz/herald'
-Bundle 'chriskempson/base16-vim'
+Bundle 'chriskempson/vim-tomorrow-theme'
 
 " languages packages
 Bundle 'b4winckler/vim-objc'
@@ -47,11 +47,7 @@ syntax on
 set t_Co=256
 set background=dark
 
-if has("gui_running")
-  colorscheme base16-tomorrow
-else
-  colorscheme herald
-endif
+colorscheme tomorrow-night
 
 set listchars=tab:▸·,eol:¬,trail:·
 
