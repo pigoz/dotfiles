@@ -49,10 +49,9 @@ vo=opengl-hq:icc-profile=/Library/ColorSync/Profiles/Displays/iMac-00000610-0000
 ################################################################################
 # Audio
 ################################################################################
-ao=portaudio
-channels=2                    # two channels by default
-volume=100                    # default volume
-af-add=bs2b
+#channels=2                    # two channels by default
+#volume=100                    # default volume
+#af-add=bs2b
 # http://en.wikipedia.org/wiki/Surround_sound#Standard_speaker_channels
 # FLAC 6.1
 #channels=7
