@@ -163,6 +163,7 @@ imap <D-d> <Esc>:NERDTreeToggle<CR>
 
 let NERDTreeShowHidden=1      " Show dotfiles in NERDTree
 let NERDTreeHijackNetrw = 0   " Don't hijack Netrw
+let NERDTreeIgnore = ['\.pyc$', '\.d$', '\.o$']
 
 autocmd vimenter * if !argc() | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
