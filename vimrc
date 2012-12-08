@@ -120,6 +120,10 @@ cmap w!! w !sudo tee % >/dev/null
 " Clears the search buffer when hitting return
 nnoremap <CR> :nohlsearch<cr>
 
+" Better indentation
+vnoremap < <gv
+vnoremap > >gv
+
 " Move through windows
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
