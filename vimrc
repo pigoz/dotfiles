@@ -82,6 +82,21 @@ let mapleader = ','
 set foldmethod=syntax
 set nofoldenable         " Don't fold by default
 
+" CTags FTW!
+" Load tags from more places
+set tags+=gems.tags
+
+function GenCTags(target, sources)
+  let binary = "/usr/local/bin/ctags"
+  execute ':! ' . binary . ' -R -a -f ' . a:target . ' ' . a:sources
+endfunction
+
+command Ct     call GenCTags('tags', '.')
+command Ctgems call GenCTags('gems.tags', '`bundle show --paths`')
+
+map <Leader>d <C-]>
+map à <C-]>
+
 " Allow backgrounding buffers without writing them, and remember marks/undo
 " for backgrounded buffers
 set hidden
@@ -136,15 +151,19 @@ nnoremap <c-up> <c-w>k
 nnoremap <c-left> <c-w>h
 nnoremap <c-right> <c-w>l
 
-" Ack bindigns
-map <D-F> :Ack<space>
-imap <D-F> <Esc>:Ack<space>
-
 " Next/prev buffer bindings
 map <D-M-Left> :bprev<CR>
 imap <D-M-Left> <Esc>:bprev<CR>
 map <D-M-Right> :bnext<CR>
 imap <D-M-Right> <Esc>:bnext<CR>
+
+"------------------------------------------------------------------------------
+" Plugin specific settings
+"------------------------------------------------------------------------------
+
+" Ack bindigns
+map <D-F> :Ack<space>
+imap <D-F> <Esc>:Ack<space>
 
 " CtrlP bindings
 map <D-e> :CtrlPBuffer<CR>
@@ -158,10 +177,10 @@ imap <D-t> :CtrlP<CR>
 map <D-w> :BD<CR>
 imap <D-w> <Esc>:BD<CR>
 
-map è :TlistToggle<CR>
-map ù :! /usr/local/bin/ctags -R .<CR>
-map à <C-]>
+" Taglist
+map <Leader>l :TlistToggle<CR>
 
+" Nerdtree
 " Toggle drawer bindings
 map <D-d> :NERDTreeToggle<CR>
 imap <D-d> <Esc>:NERDTreeToggle<CR>
