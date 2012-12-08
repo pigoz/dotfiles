@@ -173,6 +173,8 @@ imap <D-r> :CtrlPMRU<CR>
 map <D-t> :CtrlP<CR>
 imap <D-t> :CtrlP<CR>
 
+let g:ctrlp_max_height = 30
+
 " Bind command + W to BD plugin
 map <D-w> :BD<CR>
 imap <D-w> <Esc>:BD<CR>
