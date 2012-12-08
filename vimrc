@@ -19,6 +19,7 @@ Bundle 'vim-scripts/bufkill.vim'
 Bundle 'vim-scripts/buftabs'
 Bundle 'vim-scripts/taglist.vim'
 Bundle 'scrooloose/nerdtree'
+Bundle 'Lokaltog/vim-powerline'
 
 " colorschemes
 Bundle 'pigoz/herald'
@@ -171,3 +172,6 @@ let NERDTreeIgnore = ['\.pyc$', '\.d$', '\.o$']
 
 autocmd vimenter * if !argc() | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+" Powerline
+set laststatus=2
