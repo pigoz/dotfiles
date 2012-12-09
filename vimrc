@@ -128,8 +128,13 @@ set t_ti= t_te=
 " keep more context when scrolling off the end of a buffer
 set scrolloff=3
 
-" Ignore these  files when using CtrlP
-set wildignore+=*/build/*,*/.git/*,*/.hg/*,*/.svn/*,*.d*,*.o*
+" Ignore these files when using CtrlP
+" *  Rails specific
+set wildignore+=*/tmp/*,*/.sass_cache/*
+" *  C specific
+set wildignore+=*/build/*,*.d*,*.o*
+" *  SCM specific
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
 
 " Really useful to save a file with sudo
 cmap w!! w !sudo tee % >/dev/null
