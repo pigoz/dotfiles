@@ -64,7 +64,7 @@ set list                 " Activate listchars configuration
 set ruler                " Show row / column
 set showcmd              " Shows selection
 set incsearch            " Use incremental search
-set hlsearch
+set hlsearch             " Highlight search results
 
 " Setting fonts
 set gfn=Inconsolata\ 16
