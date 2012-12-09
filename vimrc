@@ -83,12 +83,13 @@ set foldmethod=syntax
 set nofoldenable         " Don't fold by default
 
 " CTags FTW!
+let g:ctags_path = "/usr/local/bin/ctags"
+
 " Load tags from more places
 set tags+=gems.tags
 
 function GenCTags(target, sources)
-  let binary = "/usr/local/bin/ctags"
-  execute ':! ' . binary . ' -R -a -f ' . a:target . ' ' . a:sources
+  execute ':! ' . g:ctags_path . ' -R -a -f ' . a:target . ' ' . a:sources
 endfunction
 
 command Ct     call GenCTags('tags', '.')
@@ -181,6 +182,11 @@ imap <D-w> <Esc>:BD<CR>
 
 " Taglist
 map <Leader>l :TlistToggle<CR>
+let Tlist_Ctags_Cmd = g:ctags_path
+let Tlist_Use_Right_Window = 1
+let Tlist_WinWidth = 35
+let Tlist_Enable_Fold_Column = 0
+let Tlist_Show_One_File = 1
 
 " Nerdtree
 " Toggle drawer bindings
