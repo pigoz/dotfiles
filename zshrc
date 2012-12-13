@@ -16,6 +16,7 @@ alias la='ls -GAlw'        # show hidden files
 # aliases
 alias -g be='bundle exec'
 alias -g sudo='nocorrect sudo'
+alias -g cay='cd ~/dev/cayenne'
 
 # $1 search
 # $2 replace
