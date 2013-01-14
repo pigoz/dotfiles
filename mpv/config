@@ -41,7 +41,7 @@ alang=jp,jpn,en,eng,it,ita
 ################################################################################
 # Video Output
 ################################################################################
-vo=opengl-hq:icc-profile=/Library/ColorSync/Profiles/Displays/iMac-00000610-0000-9C6A-0000-000004271A80.icc
+vo=opengl-hq:icc-profile=/Library/ColorSync/Profiles/Displays/iMac-00000610-0000-B005-0000-0000042C0140.icc
 #vo=opengl-hq:icc-profile=/Users/stefano/Library/ColorSync/Profiles/BGR.icc
 #vo=opengl
 #vo=gl3:pbo:srgb
