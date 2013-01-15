@@ -48,7 +48,7 @@ syntax on
 set t_Co=256
 set background=dark
 
-colorscheme tomorrow-night
+colorscheme herald
 
 set listchars=tab:▸·,eol:¬,trail:·
 
