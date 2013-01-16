@@ -5,7 +5,7 @@ source $ZSH/oh-my-zsh.sh
 unsetopt correct_all
 
 # point java_home to system java
-export JAVA_HOME=$(/usr/libexec/java_home)
+# export JAVA_HOME=$(/usr/libexec/java_home)
 
 # aliases
 alias -g be='bundle exec'
