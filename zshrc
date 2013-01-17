@@ -6,9 +6,9 @@ unsetopt correct_all
 
 # some utf-8 support
 export locale=en_US.UTF-8
-alias ls='ls -w'
-alias ll='ls -lw'         # standard vertical listing
-alias la='ls -Alw'        # show hidden files
+alias ls='ls -Gw'
+alias ll='ls -Glw'         # standard vertical listing
+alias la='ls -GAlw'        # show hidden files
 
 # point java_home to system java
 # export JAVA_HOME=$(/usr/libexec/java_home)
