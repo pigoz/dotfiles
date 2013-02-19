@@ -1,5 +1,6 @@
 # vim: syntax=sh
 
+export POW_DST_PORT=88
 export HOME=/Users/stefano.pigozzi
 export PATH="$HOME/.rbenv/shims:$HOME/.rbenv/bin:/usr/local/bin:$PATH"
 eval "$(rbenv init -)"
