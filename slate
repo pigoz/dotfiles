@@ -1,0 +1,46 @@
+config defaultToCurrentScreen true
+config windowHintsShowIcons true
+config windowHintsIgnoreHiddenWindows false
+config windowHintsSpread true
+config windowHintsShowIcons true
+ 
+# Cmd+E brings up window chooser based on alphabet
+bind e:cmd hint ASDFQEWZXCLIJNMKOLP
+ 
+# Cmd+G brings up grid like Divvy (for each monitor)
+bind g:cmd grid padding:5 0:6,3 1:8,5
+ 
+# Abstract positions
+alias full move screenOriginX;screenOriginY screenSizeX;screenSizeY
+alias lefthalf move screenOriginX;screenOriginY screenSizeX/2;screenSizeY
+alias righthalf move screenOriginX+screenSizeX/2;screenOriginY screenSizeX/2;screenSizeY
+alias topleft corner top-left resize:screenSizeX/2;screenSizeY/2
+alias topright corner top-right resize:screenSizeX/2;screenSizeY/2
+alias bottomleft corner bottom-left resize:screenSizeX/2;screenSizeY/2
+alias bottomright corner bottom-right resize:screenSizeX/2;screenSizeY/2
+ 
+# Numpad location Bindings
+bind pad1 ${bottomleft}
+bind pad2 push bottom bar-resize:screenSizeY/2
+bind pad3 ${bottomright}
+bind pad4 ${lefthalf}
+bind pad5 ${full}
+bind pad6 ${righthalf}
+bind pad7 ${topleft}
+bind pad8 push top bar-resize:screenSizeY/2
+bind pad9 ${topright}
+ 
+bind pad+ resize +10% +10%
+bind pad- resize -10% -10%
+bind pad/ nudge -10% +0
+bind pad* nudge +10% +0
+ 
+ 
+bind pad1:alt corner bottom-left
+bind pad2:alt push bottom
+bind pad3:alt corner bottom-right
+bind pad4:alt push left
+bind pad6:alt push right
+bind pad7:alt corner top-left
+bind pad8:alt push up
+bind pad9:alt corner top-right
