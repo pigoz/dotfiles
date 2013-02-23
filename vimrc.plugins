@@ -63,6 +63,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&
   \ b:NERDTreeType == "primary") | q | endif
 
 " colorschemes
+Bundle 'Colour-Sampler-Pack'
 Bundle 'pigoz/herald'
 
 " languages packages
