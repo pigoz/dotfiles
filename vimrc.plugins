@@ -1,0 +1,75 @@
+filetype off             " required by Vundle
+
+" Vundle setup
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" manage Vundle with Vundle
+Bundle 'gmarik/vundle'
+
+" search, completion, code analysis and general IDE stuff
+Bundle 'Valloric/YouCompleteMe'
+let g:ycm_key_detailed_diagnostics = '<leader>c'
+
+Bundle 'mileszs/ack.vim'
+map <D-F> :Ack<space>
+imap <D-F> <Esc>:Ack<space>
+
+Bundle 'scrooloose/syntastic'
+let g:syntastic_error_symbol='✗'
+let g:syntastic_warning_symbol='⚠'
+
+" ui
+Bundle 'tpope/vim-fugitive'
+Bundle 'Lokaltog/vim-powerline'
+set laststatus=2
+
+" navigation
+Bundle 'kien/ctrlp.vim'
+map <D-e> :CtrlPBuffer<CR>
+imap <D-e> :CtrlPBuffer<CR>
+map <D-r> :CtrlPMRU<CR>
+imap <D-r> :CtrlPMRU<CR>
+map <D-t> :CtrlP<CR>
+imap <D-t> :CtrlP<CR>
+
+let g:ctrlp_max_height = 30
+
+Bundle 'vim-scripts/buftabs'
+Bundle 'vim-scripts/taglist.vim'
+
+" Taglist
+map <Leader>l :TlistToggle<CR>
+let Tlist_Ctags_Cmd = g:ctags_path
+let Tlist_Use_Right_Window = 1
+let Tlist_WinWidth = 35
+let Tlist_Enable_Fold_Column = 0
+let Tlist_Show_One_File = 1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" NERDTree
+Bundle 'scrooloose/nerdtree'
+
+" Toggle drawer bindings
+map <D-d> :NERDTreeToggle<CR>
+imap <D-d> <Esc>:NERDTreeToggle<CR>
+
+let NERDTreeShowHidden=1      " Show dotfiles in NERDTree
+let NERDTreeHijackNetrw = 1   " Don't hijack Netrw
+let NERDTreeIgnore = ['\.pyc$', '\.d$', '\.o$']
+
+autocmd vimenter * if !argc() | NERDTree | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&
+  \ b:NERDTreeType == "primary") | q | endif
+
+" colorschemes
+Bundle 'pigoz/herald'
+
+" languages packages
+Bundle 'b4winckler/vim-objc'
+Bundle 'cakebaker/scss-syntax.vim'
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'pangloss/vim-javascript'
+Bundle 'wlangstroth/vim-haskell'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'Nemo157/glsl.vim'

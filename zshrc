@@ -17,6 +17,7 @@ alias la='ls -GAlw'        # show hidden files
 alias -g be='bundle exec'
 alias -g sudo='nocorrect sudo'
 alias -g cay='cd ~/dev/cayenne'
+alias -g vundleinstall='vim +BundleInstall +qall'
 
 # $1 search
 # $2 replace

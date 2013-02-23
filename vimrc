@@ -1,39 +1,14 @@
 " Basic stuff
-set nocompatible
-set number
-filetype off             " Reuired by Vundle
-set fileformat=unix
+set nocompatible         " no vi compatibility
 
-" Vundles
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+let g:ctags_path = "/usr/local/bin/ctags"
 
-" let Vundle manage Vundle
-" required!
-Bundle 'gmarik/vundle'
-Bundle 'kien/ctrlp.vim'
-Bundle 'mileszs/ack.vim'
-Bundle 'ervandew/supertab'
-Bundle 'tpope/vim-fugitive'
-Bundle 'vim-scripts/bufkill.vim'
-Bundle 'vim-scripts/buftabs'
-Bundle 'vim-scripts/taglist.vim'
-Bundle 'scrooloose/nerdtree'
-Bundle 'Lokaltog/vim-powerline'
+if filereadable(glob("~/.vimrc.plugins")) 
+  source ~/.vimrc.plugins
+endif
 
-" colorschemes
-Bundle 'pigoz/herald'
-Bundle 'chriskempson/vim-tomorrow-theme'
-
-" languages packages
-Bundle 'b4winckler/vim-objc'
-Bundle 'derekwyatt/vim-scala'
-Bundle 'cakebaker/scss-syntax.vim'
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'pangloss/vim-javascript'
-Bundle 'wlangstroth/vim-haskell'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'Nemo157/glsl.vim'
+set number               " line numbers
+set fileformat=unix      " LF line endings
 
 " Turn on auto indentation
 filetype indent on
@@ -47,7 +22,6 @@ autocmd FileType c,m,h,cpp,hpp,glsl,objc,python,php set ts=4 sw=4 sts=4 expandta
 syntax on
 set t_Co=256
 set background=dark
-
 colorscheme herald
 
 set listchars=tab:▸·,eol:¬,trail:·
@@ -81,9 +55,6 @@ let mapleader = ','
 " Folding options
 set foldmethod=syntax
 set nofoldenable         " Don't fold by default
-
-" CTags FTW!
-let g:ctags_path = "/usr/local/bin/ctags"
 
 " Load tags from more places
 set tags+=gems.tags
@@ -162,48 +133,3 @@ map <D-M-Left> :bprev<CR>
 imap <D-M-Left> <Esc>:bprev<CR>
 map <D-M-Right> :bnext<CR>
 imap <D-M-Right> <Esc>:bnext<CR>
-
-"------------------------------------------------------------------------------
-" Plugin specific settings
-"------------------------------------------------------------------------------
-
-" Ack bindigns
-map <D-F> :Ack<space>
-imap <D-F> <Esc>:Ack<space>
-
-" CtrlP bindings
-map <D-e> :CtrlPBuffer<CR>
-imap <D-e> :CtrlPBuffer<CR>
-map <D-r> :CtrlPMRU<CR>
-imap <D-r> :CtrlPMRU<CR>
-map <D-t> :CtrlP<CR>
-imap <D-t> :CtrlP<CR>
-
-let g:ctrlp_max_height = 30
-
-" Bind command + W to BD plugin
-map <D-w> :BD<CR>
-imap <D-w> <Esc>:BD<CR>
-
-" Taglist
-map <Leader>l :TlistToggle<CR>
-let Tlist_Ctags_Cmd = g:ctags_path
-let Tlist_Use_Right_Window = 1
-let Tlist_WinWidth = 35
-let Tlist_Enable_Fold_Column = 0
-let Tlist_Show_One_File = 1
-
-" Nerdtree
-" Toggle drawer bindings
-map <D-d> :NERDTreeToggle<CR>
-imap <D-d> <Esc>:NERDTreeToggle<CR>
-
-let NERDTreeShowHidden=1      " Show dotfiles in NERDTree
-let NERDTreeHijackNetrw = 1   " Don't hijack Netrw
-let NERDTreeIgnore = ['\.pyc$', '\.d$', '\.o$']
-
-autocmd vimenter * if !argc() | NERDTree | endif
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-
-" Powerline
-set laststatus=2
