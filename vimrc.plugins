@@ -37,6 +37,10 @@ let g:ctrlp_max_height = 30
 
 Bundle 'vim-scripts/buftabs'
 Bundle 'vim-scripts/taglist.vim'
+Bundle 'mattn/zencoding-vim'
+if !exists('g:user_zen_leader_key')
+  let g:user_zen_leader_key = '<Leader>k'
+endif
 
 " Taglist
 map <Leader>l :TlistToggle<CR>
