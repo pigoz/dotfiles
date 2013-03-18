@@ -8,6 +8,13 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " search, completion, code analysis and general IDE stuff
+Bundle 'vim-ruby/vim-ruby'
+if has("autocmd")
+  autocmd FileType ruby set omnifunc=rubycomplete#Complete
+  autocmd FileType ruby let g:rubycomplete_buffer_loading=1
+  autocmd FileType ruby let g:rubycomplete_classes_in_global=1
+endif
+
 Bundle 'Valloric/YouCompleteMe'
 let g:ycm_key_detailed_diagnostics = '<leader>c'
 
