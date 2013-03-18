@@ -18,6 +18,9 @@ filetype indent on
 autocmd FileType * set ts=2 sw=2 sts=2 expandtab
 autocmd FileType c,m,h,cpp,hpp,glsl,objc,python,php set ts=4 sw=4 sts=4 expandtab
 
+" Serious indentation for XML
+autocmd FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null
+
 " Colorscheme
 syntax on
 set t_Co=256
