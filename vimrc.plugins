@@ -75,6 +75,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&
 
 " colorschemes
 Bundle 'pigoz/herald'
+Bundle 'jpo/vim-railscasts-theme'
 
 " languages packages
 Bundle 'b4winckler/vim-objc'
