@@ -43,6 +43,10 @@ set showcmd              " Shows selection
 set incsearch            " Use incremental search
 set hlsearch             " Highlight search results
 
+" Natural splits
+set splitbelow
+set splitright
+
 " Setting fonts
 set gfn=Inconsolata\ 16
 set guifont=Inconsolata:h16
