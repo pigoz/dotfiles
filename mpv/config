@@ -14,11 +14,14 @@ cache=30000
 #fontconfig=yes
 embeddedfonts=yes
 ass-force-style=Kerning=yes
-osd-font="MyriadPro-Semibold"
-osd-font-size=48
+sub-text-font="MyriadPro-Semibold"
+sub-text-font-size=48
+
+osd-bar-align-y=0
+osd-bar-h=7
+osd-border-size=1
 osd-color='#CCFFFFFF'
-#osd-shadow-offset=1
-#osd-border-color=00000030
+osd-border-color='#333333'
 
 ################################################################################
 # Languages & containers
