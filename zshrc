@@ -25,7 +25,7 @@ alias -g vundleinstall='vim +BundleInstall +qall'
 # $1 search
 # $2 replace
 prjreplace() {
-  ack -l "$1" | xargs perl -pi -E "s/$1/$2/g"
+  ag -Sl "$1" | xargs perl -pi -E "s/$1/$2/g"
 }
 
 bindkey '^[^[[D' backward-word
