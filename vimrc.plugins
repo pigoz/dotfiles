@@ -32,6 +32,8 @@ Bundle 'Lokaltog/vim-powerline'
 set laststatus=2
 
 " navigation
+Bundle 'Lokaltog/vim-easymotion'
+
 Bundle 'kien/ctrlp.vim'
 map <D-e> :CtrlPBuffer<CR>
 imap <D-e> :CtrlPBuffer<CR>
