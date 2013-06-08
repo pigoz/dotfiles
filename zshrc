@@ -5,7 +5,8 @@ source $ZSH/oh-my-zsh.sh
 unsetopt correct_all
 
 # some utf-8 support
-export locale=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
 alias ls='ls -Gw'
 alias ll='ls -Glw'         # standard vertical listing
 alias la='ls -GAlw'        # show hidden files
