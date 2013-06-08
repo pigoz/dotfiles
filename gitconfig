@@ -51,3 +51,7 @@
 [i18n]
   commitencoding = UTF-8
   logoutputencoding = UTF-8
+[tig]
+  show-date = relative
+  author-width = 8
+  show-rev-graph = yes
