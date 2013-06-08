@@ -6,7 +6,8 @@
 use-filedir-conf=yes          # load config file from file directory
 correct-pts=yes
 msgcolor=yes                  # FABULOUS!!
-cache=30000
+cache=50000
+cache-min=10
 
 ################################################################################
 # Subtitles setup
