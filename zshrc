@@ -23,6 +23,10 @@ alias -g sudo='nocorrect sudo'
 alias -g cay='cd ~/dev/cayenne'
 alias -g vundleinstall='vim +BundleInstall +qall'
 
+yt() {
+  mpv --quvi-format=360p "http://www.youtube.com/watch?v=$1"
+}
+
 # $1 search
 # $2 replace
 prjreplace() {
