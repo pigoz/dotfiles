@@ -35,10 +35,8 @@ set laststatus=2
 Bundle 'Lokaltog/vim-easymotion'
 
 Bundle 'kien/ctrlp.vim'
-map <D-e> :CtrlPBuffer<CR>
-imap <D-e> :CtrlPBuffer<CR>
-map <D-r> :CtrlPMRU<CR>
-imap <D-r> :CtrlPMRU<CR>
+map <D-b> :CtrlPBuffer<CR>
+imap <D-b> :CtrlPBuffer<CR>
 map <D-t> :CtrlP<CR>
 imap <D-t> :CtrlP<CR>
 
