@@ -76,9 +76,6 @@ command Ctgems call GenCTags('gems.tags', '`bundle show --paths`')
 map <Leader>d <C-]>
 map à <C-]>
 
-map  § <Esc>
-imap § <Esc>
-
 " Allow backgrounding buffers without writing them, and remember marks/undo
 " for backgrounded buffers
 set hidden
