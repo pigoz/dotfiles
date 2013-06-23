@@ -35,6 +35,7 @@ set laststatus=2
 
 " navigation
 Bundle 'Lokaltog/vim-easymotion'
+let g:EasyMotion_leader_key = 'm'
 
 Bundle 'kien/ctrlp.vim'
 map <D-b> :CtrlPBuffer<CR>
