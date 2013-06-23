@@ -18,7 +18,7 @@ endif
 Bundle 'Valloric/YouCompleteMe'
 set completeopt-=preview
 let g:ycm_key_detailed_diagnostics = '<leader>c'
-let g:ycm_confirm_extra_conf = 1
+let g:ycm_confirm_extra_conf = 0
 
 Bundle 'mileszs/ack.vim'
 map <D-F> :Ack<space>
