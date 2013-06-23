@@ -21,7 +21,14 @@ alias pg.stop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
 alias -g be='bundle exec'
 alias -g sudo='nocorrect sudo'
 alias -g cay='cd ~/dev/cayenne'
-alias -g vundleinstall='vim +BundleInstall +qall'
+
+vundle-install() {
+  vim +BundleInstall +qall
+}
+
+vundle-update() {
+  vim +BundleInstall! +qall
+}
 
 yt() {
   mpv --quvi-format=360p "http://www.youtube.com/watch?v=$1"
