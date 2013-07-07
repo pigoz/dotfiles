@@ -45,6 +45,8 @@ bindkey '^[^[[C' forward-word
 bindkey '^[[5D' beginning-of-line
 bindkey '^[[5C' end-of-line
 
+alias mpv4k='./mpv -demuxer-rawvideo w=4000:h=2000 -demuxer rawvideo /dev/zero'
+
 source ~/.paths
 
 # Aliases
