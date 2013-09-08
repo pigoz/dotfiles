@@ -9,6 +9,7 @@ msgcolor=yes                  # FABULOUS!!
 cache=50000
 cache-min=10
 volume=100
+screenshot-template=/Users/pigoz/Desktop/mpv-screenshot%n
 
 ################################################################################
 # Subtitles setup
