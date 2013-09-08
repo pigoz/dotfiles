@@ -8,6 +8,7 @@ correct-pts=yes
 msgcolor=yes                  # FABULOUS!!
 cache=50000
 cache-min=10
+volume=100
 
 ################################################################################
 # Subtitles setup
