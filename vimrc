@@ -109,6 +109,8 @@ set scrolloff=3
 " Ignore these files when using CtrlP
 " *  Rails specific
 set wildignore+=*/tmp/*,*/.sass_cache/*
+" *  Python specific
+set wildignore+=*.pyc*
 " *  C specific
 set wildignore+=*/build/*,*.d*,*.o*
 " *  SCM specific
