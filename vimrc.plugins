@@ -80,6 +80,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&
 Bundle 'pigoz/herald'
 Bundle 'jpo/vim-railscasts-theme'
 Bundle 'baeuml/summerfruit256.vim'
+Bundle 'baskerville/bubblegum'
 
 " languages packages
 Bundle 'b4winckler/vim-objc'
