@@ -48,6 +48,7 @@
   ds = diff --stat=160,120
   dh1 = diff HEAD~1
   wc = whatchanged -p --abbrev-commit --pretty=medium
+  pullify = config --add remote.origin.fetch '+refs/pull/*/head:refs/remotes/origin/pr/*'
 [i18n]
   commitencoding = UTF-8
   logoutputencoding = UTF-8
