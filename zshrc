@@ -40,6 +40,14 @@ prjreplace() {
   ag -Sl "$1" | xargs perl -pi -E "s/$1/$2/g"
 }
 
+sprunge() {
+  curl -F 'sprunge=<-' http://sprunge.us
+}
+
+sprunge-cb() {
+  pbpaste | curl -F 'sprunge=<-' http://sprunge.us
+}
+
 bindkey '^[^[[D' backward-word
 bindkey '^[^[[C' forward-word
 bindkey '^[[5D' beginning-of-line
