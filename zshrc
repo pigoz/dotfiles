@@ -61,3 +61,6 @@ source ~/.paths
 
 # Aliases
 source ~/.localrc
+
+
+source ~/.z.sh
