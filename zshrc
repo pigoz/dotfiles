@@ -45,6 +45,8 @@ bindkey '^[^[[C' forward-word
 bindkey '^[[5D' beginning-of-line
 bindkey '^[[5C' end-of-line
 
+export PKG_CONFIG_PATH=/usr/local/opt/libass-ct/lib/pkgconfig:$PKG_CONFIG_PATH
+
 alias mpv4k='./mpv -demuxer-rawvideo w=4000:h=2000 -demuxer rawvideo /dev/zero'
 
 source ~/.paths
