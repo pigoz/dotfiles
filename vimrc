@@ -21,6 +21,13 @@ autocmd FileType c,m,h,cpp,hpp,glsl,objc,python,php set ts=4 sw=4 sts=4 expandta
 " Serious indentation for XML
 autocmd FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null
 
+" Comment out Jekyll / Middelman frontmatter for files that commonly have it
+function CommentFrontMatter()
+  syntax match Comment /\%^---\_.\{-}---$/ contains=@Spell
+endfunction
+
+autocmd BufNewFile,BufRead *.rst,*.md,*.markdown call CommentFrontMatter()
+
 " Colorscheme
 syntax on
 set t_Co=256
