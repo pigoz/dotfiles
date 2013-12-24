@@ -28,6 +28,16 @@ endfunction
 
 autocmd BufNewFile,BufRead *.rst,*.md,*.markdown call CommentFrontMatter()
 
+function! WordMode()
+  setlocal formatoptions=t1
+  setlocal textwidth=80
+  map j gj
+  map k gk
+  setlocal smartindent
+  setlocal spell spelllang=en_us
+endfunction
+command! WordMode call WordMode()
+
 " Colorscheme
 syntax on
 set t_Co=256
