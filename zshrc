@@ -31,7 +31,9 @@ vundle-update() {
 }
 
 yt() {
-  mpv --quvi-format=360p "http://www.youtube.com/watch?v=$1"
+  video=$1
+  quality=${2:=360p}
+  livestreamer "http://www.youtube.com/watch?v=$video" $quality
 }
 
 # $1 search
