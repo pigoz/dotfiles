@@ -56,3 +56,5 @@
   show-date = relative
   author-width = 8
   show-rev-graph = yes
+[push]
+  default = simple
