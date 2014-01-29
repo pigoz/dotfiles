@@ -7,4 +7,7 @@ if has("gui_macvim")
   imap <D-b> :CtrlPBuffer<CR>
   map <D-t> :CtrlP<CR>
   imap <D-t> :CtrlP<CR>
+
+  map <D-`> :maca _cycleWindows:<CR>
+  map <D-´> :maca _cycleWindowsBackwards:<CR>
 endif
