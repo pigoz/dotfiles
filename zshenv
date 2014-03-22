@@ -1,5 +1,5 @@
 command_exists () {
-    type "$1" &> /dev/null ;
+  type "$1" &> /dev/null ;
 }
 
 if command_exists rbenv ; then
@@ -12,9 +12,9 @@ export rvm_ignore_dotfiles=yes
 # add rbenv shims to path
 export PATH=$HOME/.rbenv/bin:$PATH
 
-# Load rbenv / rvm
+# Load rbenv
 if command_exists rbenv ; then
   eval "$(rbenv init - zsh)"
 else
-  [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+  echo "failed to load rbenv"
 fi
