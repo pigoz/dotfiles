@@ -9,9 +9,8 @@ fi
 # nicer auto installer
 export rvm_ignore_dotfiles=yes
 
-# rbenv / rvm paths
+# add rbenv shims to path
 export PATH=$HOME/.rbenv/bin:$PATH
-export PATH=$PATH:$HOME/.rvm/bin
 
 # Load rbenv / rvm
 if command_exists rbenv ; then
