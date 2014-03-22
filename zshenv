@@ -12,6 +12,9 @@ export rvm_ignore_dotfiles=yes
 # add rbenv shims to path
 export PATH=$HOME/.rbenv/bin:$PATH
 
+# add cabal binaries
+export PATH=~/.cabal/bin:$PATH
+
 # Load rbenv
 if command_exists rbenv ; then
   eval "$(rbenv init - zsh)"
