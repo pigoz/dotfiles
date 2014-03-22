@@ -74,3 +74,6 @@ source ~/.localrc
 
 
 source ~/.z.sh
+
+# added by travis gem
+[ -f /Users/pigoz/.travis/travis.sh ] && source /Users/pigoz/.travis/travis.sh
