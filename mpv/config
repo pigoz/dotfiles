@@ -48,7 +48,7 @@ alang=jp,jpn,en,eng,it,ita
 ################################################################################
 # Video Output
 ################################################################################
-vo=opengl-hq:icc-profile-auto:approx-gamma
+vo=opengl-hq:icc-profile-auto:approx-gamma:icc-cache=~/.mpv/icc-cache
 #vo=opengl-hq:icc-profile=/Users/stefano/Library/ColorSync/Profiles/BGR.icc
 #vo=opengl
 #vo=gl3:pbo:srgb
