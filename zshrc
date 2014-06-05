@@ -58,6 +58,10 @@ remote-sha1() {
   curl $1 | openssl sha1
 }
 
+bigscp() {
+  rsync -avz --partial --progress --rsh=ssh $1 $2
+}
+
 bindkey '^[^[[D' backward-word
 bindkey '^[^[[C' forward-word
 bindkey '^[[5D' beginning-of-line
