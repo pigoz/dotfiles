@@ -3,7 +3,8 @@
 ################################################################################
 # General
 
-# load config file from file directory, useful for overriding
+# load config file from file directory, useful for overriding ass styles for
+# entire series
 use-filedir-conf=yes
 
 # default value of 320kB is quite low, especially on slow media
