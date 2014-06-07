@@ -10,7 +10,7 @@ use-filedir-conf=yes
 cache=4000
 
 # save screenshots on the desktop
-screenshot-template=/Users/pigoz/Desktop/mpv-screenshot%n
+screenshot-template=~/Desktop/mpv-screenshot%n
 
 ################################################################################
 # Subtitles setup
