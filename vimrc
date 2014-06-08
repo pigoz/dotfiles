@@ -16,7 +16,7 @@ filetype indent on
 " Use 2 spaces softtabs for everything except for languages where the
 " convention is 4spaces softtabs
 autocmd FileType * set ts=2 sw=2 sts=2 expandtab
-autocmd FileType c,m,h,cpp,hpp,glsl,objc,python,php set ts=4 sw=4 sts=4 expandtab
+autocmd FileType c,m,h,cpp,hpp,glsl,objc,python,php,swift set ts=4 sw=4 sts=4 expandtab
 
 " Serious indentation for XML
 autocmd FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null
