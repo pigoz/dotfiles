@@ -66,6 +66,10 @@ swift() {
   DEVELOPER_DIR=/Applications/Xcode6-Beta.app xcrun swift $*
 }
 
+solr-reindex() {
+  bundle exec rake sunspot:solr:reindex
+}
+
 bindkey '^[^[[D' backward-word
 bindkey '^[^[[C' forward-word
 bindkey '^[[5D' beginning-of-line
