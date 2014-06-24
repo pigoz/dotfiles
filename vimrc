@@ -27,6 +27,7 @@ function CommentFrontMatter()
 endfunction
 
 autocmd BufNewFile,BufRead *.rst,*.md,*.markdown call CommentFrontMatter()
+autocmd BufNewFile,BufRead *.deface setfiletype eruby.html
 
 function! WordMode()
   setlocal formatoptions=t1
