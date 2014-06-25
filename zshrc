@@ -42,6 +42,10 @@ prjreplace() {
   ag -Sl "$1" | xargs perl -pi -E "s/$1/$2/g"
 }
 
+f() {
+  ag --smart-case --skip-vcs-ignores $1
+}
+
 sprunge() {
   curl -F 'sprunge=<-' http://sprunge.us
 }
