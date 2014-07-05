@@ -9,4 +9,5 @@ export EC2_HOME=$HOME/ec2-api-tools
 PATH=/usr/local/share/npm/bin:$PATH
 PATH=/usr/local/bin:$PATH
 PATH=$HOME/.cabal/bin:$HOME/.bin:$HOME/Library/Haskell/bin:$PATH
+PATH=$HOME/dev/rust-nightly/current/bin:$PATH
 export PATH=$EC2_HOME/bin:$PATH
