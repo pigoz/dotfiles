@@ -28,6 +28,7 @@ endfunction
 
 autocmd BufNewFile,BufRead *.rst,*.md,*.markdown call CommentFrontMatter()
 autocmd BufNewFile,BufRead *.deface setfiletype eruby.html
+autocmd BufNewFile,BufRead *.mrb setfiletype ruby
 
 function! WordMode()
   setlocal formatoptions=t1
