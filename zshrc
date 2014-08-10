@@ -20,7 +20,6 @@ alias pg.stop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
 # aliases
 alias -g be='bundle exec'
 alias -g sudo='nocorrect sudo'
-alias -g cay='cd ~/dev/cayenne'
 
 vundle-install() {
   vim +BundleInstall +qall
