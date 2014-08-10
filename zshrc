@@ -11,8 +11,15 @@ alias ls='ls -Gw'
 alias ll='ls -Glw'         # standard vertical listing
 alias la='ls -GAlw'        # show hidden files
 
-alias pg.start='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
-alias pg.stop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
+pg_dir='/usr/local/var/postgres'
+
+pg.start() {
+  pg_ctl -D $pg_dir -l $pg_dir/server.log start
+}
+
+pg.stop() {
+  pg_ctl -D $pg_dir stop -s -m fast
+}
 
 mongo_plist='/usr/local/opt/mongodb/homebrew.mxcl.mongodb.plist'
 
