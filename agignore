@@ -1,3 +1,5 @@
 public/assets
 log
 tags
+vendor
+tmp
