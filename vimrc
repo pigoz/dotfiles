@@ -20,6 +20,7 @@ autocmd FileType c,m,h,cpp,hpp,glsl,objc,python,php,swift,rust set ts=4 sw=4 sts
 
 " Serious indentation for XML
 autocmd FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null
+autocmd FileType json setlocal equalprg=jsonlint\ -\ 2>/dev/null
 
 " Comment out Jekyll / Middelman frontmatter for files that commonly have it
 function CommentFrontMatter()
