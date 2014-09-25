@@ -67,8 +67,15 @@ set splitbelow
 set splitright
 
 " Setting fonts
-set gfn=Inconsolata\ 16
-set guifont=Inconsolata:h16
+if hostname() == "kaze.local"
+  " laptop
+  let s:fontsize = 16
+else
+  " desktop
+  let s:fontsize = 18
+endif
+
+let &guifont = escape("Inconsolata" . ":h" . s:fontsize, ' ')
 
 " Hide MacVim GUI elements
 set go-=T
