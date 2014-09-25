@@ -143,6 +143,8 @@ set wildignore+=*/build/*,*.d*,*.o*
 " *  SCM specific
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
 
+set wildignore+=*/vendor/assets/*
+
 " Really useful to save a file with sudo
 cmap w!! w !sudo tee % >/dev/null
 
