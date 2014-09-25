@@ -82,10 +82,6 @@ bigscp() {
   rsync -avz --partial --progress --rsh=ssh $1 $2
 }
 
-swift() {
-  DEVELOPER_DIR=/Applications/Xcode6-Beta.app xcrun swift $*
-}
-
 solr-reindex() {
   bundle exec rake sunspot:solr:reindex
 }
