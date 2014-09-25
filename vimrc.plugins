@@ -85,7 +85,6 @@ Bundle 'baskerville/bubblegum'
 " languages packages
 Bundle 'b4winckler/vim-objc'
 Bundle 'cakebaker/scss-syntax.vim'
-Bundle 'ap/vim-css-color'
 Bundle 'pangloss/vim-javascript'
 Bundle 'wlangstroth/vim-haskell'
 Bundle 'kchmck/vim-coffee-script'
