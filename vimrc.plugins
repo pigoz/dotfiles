@@ -15,6 +15,11 @@ if has("autocmd")
   autocmd FileType ruby let g:rubycomplete_classes_in_global=1
 endif
 
+" clojure
+Bundle 'tpope/vim-fireplace'
+Bundle 'guns/vim-clojure-static'
+Bundle 'guns/vim-clojure-highlight'
+
 Bundle 'Valloric/YouCompleteMe'
 set completeopt-=preview
 let g:ycm_key_detailed_diagnostics = '<leader>c'
@@ -78,17 +83,10 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&
 
 " colorschemes
 Bundle 'pigoz/herald'
-Bundle 'jpo/vim-railscasts-theme'
-Bundle 'baeuml/summerfruit256.vim'
-Bundle 'baskerville/bubblegum'
+Bundle 'amdt/vim-niji'
 
 " languages packages
-Bundle 'b4winckler/vim-objc'
 Bundle 'cakebaker/scss-syntax.vim'
 Bundle 'pangloss/vim-javascript'
-Bundle 'wlangstroth/vim-haskell'
 Bundle 'kchmck/vim-coffee-script'
-Bundle 'Nemo157/glsl.vim'
-Bundle 'wting/rust.vim'
 Bundle 'elixir-lang/vim-elixir'
-Bundle 'toyamarinyon/vim-swift'
