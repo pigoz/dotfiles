@@ -20,6 +20,17 @@ Bundle 'tpope/vim-fireplace'
 Bundle 'tpope/vim-classpath'
 Bundle 'guns/vim-clojure-static'
 Bundle 'guns/vim-clojure-highlight'
+if has("autocmd")
+  autocmd FileType clojure set iskeyword+=-
+  " visual mode: execute selected block
+  autocmd FileType clojure vmap <D-r> :Eval<CR>
+  " normal mode: eval innermost form
+  autocmd FileType clojure nmap <D-r> cpp
+  autocmd FileType clojure map <D-k> K
+
+  " for overtone
+  autocmd FileType clojure map <D-1> :Eval (stop)<CR>
+end
 
 Bundle 'Valloric/YouCompleteMe'
 set completeopt-=preview
