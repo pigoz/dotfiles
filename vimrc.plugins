@@ -27,8 +27,7 @@ let g:ycm_key_detailed_diagnostics = '<leader>c'
 let g:ycm_confirm_extra_conf = 0
 
 Bundle 'mileszs/ack.vim'
-map <D-F> :Ack<space>
-imap <D-F> <Esc>:Ack<space>
+let g:ackprg = 'ag --nogroup --nocolor --column'
 
 Bundle 'scrooloose/syntastic'
 let g:syntastic_error_symbol='✗'

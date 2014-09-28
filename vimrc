@@ -175,3 +175,6 @@ imap <D-M-Right> <Esc>:bnext<CR>
 " clojure
 map <D-r> :Eval<CR>
 map <D-4> <c-v>:Eval<CR>
+" Ack
+map <Leader>f :Ack<space>
+
