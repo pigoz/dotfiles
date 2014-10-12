@@ -1,3 +1,7 @@
+fpath=(/usr/local/share/zsh/site-functions $fpath)
+autoload -U compinit
+compinit
+
 export ZSH=$HOME/.oh-my-zsh
 export ZSH_THEME="jreese"
 plugins=(rails git ruby textmate)
@@ -99,7 +103,6 @@ source ~/.paths
 
 # Aliases
 source ~/.localrc
-
 
 source ~/.z.sh
 
