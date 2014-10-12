@@ -37,6 +37,10 @@ set completeopt-=preview
 let g:ycm_key_detailed_diagnostics = '<leader>c'
 let g:ycm_confirm_extra_conf = 0
 
+let g:ycm_semantic_triggers = {
+ \   'clojure': ['(','re![a-zA-Z0-9\-_/#]\s'],
+ \ }
+
 Bundle 'mileszs/ack.vim'
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
