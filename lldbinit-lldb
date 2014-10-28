@@ -1,0 +1,1 @@
+env DYLD_INSERT_LIBRARIES=/usr/lib/libgmalloc.dylib
