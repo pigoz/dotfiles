@@ -18,6 +18,9 @@ export PATH=~/.cabal/bin:$PATH
 # add official llvm binaries installed through homebrew
 export PATH=/usr/local/opt/llvm/bin:$PATH
 
+# add path to the haxe standard library
+export HAXE_STD_PATH="/usr/local/lib/haxe/std"
+
 # Load rbenv
 if command_exists rbenv ; then
   eval "$(rbenv init - zsh)"
