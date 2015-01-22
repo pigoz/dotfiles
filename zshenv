@@ -15,6 +15,9 @@ export PATH=$HOME/.rbenv/bin:$PATH
 # add cabal binaries
 export PATH=~/.cabal/bin:$PATH
 
+# add official llvm binaries installed through homebrew
+export PATH=/usr/local/opt/llvm/bin:$PATH
+
 # Load rbenv
 if command_exists rbenv ; then
   eval "$(rbenv init - zsh)"
