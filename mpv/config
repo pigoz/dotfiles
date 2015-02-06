@@ -46,6 +46,7 @@ display-fps=60
 
 # set volume to 100 and use the sound server to actually control the volume
 volume=100
+script=~/.mpv/set_volume.lua
 
 # epic immersion for the poor
 # af-add=bs2b
