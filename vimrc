@@ -166,6 +166,9 @@ nnoremap <c-up> <c-w>k
 nnoremap <c-left> <c-w>h
 nnoremap <c-right> <c-w>l
 
+nnoremap <PageUp> <C-u>
+nnoremap <PageDown> <C-d>
+
 " Next/prev buffer bindings
 map <D-M-Left> :bprev<CR>
 imap <D-M-Left> <Esc>:bprev<CR>
