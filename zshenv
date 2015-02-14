@@ -21,6 +21,8 @@ export PATH=~/.cabal/bin:$PATH
 # add official llvm binaries installed through homebrew
 export PATH=/usr/local/opt/llvm/bin:$PATH
 
+export PATH=/usr/local/sbin:$PATH
+
 # add path to the haxe standard library
 export HAXE_STD_PATH="/usr/local/lib/haxe/std"
 
