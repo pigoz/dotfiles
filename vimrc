@@ -135,15 +135,13 @@ set scrolloff=3
 
 " Ignore these files when using CtrlP
 " *  Rails specific
-set wildignore+=*/tmp/*,*/.sass_cache/*
+set wildignore+=*/tmp/*,*/.sass_cache/*,*/vendor/assets/*
 " *  Python specific
 set wildignore+=*.pyc*
 " *  C specific
 set wildignore+=*/build/*,*.d*,*.o*
 " *  SCM specific
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
-
-set wildignore+=*/vendor/assets/*
 
 " Really useful to save a file with sudo
 cmap w!! w !sudo tee % >/dev/null
