@@ -142,6 +142,8 @@ set wildignore+=*.pyc*
 set wildignore+=*/build/*,*.d*,*.o*
 " *  SCM specific
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
+" * Ember specific
+set wildignore+=*/dist/*,*/bower_components/*,*/node_modules/*
 
 " Really useful to save a file with sudo
 cmap w!! w !sudo tee % >/dev/null
