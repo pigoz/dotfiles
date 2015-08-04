@@ -2,13 +2,13 @@ filetype off             " required by Vundle
 
 " Vundle setup
 set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+call vundle#begin()
 
 " manage Vundle with Vundle
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 
 " search, completion, code analysis and general IDE stuff
-Bundle 'vim-ruby/vim-ruby'
+Plugin 'vim-ruby/vim-ruby'
 if has("autocmd")
   autocmd FileType ruby set omnifunc=rubycomplete#Complete
   autocmd FileType ruby let g:rubycomplete_buffer_loading=1
@@ -17,23 +17,24 @@ if has("autocmd")
 endif
 
 " clojure
-Bundle 'tpope/vim-fireplace'
-Bundle 'tpope/vim-classpath'
-Bundle 'guns/vim-clojure-static'
-Bundle 'guns/vim-clojure-highlight'
+Plugin 'tpope/vim-fireplace'
+Plugin 'tpope/vim-classpath'
+Plugin 'guns/vim-clojure-static'
+Plugin 'guns/vim-clojure-highlight'
 if has("autocmd")
   autocmd FileType clojure set iskeyword+=-
   " visual mode: execute selected block
   autocmd FileType clojure vmap <D-r> :Eval<CR>
   " normal mode: eval innermost form
   autocmd FileType clojure nmap <D-r> cpp
+  " get docs
   autocmd FileType clojure map <D-k> K
 
   " for overtone
   autocmd FileType clojure map <D-1> :Eval (stop)<CR>
 end
 
-Bundle 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
 set completeopt-=preview
 let g:ycm_key_detailed_diagnostics = '<leader>c'
 let g:ycm_confirm_extra_conf = 0
@@ -42,23 +43,23 @@ let g:ycm_semantic_triggers = {
  \   'clojure': ['(','re![a-zA-Z0-9\-_/#]\s'],
  \ }
 
-Bundle 'mileszs/ack.vim'
+Plugin 'mileszs/ack.vim'
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
-Bundle 'scrooloose/syntastic'
+Plugin 'scrooloose/syntastic'
 let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='⚠'
 
 " ui
-Bundle 'tpope/vim-fugitive'
-Bundle 'Lokaltog/vim-powerline'
+Plugin 'tpope/vim-fugitive'
+Plugin 'Lokaltog/vim-powerline'
 set laststatus=2
 
 " navigation
-Bundle 'Lokaltog/vim-easymotion'
+Plugin 'Lokaltog/vim-easymotion'
 let g:EasyMotion_leader_key = 'm'
 
-Bundle 'kien/ctrlp.vim'
+Plugin 'kien/ctrlp.vim'
 map <D-b> :CtrlPBuffer<CR>
 imap <D-b> :CtrlPBuffer<CR>
 map <D-t> :CtrlP<CR>
@@ -66,9 +67,9 @@ imap <D-t> :CtrlP<CR>
 
 let g:ctrlp_max_height = 30
 
-Bundle 'vim-scripts/buftabs'
-Bundle 'vim-scripts/taglist.vim'
-Bundle 'mattn/zencoding-vim'
+Plugin 'vim-scripts/buftabs'
+Plugin 'vim-scripts/taglist.vim'
+Plugin 'mattn/zencoding-vim'
 if !exists('g:user_zen_leader_key')
   let g:user_zen_leader_key = '<Leader>k'
 endif
@@ -83,7 +84,7 @@ let Tlist_Show_One_File = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTree
-Bundle 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdtree'
 
 " Toggle drawer bindings
 map <D-d> :NERDTreeToggle<CR>
@@ -98,14 +99,18 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&
   \ b:NERDTreeType == "primary") | q | endif
 
 " colorschemes
-Bundle 'pigoz/herald'
-Bundle 'amdt/vim-niji'
+Plugin 'pigoz/herald'
+" colored parens for lisps
+Plugin 'vim-scripts/vim-niji'
 
 " languages packages
-Bundle 'cakebaker/scss-syntax.vim'
-Bundle 'pangloss/vim-javascript'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'elixir-lang/vim-elixir'
-Bundle 'tikhomirov/vim-glsl'
-Bundle 'wting/rust.vim'
-Bundle 'digitaltoad/vim-jade'
+Plugin 'cakebaker/scss-syntax.vim'
+Plugin 'pangloss/vim-javascript'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'elixir-lang/vim-elixir'
+Plugin 'tikhomirov/vim-glsl'
+Plugin 'wting/rust.vim'
+Plugin 'digitaltoad/vim-jade'
+Plugin 'Keithbsmiley/swift.vim'
+
+call vundle#end()
