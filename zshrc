@@ -90,6 +90,23 @@ solr-reindex() {
   bundle exec rake sunspot:solr:reindex
 }
 
+rpi.dump() {
+  if [ -z  "$1" ] || [ -z "$2" ] ; then
+    echo 'USAGE: rpi.dump /dev/disk3 $HOME/image.gz'
+  else
+    sudo dd if="$1" bs=1m | gzip > "$2"
+  fi
+}
+
+rpi.flash() {
+  if [ -z  "$1" ] || [ -z "$2" ] ; then
+    echo 'USAGE: rpi.flash /dev/disk3 $HOME/image.gz'
+  else
+    diskutil unmountDisk "$1"
+    gzip -dc "$2" | sudo dd of="$1" bs=1m
+  fi
+}
+
 bindkey '^[^[[D' backward-word
 bindkey '^[^[[C' forward-word
 bindkey '^[[5D' beginning-of-line
