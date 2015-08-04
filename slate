@@ -5,10 +5,10 @@ config windowHintsSpread true
 config windowHintsShowIcons true
  
 # Cmd+E brings up window chooser based on alphabet
-bind e:cmd hint ASDFGHJKL
+# bind e:cmd hint ASDFGHJKL
  
 # Cmd+G brings up grid like Divvy (for each monitor)
-bind g:cmd grid padding:5 0:6,3 1:8,5
+# bind g:cmd grid padding:5 0:6,3 1:8,5
  
 # Abstract positions
 alias full move screenOriginX;screenOriginY screenSizeX;screenSizeY
