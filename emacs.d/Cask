@@ -35,7 +35,9 @@
 (depends-on "paredit")
 (depends-on "rainbow-delimiters")
 (depends-on "better-defaults")
-(depends-on "helm")
-(depends-on "helm-ls-git")
+
+; project navigation
+(depends-on "helm-projectile")
 
 (depends-on "atom-dark-theme")
+(depends-on "fill-column-indicator")
