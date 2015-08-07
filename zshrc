@@ -74,6 +74,10 @@ sprunge-cb() {
   pbpaste | curl -F 'sprunge=<-' http://sprunge.us
 }
 
+upload-image() {
+  curl -F "file=@$1" https://0x0.st
+}
+
 what-the-commit() {
    git commit -m "$(curl --silent http://whatthecommit.com/index.txt)"
 }
