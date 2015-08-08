@@ -22,7 +22,10 @@
 (global-set-key (kbd "M-d") 'neotree-toggle)
 (add-hook 'neotree-mode-hook
    (lambda ()
-     (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)))
+     (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)
+     (define-key evil-normal-state-local-map (kbd "ma") 'neotree-create-node)
+     (define-key evil-normal-state-local-map (kbd "md") 'neotree-delete-node)
+     (define-key evil-normal-state-local-map (kbd "mr") 'neotree-rename-node)))
 
 ; use rainbow delimiter in lisps
 (require 'rainbow-delimiters)
