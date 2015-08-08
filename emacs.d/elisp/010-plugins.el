@@ -8,6 +8,7 @@
 (projectile-global-mode)
 (setq projectile-completion-system 'helm)
 (setq projectile-use-native-indexing t)
+(setq projectile-enable-caching t)
 (helm-projectile-on)
 (global-set-key (kbd "M-t") 'helm-projectile)
 (global-set-key (kbd "M-p") 'helm-projectile-switch-project)
