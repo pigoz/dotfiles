@@ -24,3 +24,11 @@
   (global-set-key [kp-delete] 'delete-char) ;; sets fn-delete to be right-delete
   (global-set-key (kbd "M-q") 'save-buffers-kill-emacs)
 )
+
+; allow to move between windows like I am used to
+(define-prefix-command 'window-sense-map)
+(global-set-key (kbd "C-w") 'window-sense-map)
+(define-key window-sense-map (kbd "<left>") 'windmove-left)
+(define-key window-sense-map (kbd "<right>") 'windmove-right)
+(define-key window-sense-map (kbd "<up>") 'windmove-up)
+(define-key window-sense-map (kbd "<down>") 'windmove-down)
