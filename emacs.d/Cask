@@ -36,8 +36,8 @@
 (depends-on "rainbow-delimiters")
 (depends-on "better-defaults")
 
-; project navigation
 (depends-on "helm-projectile")
+(depends-on "neotree")
 
 (depends-on "atom-dark-theme")
 (depends-on "fill-column-indicator")

@@ -17,6 +17,13 @@
 (require 'powerline)
 (powerline-default-theme)
 
+; neotree
+(require 'neotree)
+(global-set-key (kbd "M-d") 'neotree-toggle)
+(add-hook 'neotree-mode-hook
+   (lambda ()
+     (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)))
+
 ; use rainbow delimiter in lisps
 (require 'rainbow-delimiters)
 (add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode)
