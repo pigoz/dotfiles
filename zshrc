@@ -35,6 +35,16 @@ mongo.stop() {
   launchctl unload $mongo_plist
 }
 
+redis_plist="/usr/local/opt/redis/homebrew.mxcl.redis.plist"
+
+redis.start() {
+  launchctl load $redis_plist
+}
+
+redis.stop() {
+  launchctl unload $redis_plist
+}
+
 # point java_home to system java
 # export JAVA_HOME=$(/usr/libexec/java_home)
 
@@ -120,8 +130,6 @@ alias mpv4k='./mpv -demuxer-rawvideo w=4000:h=2000 -demuxer rawvideo /dev/zero'
 
 # Aliases
 source ~/.localrc
-
-source ~/.z.sh
 
 # added by travis gem
 [ -f /Users/pigoz/.travis/travis.sh ] && source /Users/pigoz/.travis/travis.sh
