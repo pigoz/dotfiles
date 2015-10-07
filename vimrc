@@ -73,7 +73,7 @@ if hostname() == "kaze.local"
   let s:fontsize = 16
 else
   " desktop
-  let s:fontsize = 18
+  let s:fontsize = 22
 endif
 
 let &guifont = escape("Inconsolata" . ":h" . s:fontsize, ' ')
