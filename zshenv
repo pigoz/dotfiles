@@ -18,7 +18,12 @@ export PATH=~/.cabal/bin:$PATH
 # mactex basic
 export PATH=~/usr/local/texlive/2015basic/bin/x86_64-darwin:$PATH
 
+# system bin
 export PATH=/usr/local/sbin:$PATH
+
+# Go stuff
+export GOPATH=$HOME/dev/gocode
+export PATH=$GOPATH/bin:$PATH
 
 export PKG_CONFIG_PATH=$(python3-config --prefix)/lib/pkgconfig:$PKG_CONFIG_PATH
 
