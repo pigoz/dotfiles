@@ -41,3 +41,8 @@
  do
  (let ((face (intern (format "rainbow-delimiters-depth-%d-face" index))))
    (cl-callf color-saturate-name (face-foreground face) 100)))
+
+(require 'auto-complete)
+(require 'golden-ratio)
+(golden-ratio-mode 1)
+(setq golden-ratio-auto-scale t)

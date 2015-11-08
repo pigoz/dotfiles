@@ -23,7 +23,6 @@
 ; (depends-on "smartparens")
 ; (depends-on "smex")
 ; (depends-on "use-package")
-; (depends-on "web-mode")
 ; (depends-on "yasnippet")
 
 
@@ -41,3 +40,11 @@
 
 (depends-on "atom-dark-theme")
 (depends-on "fill-column-indicator")
+
+(depends-on "auto-complete")
+(depends-on "golden-ratio")
+
+(depends-on "web-mode")
+(depends-on "j2-mode")
+(depends-on "ac-js2")
+(depends-on "haml-mode")
