@@ -29,8 +29,9 @@ function CommentFrontMatter()
 endfunction
 
 autocmd BufNewFile,BufRead *.rst,*.md,*.markdown call CommentFrontMatter()
-autocmd BufNewFile,BufRead *.deface setfiletype eruby.html
-autocmd BufNewFile,BufRead *.mrb setfiletype ruby
+autocmd BufNewFile,BufRead *.deface set filetype=eruby.html
+autocmd BufNewFile,BufRead *.mrb set filetype=ruby
+autocmd BufNewFile,BufRead *.js.erb set filetype=javascript
 
 function! WordMode()
   setlocal formatoptions=t1
