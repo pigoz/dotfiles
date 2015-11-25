@@ -1,4 +1,8 @@
-filetype off             " required by Vundle
+" makes neovim python integration work
+let g:python_host_prog='/usr/local/bin/python'
+
+ " required by Vundle
+filetype off
 
 " Vundle setup
 set rtp+=~/.vim/bundle/vundle/
@@ -38,7 +42,6 @@ Plugin 'Valloric/YouCompleteMe'
 set completeopt-=preview
 let g:ycm_key_detailed_diagnostics = '<leader>c'
 let g:ycm_confirm_extra_conf = 0
-
 let g:ycm_semantic_triggers = {
  \   'clojure': ['(','re![a-zA-Z0-9\-_/#]\s'],
  \ }
@@ -51,7 +54,9 @@ let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='⚠'
 let g:syntastic_ruby_checkers=['rubocop', 'mri']
 let g:syntastic_javascript_checkers=['eslint']
-let g:syntastic_quiet_messages = {}
+let g:syntastic_scss_checkers=['scss_lint']
+let g:syntastic_quiet_messages={}
+let g:syntastic_check_on_open=1
 
 " ui
 Plugin 'tpope/vim-fugitive'
@@ -72,10 +77,6 @@ let g:ctrlp_max_height = 30
 
 Plugin 'vim-scripts/buftabs'
 Plugin 'vim-scripts/taglist.vim'
-Plugin 'mattn/zencoding-vim'
-if !exists('g:user_zen_leader_key')
-  let g:user_zen_leader_key = '<Leader>k'
-endif
 
 " Taglist
 map <Leader>l :TlistToggle<CR>
@@ -108,6 +109,7 @@ Plugin 'vim-scripts/vim-niji'
 
 " languages packages
 Plugin 'cakebaker/scss-syntax.vim'
+Plugin 'jelera/vim-javascript-syntax'
 Plugin 'pangloss/vim-javascript'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'elixir-lang/vim-elixir'
