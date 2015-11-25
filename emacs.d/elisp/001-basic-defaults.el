@@ -32,3 +32,15 @@
 (define-key window-sense-map (kbd "<right>") 'windmove-right)
 (define-key window-sense-map (kbd "<up>") 'windmove-up)
 (define-key window-sense-map (kbd "<down>") 'windmove-down)
+
+
+; winwidth for emacs
+(defvar my-minwinwidth 83)
+
+(defadvice select-window (after minwidth-window activate)
+  "Ensure selected window is of a minimum width."
+  (let* ((winwidth (window-total-width))
+         (diffwidth (- my-minwinwidth winwidth)))
+    (unless (window-full-width-p)
+      (when (> diffwidth 0)
+        (enlarge-window-horizontally diffwidth)))))

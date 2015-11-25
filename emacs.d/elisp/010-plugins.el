@@ -43,6 +43,3 @@
    (cl-callf color-saturate-name (face-foreground face) 100)))
 
 (require 'auto-complete)
-(require 'golden-ratio)
-(golden-ratio-mode 1)
-(setq golden-ratio-auto-scale t)

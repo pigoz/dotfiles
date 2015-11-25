@@ -42,7 +42,6 @@
 (depends-on "fill-column-indicator")
 
 (depends-on "auto-complete")
-(depends-on "golden-ratio")
 
 (depends-on "web-mode")
 (depends-on "j2-mode")
