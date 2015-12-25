@@ -22,6 +22,8 @@ th_flow_changed  = 14
 # size of blocks the analyse step is performed on
 blocksize  = 2**4
 
+force_block = True
+
 # assume display_fps to be bogus when not in a certain range
 target_num = 60 if display_fps < 23.9 or display_fps > 300 else display_fps
 while (target_num > max_fps):
@@ -40,7 +42,7 @@ if not (clip.width > max_width or clip.height > max_height or container_fps > ma
     fv   = core.mv.Analyse(sup, blksize=blocksize, isb=False, chroma=True, search=3, searchparam=2)
 
     use_block = clip.width > max_flow_width or clip.height > max_flow_height
-    if use_block:
+    if force_block or use_block:
         clip = core.mv.BlockFPS(clip, sup, bv, fv, num=target_num, den=target_den,
                                 mode=3, thscd1=th_block_diff, thscd2=th_block_changed)
     else:
