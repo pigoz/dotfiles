@@ -137,17 +137,15 @@ set scrolloff=3
 
 " Ignore these files when using CtrlP
 " * Rails specific
-set wildignore+=*/tmp/*,*/.sass_cache/*,*/vendor/assets/*
+set wildignore+=*/tmp/*,*/.sass_cache/*,*/vendor/assets/*,*/public/assets/*
 " * Python specific
 set wildignore+=*.pyc*
 " * C specific
 set wildignore+=*/build/*,*.d,*.o
 " * SCM specific
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
-" * Ember specific
-set wildignore+=*/dist/*,*/bower_components/*,*/node_modules/*
-" * Gromia specific
-set wildignore+=*/ui/*
+" * JavaScript specific
+set wildignore+=*/dist/*,*/bower_components/*,*/node_modules/*,*/jspm_packages/*
 
 " Really useful to save a file with sudo
 cmap w!! w !sudo tee % >/dev/null
