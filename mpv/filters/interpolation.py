@@ -22,7 +22,7 @@ th_flow_changed  = 14
 # size of blocks the analyse step is performed on
 blocksize  = 2**4
 
-force_block = True
+force_block = False
 
 # assume display_fps to be bogus when not in a certain range
 target_num = 60 if display_fps < 23.9 or display_fps > 300 else display_fps
