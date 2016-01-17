@@ -25,6 +25,9 @@ Plugin 'tpope/vim-fireplace'
 Plugin 'tpope/vim-classpath'
 Plugin 'guns/vim-clojure-static'
 Plugin 'guns/vim-clojure-highlight'
+" Plugin 'bhurlow/vim-parinfer' " doesn't seem to work
+" Plugin 'vim-scripts/paredit.vim'
+Plugin 'vim-scripts/vim-niji' " colored parens for lisps
 if has("autocmd")
   autocmd FileType clojure set iskeyword+=-
   " visual mode: execute selected block
@@ -33,7 +36,6 @@ if has("autocmd")
   autocmd FileType clojure nmap <D-r> cpp
   " get docs
   autocmd FileType clojure map <D-k> K
-
   " for overtone
   autocmd FileType clojure map <D-1> :Eval (stop)<CR>
 end
@@ -42,9 +44,7 @@ Plugin 'Valloric/YouCompleteMe'
 set completeopt-=preview
 let g:ycm_key_detailed_diagnostics = '<leader>c'
 let g:ycm_confirm_extra_conf = 0
-let g:ycm_semantic_triggers = {
- \   'clojure': ['(','re![a-zA-Z0-9\-_/#]\s'],
- \ }
+let g:ycm_semantic_triggers = {'clojure': ['(', 're!\[.*\]\s']}
 
 Plugin 'mileszs/ack.vim'
 let g:ackprg = 'ag --nogroup --nocolor --column'
@@ -104,8 +104,6 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&
 
 " colorschemes
 Plugin 'pigoz/herald'
-" colored parens for lisps
-Plugin 'vim-scripts/vim-niji'
 
 " languages packages
 Plugin 'cakebaker/scss-syntax.vim'
