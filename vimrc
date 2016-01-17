@@ -32,6 +32,7 @@ autocmd BufNewFile,BufRead *.rst,*.md,*.markdown call CommentFrontMatter()
 autocmd BufNewFile,BufRead *.deface set filetype=eruby.html
 autocmd BufNewFile,BufRead *.mrb set filetype=ruby
 autocmd BufNewFile,BufRead *.js.erb set filetype=javascript
+autocmd BufNewFile,BufRead *.boot set filetype=clojure
 
 function! WordMode()
   setlocal formatoptions=t1
