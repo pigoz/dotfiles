@@ -132,5 +132,8 @@ source ~/.zshtmux
 # Aliases
 source ~/.localrc
 
+# PATH setup
+source ~/.zshpath
+
 # added by travis gem
 [ -f /Users/pigoz/.travis/travis.sh ] && source /Users/pigoz/.travis/travis.sh
