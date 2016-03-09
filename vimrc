@@ -158,6 +158,9 @@ nnoremap <CR> :nohlsearch<cr>
 vnoremap < <gv
 vnoremap > >gv
 
+" disable Ex mode
+nnoremap Q <Nop>
+
 " Move through windows
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
