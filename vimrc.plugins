@@ -114,6 +114,6 @@ Plugin 'elixir-lang/vim-elixir'
 Plugin 'tikhomirov/vim-glsl'
 Plugin 'wting/rust.vim'
 Plugin 'digitaltoad/vim-jade'
-Plugin 'Keithbsmiley/swift.vim'
+Plugin 'ElmCast/elm-vim'
 
 call vundle#end()
