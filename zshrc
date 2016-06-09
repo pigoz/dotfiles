@@ -45,6 +45,10 @@ redis.stop() {
   launchctl unload $redis_plist
 }
 
+subdl() {
+  subliminal --debug download --language=en --single -f $*
+}
+
 # point java_home to system java
 # export JAVA_HOME=$(/usr/libexec/java_home)
 
