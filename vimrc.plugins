@@ -115,5 +115,6 @@ Plugin 'wting/rust.vim'
 Plugin 'digitaltoad/vim-jade'
 Plugin 'ElmCast/elm-vim'
 Plugin 'hashivim/vim-terraform'
+Plugin 'raichoo/purescript-vim'
 
 call vundle#end()
