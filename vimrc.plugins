@@ -1,6 +1,11 @@
 " makes neovim python integration work
 let g:python_host_prog='/usr/local/bin/python'
 
+" setup merlin path
+let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
+let g:ocamlmerlin = g:opamshare . "/merlin/vim"
+exe "set rtp+=" . g:ocamlmerlin
+
  " required by Vundle
 filetype off
 
@@ -52,9 +57,12 @@ let g:ackprg = 'ag --nogroup --nocolor --column'
 Plugin 'scrooloose/syntastic'
 let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='⚠'
+
 let g:syntastic_ruby_checkers=['rubocop', 'mri']
 let g:syntastic_javascript_checkers=['eslint']
 let g:syntastic_scss_checkers=['scss_lint']
+let g:syntastic_ocaml_checkers = ['merlin']
+
 let g:syntastic_quiet_messages={}
 let g:syntastic_check_on_open=1
 
@@ -116,5 +124,8 @@ Plugin 'digitaltoad/vim-jade'
 Plugin 'ElmCast/elm-vim'
 Plugin 'hashivim/vim-terraform'
 Plugin 'raichoo/purescript-vim'
+
+" ocaml
+Plugin 'def-lkb/ocp-indent-vim'
 
 call vundle#end()

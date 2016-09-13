@@ -12,6 +12,7 @@ set fileformat=unix      " LF line endings
 
 " Turn on auto indentation
 filetype indent on
+filetype plugin on
 
 " Use 2 spaces softtabs for everything except for languages where the
 " convention is 4spaces softtabs
