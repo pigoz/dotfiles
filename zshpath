@@ -25,6 +25,8 @@ export PATH=/usr/local/sbin:$PATH
 export GOPATH=$HOME/dev/gocode
 export PATH=$GOPATH/bin:$PATH
 
+export PATH=/Applications/Wine\ Staging.app/Contents/Resources/wine/bin:$PATH
+
 if command_exists python3-config ; then
   export PKG_CONFIG_PATH=$(python3-config --prefix)/lib/pkgconfig:$PKG_CONFIG_PATH
 fi
