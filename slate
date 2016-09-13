@@ -29,13 +29,15 @@ bind pad6 ${righthalf}
 bind pad7 ${topleft}
 bind pad8 push top bar-resize:screenSizeY/2
 bind pad9 ${topright}
+bind up:ctrl,alt,cmd ${full}
+bind right:ctrl,alt,cmd ${righthalf}
+bind left:ctrl,alt,cmd ${lefthalf}
  
 bind pad+ resize +10% +10%
 bind pad- resize -10% -10%
 bind pad/ nudge -10% +0
 bind pad* nudge +10% +0
- 
- 
+
 bind pad1:alt corner bottom-left
 bind pad2:alt push bottom
 bind pad3:alt corner bottom-right
