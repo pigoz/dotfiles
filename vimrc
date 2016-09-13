@@ -160,6 +160,8 @@ vnoremap > >gv
 
 " disable Ex mode
 nnoremap Q <Nop>
+imap <Home> <Esc>
+vnoremap <Home> <Esc>
 
 " Move through windows
 nnoremap <c-j> <c-w>j
