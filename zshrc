@@ -141,3 +141,6 @@ source ~/.zshpath
 
 # added by travis gem
 [ -f /Users/pigoz/.travis/travis.sh ] && source /Users/pigoz/.travis/travis.sh
+
+# OPAM configuration
+source ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
