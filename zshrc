@@ -57,11 +57,11 @@ alias -g be='bundle exec'
 alias -g sudo='nocorrect sudo'
 
 vundle-install() {
-  vim +BundleInstall +qall
+  vim +PluginInstall +qall
 }
 
 vundle-update() {
-  vim +BundleInstall! +qall
+  vim +PluginInstall! +qall
 }
 
 yt() {

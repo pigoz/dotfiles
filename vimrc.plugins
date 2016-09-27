@@ -14,7 +14,7 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#begin()
 
 " manage Vundle with Vundle
-Plugin 'gmarik/Vundle.vim'
+Plugin 'VundleVim/Vundle.vim'
 
 " search, completion, code analysis and general IDE stuff
 Plugin 'vim-ruby/vim-ruby'
