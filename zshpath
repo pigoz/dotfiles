@@ -34,6 +34,4 @@ fi
 # Load rbenv
 if command_exists rbenv ; then
   eval "$(rbenv init - zsh)"
-else
-  echo "failed to load rbenv"
 fi
