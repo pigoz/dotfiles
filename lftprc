@@ -1,0 +1,3 @@
+set color:use-color yes
+set mirror:use-pget-n 8
+set mirror:parallel-directories no

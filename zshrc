@@ -49,6 +49,13 @@ subdl() {
   subliminal --debug download --language=en --single -f $*
 }
 
+yarr() {
+  src="/home/debian-transmission/Downloads"
+  dst="/Volumes/Mechanical Disk/Movies (External)/Downloads"
+  cd $dst
+  lftp sftp://loli.wakku.to:$src
+}
+
 # point java_home to system java
 # export JAVA_HOME=$(/usr/libexec/java_home)
 
