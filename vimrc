@@ -77,10 +77,10 @@ if hostname() == "kaze.local"
   let s:fontsize = 16
 else
   " desktop
-  let s:fontsize = 22
+  let s:fontsize = 20
 endif
 
-let &guifont = escape("Inconsolata" . ":h" . s:fontsize, ' ')
+let &guifont = escape("Menlo" . ":h" . s:fontsize, ' ')
 
 " Hide MacVim GUI elements
 set go-=T
