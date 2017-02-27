@@ -79,8 +79,15 @@ yt() {
 
 # $1 search
 # $2 replace
+# prjreplace() {
+#   ag -Sl "$1" | xargs perl -pi -E "s/\Q$1\E/\Q$2\E/g"
+# }
+#
 prjreplace() {
-  ag -Sl "$1" | xargs perl -pi -E "s/$1/$2/g"
+  self=$(readlink ~/.zshrc)
+  dir=$(dirname $self)
+  replacebin=$dir/bin/replace
+  ag -Sl "$1" | xargs -L 1 "$replacebin" "$1" "$2"
 }
 
 f() {

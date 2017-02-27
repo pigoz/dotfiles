@@ -1,0 +1,24 @@
+#!/usr/bin/env ruby
+
+def usage
+  puts %(USAGE:\n\t./#{File.basename(__FILE__)} "file" "search" "replace")
+end
+
+if ARGV.size != 3
+  usage
+  puts ARGV.inspect
+  exit(-1)
+end
+
+search = ARGV[0]
+replace = ARGV[1]
+path = ARGV[2]
+
+unless File.exist?(path)
+  puts "File '#{path}' doens't exist"
+  exit(-1)
+end
+
+buffer = IO.read(path)
+result = buffer.gsub(search, replace)
+IO.write(path, result)
