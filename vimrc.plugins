@@ -6,18 +6,10 @@ let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
 let g:ocamlmerlin = g:opamshare . "/merlin/vim"
 exe "set rtp+=" . g:ocamlmerlin
 
- " required by Vundle
-filetype off
-
-" Vundle setup
-set rtp+=~/.vim/bundle/vundle/
-call vundle#begin()
-
-" manage Vundle with Vundle
-Plugin 'VundleVim/Vundle.vim'
+call plug#begin('~/.vim/plugged')
 
 " search, completion, code analysis and general IDE stuff
-Plugin 'vim-ruby/vim-ruby'
+Plug 'vim-ruby/vim-ruby'
 if has("autocmd")
   autocmd FileType ruby set omnifunc=rubycomplete#Complete
   autocmd FileType ruby let g:rubycomplete_buffer_loading=1
@@ -26,13 +18,13 @@ if has("autocmd")
 endif
 
 " clojure
-Plugin 'tpope/vim-fireplace'
-Plugin 'tpope/vim-classpath'
-Plugin 'guns/vim-clojure-static'
-Plugin 'guns/vim-clojure-highlight'
+Plug 'tpope/vim-fireplace'
+Plug 'tpope/vim-classpath'
+Plug 'guns/vim-clojure-static'
+Plug 'guns/vim-clojure-highlight'
 " Plugin 'bhurlow/vim-parinfer' " doesn't seem to work
 " Plugin 'vim-scripts/paredit.vim'
-Plugin 'vim-scripts/vim-niji' " colored parens for lisps
+Plug 'vim-scripts/vim-niji' " colored parens for lisps
 if has("autocmd")
   autocmd FileType clojure set iskeyword+=-
   " visual mode: execute selected block
@@ -45,16 +37,13 @@ if has("autocmd")
   autocmd FileType clojure map <D-1> :Eval (stop)<CR>
 end
 
-Plugin 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe'
 set completeopt-=preview
 let g:ycm_key_detailed_diagnostics = '<leader>c'
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_semantic_triggers = {'clojure': ['(', 're!\[.*\]\s']}
 
-Plugin 'mileszs/ack.vim'
-let g:ackprg = 'ag --nogroup --nocolor --column'
-
-Plugin 'scrooloose/syntastic'
+Plug 'scrooloose/syntastic'
 let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='⚠'
 
@@ -67,15 +56,15 @@ let g:syntastic_quiet_messages={}
 let g:syntastic_check_on_open=1
 
 " ui
-Plugin 'tpope/vim-fugitive'
-Plugin 'Lokaltog/vim-powerline'
+Plug 'tpope/vim-fugitive'
+Plug 'Lokaltog/vim-powerline'
 set laststatus=2
 
 " navigation
-Plugin 'Lokaltog/vim-easymotion'
+Plug 'Lokaltog/vim-easymotion'
 let g:EasyMotion_leader_key = 'm'
 
-Plugin 'kien/ctrlp.vim'
+Plug 'kien/ctrlp.vim'
 map <D-b> :CtrlPBuffer<CR>
 imap <D-b> :CtrlPBuffer<CR>
 map <D-t> :CtrlP<CR>
@@ -83,8 +72,8 @@ imap <D-t> :CtrlP<CR>
 
 let g:ctrlp_max_height = 30
 
-Plugin 'vim-scripts/buftabs'
-Plugin 'vim-scripts/taglist.vim'
+Plug 'vim-scripts/buftabs'
+Plug 'vim-scripts/taglist.vim'
 
 " Taglist
 map <Leader>l :TlistToggle<CR>
@@ -96,7 +85,7 @@ let Tlist_Show_One_File = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTree
-Plugin 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'
 
 " Toggle drawer bindings
 map <D-d> :NERDTreeToggle<CR>
@@ -111,21 +100,22 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&
   \ b:NERDTreeType == "primary") | q | endif
 
 " colorschemes
-Plugin 'pigoz/herald'
+Plug 'pigoz/herald'
 
 " languages packages
-Plugin 'cakebaker/scss-syntax.vim'
-Plugin 'jelera/vim-javascript-syntax'
-Plugin 'pangloss/vim-javascript'
-Plugin 'elixir-lang/vim-elixir'
-Plugin 'tikhomirov/vim-glsl'
-Plugin 'wting/rust.vim'
-Plugin 'digitaltoad/vim-jade'
-Plugin 'ElmCast/elm-vim'
-Plugin 'hashivim/vim-terraform'
-Plugin 'raichoo/purescript-vim'
+Plug 'cakebaker/scss-syntax.vim'
+Plug 'jelera/vim-javascript-syntax'
+Plug 'pangloss/vim-javascript'
+Plug 'elixir-lang/vim-elixir'
+Plug 'wting/rust.vim'
+Plug 'ElmCast/elm-vim'
+Plug 'hashivim/vim-terraform'
 
 " ocaml
-Plugin 'def-lkb/ocp-indent-vim'
+Plug 'def-lkb/ocp-indent-vim', {'for' : 'ocaml'}
+Plug 'fsharp/vim-fsharp', {
+  \ 'for': 'fsharp',
+  \ 'do':  'make fsautocomplete',
+  \}
 
-call vundle#end()
+call plug#end()

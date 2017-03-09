@@ -63,12 +63,12 @@ yarr() {
 alias -g be='bundle exec'
 alias -g sudo='nocorrect sudo'
 
-vundle-install() {
-  vim +PluginInstall +qall
+plug-install() {
+  vim +PlugInstall +qall
 }
 
-vundle-update() {
-  vim +PluginInstall! +qall
+plug-update() {
+  vim +PlugUpdate +qall
 }
 
 yt() {
