@@ -110,6 +110,8 @@ Plug 'elixir-lang/vim-elixir'
 Plug 'wting/rust.vim'
 Plug 'ElmCast/elm-vim'
 Plug 'hashivim/vim-terraform'
+Plug 'raichoo/purescript-vim'
+Plug 'FrigoEU/psc-ide-vim'
 
 " ocaml
 Plug 'def-lkb/ocp-indent-vim', {'for' : 'ocaml'}
