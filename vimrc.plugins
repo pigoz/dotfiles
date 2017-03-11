@@ -46,7 +46,7 @@ let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='⚠'
 
 let g:syntastic_ruby_checkers=['mri']
-let g:syntastic_javascript_checkers=['eslint']
+let g:syntastic_javascript_checkers=['eslint', 'flow']
 let g:syntastic_scss_checkers=['scss_lint']
 let g:syntastic_ocaml_checkers = ['merlin']
 
@@ -99,6 +99,8 @@ Plug 'pigoz/herald'
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' }
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+Plug 'flowtype/vim-flow', { 'for': 'javascript' }
+
 Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
 Plug 'hashivim/vim-terraform'
 Plug 'raichoo/purescript-vim', { 'for': 'purescript' }
