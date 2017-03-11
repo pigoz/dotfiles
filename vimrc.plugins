@@ -102,11 +102,19 @@ Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
 Plug 'hashivim/vim-terraform'
 Plug 'raichoo/purescript-vim', { 'for': 'purescript' }
-Plug 'FrigoEU/psc-ide-vim', { 'for': 'purescript' }
 Plug 'def-lkb/ocp-indent-vim', {'for' : 'ocaml'}
 Plug 'fsharp/vim-fsharp', {
   \ 'for': 'fsharp',
   \ 'do':  'make fsautocomplete',
   \}
+
+Plug 'FrigoEU/psc-ide-vim', { 'for': 'purescript' }
+
+au FileType purescript nmap <leader>m :PSCIDEtype<CR>
+au FileType purescript nmap <leader>k :PSCIDEapplySuggestion<CR>
+au FileType purescript nmap <leader>a :PSCIDEaddTypeAnnotation<CR>
+au FileType purescript nmap <leader>i :PSCIDEimportIdentifier<CR>
+au FileType purescript nmap <leader>qd :PSCIDEremoveImportQualifications<CR>
+au FileType purescript nmap <leader>qa :PSCIDEaddImportQualifications<CR>
 
 call plug#end()

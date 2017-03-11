@@ -86,7 +86,7 @@ set go-=m
 
 set virtualedit=all      " Allow to move cursor anywhere
 set clipboard=unnamed    " Uses system clipboard
-let mapleader = ','
+let mapleader = 'm'
 
 " Folding options
 set foldmethod=syntax
