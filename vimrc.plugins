@@ -1,6 +1,3 @@
-" makes neovim python integration work
-let g:python_host_prog='/usr/local/bin/python'
-
 " setup merlin path
 let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
 let g:ocamlmerlin = g:opamshare . "/merlin/vim"
@@ -9,7 +6,7 @@ exe "set rtp+=" . g:ocamlmerlin
 call plug#begin('~/.vim/plugged')
 
 " search, completion, code analysis and general IDE stuff
-Plug 'vim-ruby/vim-ruby'
+Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 if has("autocmd")
   autocmd FileType ruby set omnifunc=rubycomplete#Complete
   autocmd FileType ruby let g:rubycomplete_buffer_loading=1
@@ -18,13 +15,14 @@ if has("autocmd")
 endif
 
 " clojure
-Plug 'tpope/vim-fireplace'
-Plug 'tpope/vim-classpath'
-Plug 'guns/vim-clojure-static'
-Plug 'guns/vim-clojure-highlight'
+Plug 'tpope/vim-fireplace', {'for': 'clojure'}
+Plug 'tpope/vim-classpath', {'for': 'clojure'} 
+Plug 'guns/vim-clojure-static', {'for': 'clojure'} 
+Plug 'guns/vim-clojure-highlight', {'for': 'clojure'} 
+Plug 'vim-scripts/vim-niji', {'for': 'clojure'} " colored parens for lisps
 " Plugin 'bhurlow/vim-parinfer' " doesn't seem to work
 " Plugin 'vim-scripts/paredit.vim'
-Plug 'vim-scripts/vim-niji' " colored parens for lisps
+"
 if has("autocmd")
   autocmd FileType clojure set iskeyword+=-
   " visual mode: execute selected block
@@ -47,7 +45,7 @@ Plug 'scrooloose/syntastic'
 let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='⚠'
 
-let g:syntastic_ruby_checkers=['rubocop', 'mri']
+let g:syntastic_ruby_checkers=['mri']
 let g:syntastic_javascript_checkers=['eslint']
 let g:syntastic_scss_checkers=['scss_lint']
 let g:syntastic_ocaml_checkers = ['merlin']
@@ -55,33 +53,22 @@ let g:syntastic_ocaml_checkers = ['merlin']
 let g:syntastic_quiet_messages={}
 let g:syntastic_check_on_open=1
 
-" ui
-Plug 'tpope/vim-fugitive'
-Plug 'Lokaltog/vim-powerline'
+Plug 'tpope/vim-fugitive' " for :Gblame
+Plug 'vim-airline/vim-airline' " small ui
 set laststatus=2
 
 " navigation
-Plug 'Lokaltog/vim-easymotion'
+Plug 'easymotion/vim-easymotion'
 let g:EasyMotion_leader_key = 'm'
 
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 map <D-b> :CtrlPBuffer<CR>
 imap <D-b> :CtrlPBuffer<CR>
 map <D-t> :CtrlP<CR>
 imap <D-t> :CtrlP<CR>
-
 let g:ctrlp_max_height = 30
 
-Plug 'vim-scripts/buftabs'
-Plug 'vim-scripts/taglist.vim'
-
-" Taglist
-map <Leader>l :TlistToggle<CR>
-let Tlist_Ctags_Cmd = g:ctags_path
-let Tlist_Use_Right_Window = 1
-let Tlist_WinWidth = 35
-let Tlist_Enable_Fold_Column = 0
-let Tlist_Show_One_File = 1
+" Plug 'vim-scripts/buftabs' " maybe this should go away with airline
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTree
@@ -104,16 +91,12 @@ Plug 'pigoz/herald'
 
 " languages packages
 Plug 'cakebaker/scss-syntax.vim'
-Plug 'jelera/vim-javascript-syntax'
-Plug 'pangloss/vim-javascript'
-Plug 'elixir-lang/vim-elixir'
-Plug 'wting/rust.vim'
-Plug 'ElmCast/elm-vim'
+Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' }
+Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
 Plug 'hashivim/vim-terraform'
-Plug 'raichoo/purescript-vim'
-Plug 'FrigoEU/psc-ide-vim'
-
-" ocaml
+Plug 'raichoo/purescript-vim', { 'for': 'purescript' }
+Plug 'FrigoEU/psc-ide-vim', { 'for': 'purescript' }
 Plug 'def-lkb/ocp-indent-vim', {'for' : 'ocaml'}
 Plug 'fsharp/vim-fsharp', {
   \ 'for': 'fsharp',

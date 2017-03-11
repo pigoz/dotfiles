@@ -1,8 +1,6 @@
 " Basic stuff
 set nocompatible         " no vi compatibility
 
-let g:ctags_path = "/usr/local/bin/ctags"
-
 if filereadable(glob("~/.vimrc.plugins")) 
   source ~/.vimrc.plugins
 endif
@@ -54,18 +52,18 @@ colorscheme herald
 set listchars=tab:▸·,eol:¬,trail:·
 
 " The following assume t_Co == 256 for term colors
- "For a color table check http://en.wikipedia.org/wiki/Xterm
+" For a color table check http://en.wikipedia.org/wiki/Xterm
 highlight NonText ctermfg=236 guifg=#303030
 highlight SpecialKey ctermfg=236 guifg=#303030
 highlight ColorColumn ctermbg=0
 highlight CursorLine term=none gui=none
 
-set cursorline           " Highlight current line
-set list                 " Activate listchars configuration
-set ruler                " Show row / column
-set showcmd              " Shows selection
-set incsearch            " Use incremental search
-set hlsearch             " Highlight search results
+set cursorline   " Highlight current line
+set list         " Activate listchars configuration
+set ruler        " Show row / column
+set showcmd      " Shows selection
+set incsearch    " Use incremental search
+set hlsearch     " Highlight search results
 
 " Natural splits
 set splitbelow
@@ -93,19 +91,6 @@ let mapleader = ','
 " Folding options
 set foldmethod=syntax
 set nofoldenable         " Don't fold by default
-
-" Load tags from more places
-set tags+=gems.tags
-
-function GenCTags(target, sources)
-  execute ':! ' . g:ctags_path . ' -R -a -f ' . a:target . ' ' . a:sources
-endfunction
-
-command Ct     call GenCTags('tags', '.')
-command Ctgems call GenCTags('gems.tags', '`bundle show --paths`')
-
-map <Leader>d <C-]>
-map à <C-]>
 
 " Allow backgrounding buffers without writing them, and remember marks/undo
 " for backgrounded buffers
@@ -183,7 +168,3 @@ map <D-M-Left> :bprev<CR>
 imap <D-M-Left> <Esc>:bprev<CR>
 map <D-M-Right> :bnext<CR>
 imap <D-M-Right> <Esc>:bnext<CR>
-
-" Ack
-map <Leader>f :Ack<space>
-
