@@ -9,6 +9,9 @@ fi
 # add rbenv shims to path
 export PATH=$HOME/.rbenv/bin:$PATH
 
+# add dotfiles bin path
+export PATH=$HOME/.bin:$PATH
+
 # nodejs paths
 export PATH=/usr/local/share/npm/bin:$PATH
 
