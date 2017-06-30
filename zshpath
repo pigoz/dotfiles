@@ -9,6 +9,9 @@ fi
 # add rbenv shims to path
 export PATH=$HOME/.rbenv/bin:$PATH
 
+# add yarn global bin
+export PATH="$PATH:`yarn global bin`"
+
 # add dotfiles bin path
 export PATH=$HOME/.bin:$PATH
 

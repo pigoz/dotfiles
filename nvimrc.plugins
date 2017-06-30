@@ -1,0 +1,53 @@
+call plug#begin('~/.local/share/nvim/plugged')
+
+"------------------------------------------------------------------------------
+" NerdTree
+"------------------------------------------------------------------------------
+"
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+
+" Toggle drawer bindings
+map <D-d> :NERDTreeToggle<CR>
+imap <D-d> <Esc>:NERDTreeToggle<CR>
+
+let NERDTreeShowHidden=1 " Show dotfiles in NERDTree
+let NERDTreeHijackNetrw = 1 " Don't hijack Netrw
+let NERDTreeIgnore = ['\.pyc$', '\.d$', '\.o$', '^.waf-']
+
+"------------------------------------------------------------------------------
+" CtrlP
+"------------------------------------------------------------------------------
+"
+Plug 'ctrlpvim/ctrlp.vim'
+map <D-b> :CtrlPBuffer<CR>
+imap <D-b> :CtrlPBuffer<CR>
+map <D-t> :CtrlP<CR>
+imap <D-t> :CtrlP<CR>
+let g:ctrlp_max_height = 30
+
+"------------------------------------------------------------------------------
+" UI & Misc
+"------------------------------------------------------------------------------
+"
+Plug 'tpope/vim-fugitive' " for :Gblame
+Plug 'vim-airline/vim-airline' " small ui
+set laststatus=2
+
+"------------------------------------------------------------------------------
+" Colors
+"------------------------------------------------------------------------------
+"
+Plug 'pigoz/herald'
+
+"------------------------------------------------------------------------------
+" Linters, etc
+"------------------------------------------------------------------------------
+"
+Plug 'neomake/neomake'
+
+"------------------------------------------------------------------------------
+" Linters, etc
+"------------------------------------------------------------------------------
+"
+
+call plug#end()

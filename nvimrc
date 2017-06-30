@@ -69,28 +69,13 @@ set hlsearch     " Highlight search results
 set splitbelow
 set splitright
 
-" Setting fonts
-if hostname() == "kaze.local"
-  " laptop
-  let s:fontsize = 16
-else
-  " desktop
-  let s:fontsize = 20
-endif
-
-let &guifont = escape("Menlo" . ":h" . s:fontsize, ' ')
-
-" Hide MacVim GUI elements
-set go-=T
-set go-=m
-
-set virtualedit=all      " Allow to move cursor anywhere
-set clipboard=unnamed    " Uses system clipboard
+set virtualedit=all " Allow to move cursor anywhere
+set clipboard=unnamed " Uses system clipboard
 let mapleader = 'm'
 
 " Folding options
 set foldmethod=syntax
-set nofoldenable         " Don't fold by default
+set nofoldenable " Don't fold by default
 
 " Allow backgrounding buffers without writing them, and remember marks/undo
 " for backgrounded buffers

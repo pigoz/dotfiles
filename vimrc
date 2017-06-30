@@ -163,8 +163,11 @@ nnoremap <c-right> <c-w>l
 nnoremap <PageUp> <C-u>
 nnoremap <PageDown> <C-d>
 
-" Next/prev buffer bindings
-map <D-M-Left> :bprev<CR>
-imap <D-M-Left> <Esc>:bprev<CR>
-map <D-M-Right> :bnext<CR>
-imap <D-M-Right> <Esc>:bnext<CR>
+map <D-M-Left> <c-w>h
+imap <D-M-Left> <c-w>h
+map <D-M-Right> <c-w>l
+imap <D-M-Right> <c-w>l
+map <D-M-Up> <c-w>k
+imap <D-M-Up> <c-w>k
+map <D-M-Down> <c-w>j
+imap <D-M-Down> <c-w>j
