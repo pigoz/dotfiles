@@ -26,6 +26,7 @@ export PATH=~/usr/local/texlive/2015basic/bin/x86_64-darwin:$PATH
 
 # system bin
 export PATH=/usr/local/sbin:$PATH
+export PATH=/usr/local/bin:$PATH
 
 # Go stuff
 export GOPATH=$HOME/dev/gocode
