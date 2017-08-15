@@ -34,4 +34,9 @@
   (add-hook 'after-change-major-mode-hook 'fci-mode)
 
   (load-theme 'herald t)
+
+  (setq auto-mode-alist
+    (append
+     '(("\\.js\\'" . react-mode))
+     auto-mode-alist))
 )
