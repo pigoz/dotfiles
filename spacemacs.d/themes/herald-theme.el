@@ -49,7 +49,7 @@
 (defun create-theme (theme-name)
   (dyn-let ((class '((class color) (min-colors 89)))
         (act1          "#222226")
-      pigoz@NAVi ~/dev/dotfiles/spacemacs.d/elisp ±master⚡ »   (act2          "#5d4d7a")
+        (act2          "#5d4d7a")
         (base          "#b2b2b2")
         (base-dim      "#686868")
         (bg1           "#1f1f1f")
