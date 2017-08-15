@@ -32,4 +32,6 @@
   (setq-default fci-rule-width 1)
   (setq-default fci-rule-color "darkblue")
   (add-hook 'after-change-major-mode-hook 'fci-mode)
+
+  (load-theme 'herald t)
 )
