@@ -1,38 +1,4 @@
-;;; spacemacs-common.el --- Color theme with a dark and light versions.
-
-;; Copyright (C) 2015-2016 Nasser Alshammari
-
-;; Author: Nasser Alshammari
-;; URL: <https://github.com/nashamri/spacemacs-theme>
-;;
-;; Version: 0.1
-;; Keywords: color, theme
-;; Package-Requires: ((emacs "24"))
-
-;; Initially created with the help of emacs-theme-generator, <https://github.com/mswift42/theme-creator>.
-
-;; This program is free software: you can redistribute it and/or modify
-;; it under the terms of the GNU General Public License as published by
-;; the Free Software Foundation, either version 3 of the License, or
-;; (at your option) any later version.
-
-;; This program is distributed in the hope that it will be useful,
-;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-;; GNU General Public License for more details.
-
-;; You should have received a copy of the GNU General Public License
-;; along with this program. If not, see <http://www.gnu.org/licenses/>.
-
-;; This file is not part of Emacs.
-
-;;; Commentary:
-
-;; This is a color theme for spacemacs <https://github.com/syl20bnr/spacemacs>.
-;; It comes with two versions, dark and light and should work well in
-;; a 256 color terminal.
-
-;;; Code:
+;;; herald-theme.el
 
 (defmacro dyn-let (varlist fn setfaces setvars)
   (list 'let (append varlist (funcall fn)) setfaces setvars))
@@ -844,4 +810,4 @@
 (create-theme 'herald)
 (provide-theme 'herald)
 
-;;; spacemacs-common.el ends here
+;;; herald-theme.el ends here
