@@ -14,6 +14,7 @@
   (add-hook
    'neotree-mode-hook
    (lambda ()
+     (define-key evil-normal-state-local-map (kbd "ESC") nil)
      (define-key evil-normal-state-local-map (kbd "RET") 'neotree-enter)
      (define-key evil-normal-state-local-map (kbd "ma") 'neotree-create-node)
      (define-key evil-normal-state-local-map (kbd "md") 'neotree-delete-node)
