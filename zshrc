@@ -139,6 +139,14 @@ rpi.flash() {
   fi
 }
 
+yt-playlist() {
+  mpv --volume=50 --no-video --term-playing-msg='Title: ${media-title}' https://www.youtube.com/playlist\?list\=$1
+}
+
+miku() {
+  yt-playlist PLLoRe_7Ei6nQ1vgFyVWxNVz2gjPFC7LIA
+}
+
 bindkey '^[^[[D' backward-word
 bindkey '^[^[[C' forward-word
 bindkey '^[[5D' beginning-of-line
