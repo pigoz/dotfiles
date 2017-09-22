@@ -104,11 +104,7 @@ Plug 'flowtype/vim-flow', { 'for': 'javascript' }
 Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
 Plug 'hashivim/vim-terraform'
 Plug 'raichoo/purescript-vim', { 'for': 'purescript' }
-Plug 'def-lkb/ocp-indent-vim', {'for' : 'ocaml'}
-Plug 'fsharp/vim-fsharp', {
-  \ 'for': 'fsharp',
-  \ 'do':  'make fsautocomplete',
-  \}
+Plug 'elmcast/elm-vim'
 
 Plug 'FrigoEU/psc-ide-vim', { 'for': 'purescript' }
 
