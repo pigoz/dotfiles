@@ -34,6 +34,7 @@
   di = diff
   dc = diff --cached
   ca = commit --amend
+  cad = commit --amend --date=now
   aa = add --all
   ff = merge --ff-only
   l = "!source ~/.githelpers && pretty_git_log"
