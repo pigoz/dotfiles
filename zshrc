@@ -147,6 +147,13 @@ miku() {
   yt-playlist PLLoRe_7Ei6nQ1vgFyVWxNVz2gjPFC7LIA
 }
 
+make-kanji-avatar() {
+  file=/tmp/kanji.png
+  font='/System/Library/Fonts/ヒラギノ角ゴシック W6.ttc'
+  convert -size 200x200 -pointsize 190 -gravity center -font $font caption:"$1" $file
+  upload-image $file
+}
+
 bindkey '^[^[[D' backward-word
 bindkey '^[^[[C' forward-word
 bindkey '^[[5D' beginning-of-line
