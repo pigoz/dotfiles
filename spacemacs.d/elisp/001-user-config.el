@@ -1,12 +1,13 @@
-(defun dotspacemacs/user-init ())
-
-;; all my config except layers
-(defun dotspacemacs/user-config ()
+(defun dotspacemacs/user-init ()
   (setq dotspacemacs-startup-banner nil)
   (setq dotspacemacs-auto-resume-layouts nil)
   (setq dotspacemacs-auto-save-file-location nil)
   (setq dotspacemacs-default-font
         '("Menlo" :size 20 :weight normal :width normal :powerline-scale 1.1))
+  (setq dotspacemacs-startup-lists '((recents . 5) (projects . 10))))
+
+;; all my config except layers
+(defun dotspacemacs/user-config ()
   (define-key evil-normal-state-map (kbd "SPC p p") 'helm-projectile)
   (define-key evil-normal-state-map (kbd "SPC p P") 'helm-projectile-switch-project)
   (define-key evil-normal-state-map (kbd "SPC p a") 'helm-projectile-ag)
