@@ -1,39 +1,8 @@
-" setup merlin path
-let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
-let g:ocamlmerlin = g:opamshare . "/merlin/vim"
-exe "set rtp+=" . g:ocamlmerlin
-
 call plug#begin('~/.vim/plugged')
 
 " search, completion, code analysis and general IDE stuff
-Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
-if has("autocmd")
-  autocmd FileType ruby set omnifunc=rubycomplete#Complete
-  autocmd FileType ruby let g:rubycomplete_buffer_loading=1
-  autocmd FileType ruby let g:rubycomplete_classes_in_global=1
-  autocmd FileType ruby let g:rubycomplete_rails = 1
-endif
-
-" clojure
-Plug 'tpope/vim-fireplace', {'for': 'clojure'}
-Plug 'tpope/vim-classpath', {'for': 'clojure'} 
-Plug 'guns/vim-clojure-static', {'for': 'clojure'} 
-Plug 'guns/vim-clojure-highlight', {'for': 'clojure'} 
 Plug 'vim-scripts/vim-niji', {'for': 'clojure'} " colored parens for lisps
-" Plugin 'bhurlow/vim-parinfer' " doesn't seem to work
-" Plugin 'vim-scripts/paredit.vim'
-"
-if has("autocmd")
-  autocmd FileType clojure set iskeyword+=-
-  " visual mode: execute selected block
-  autocmd FileType clojure vmap <D-r> :Eval<CR>
-  " normal mode: eval innermost form
-  autocmd FileType clojure nmap <D-r> cpp
-  " get docs
-  autocmd FileType clojure map <D-k> K
-  " for overtone
-  autocmd FileType clojure map <D-1> :Eval (stop)<CR>
-end
+Plug 'sheerun/vim-polyglot'
 
 Plug 'Valloric/YouCompleteMe'
 set completeopt-=preview
@@ -49,22 +18,9 @@ let g:ale_linters = {
 \ 'scss': ['scss_lint'],
 \ }
 
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_quiet_messages={}
-let g:syntastic_always_populate_loc_list = 0
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open=1
-
 Plug 'tpope/vim-fugitive' " for :Gblame
 Plug 'vim-airline/vim-airline' " small ui
 set laststatus=2
-
-" navigation
-Plug 'easymotion/vim-easymotion'
-let g:EasyMotion_leader_key = 'm'
 
 Plug 'ctrlpvim/ctrlp.vim'
 map <D-b> :CtrlPBuffer<CR>
@@ -72,8 +28,6 @@ imap <D-b> :CtrlPBuffer<CR>
 map <D-t> :CtrlP<CR>
 imap <D-t> :CtrlP<CR>
 let g:ctrlp_max_height = 30
-
-" Plug 'vim-scripts/buftabs' " maybe this should go away with airline
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTree
@@ -93,25 +47,5 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&
 
 " colorschemes
 Plug 'pigoz/herald'
-
-" languages packages
-Plug 'cakebaker/scss-syntax.vim'
-Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' }
-Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
-Plug 'flowtype/vim-flow', { 'for': 'javascript' }
-
-Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
-Plug 'hashivim/vim-terraform'
-Plug 'raichoo/purescript-vim', { 'for': 'purescript' }
-Plug 'elmcast/elm-vim'
-
-Plug 'FrigoEU/psc-ide-vim', { 'for': 'purescript' }
-
-au FileType purescript nmap <leader>m :PSCIDEtype<CR>
-au FileType purescript nmap <leader>k :PSCIDEapplySuggestion<CR>
-au FileType purescript nmap <leader>a :PSCIDEaddTypeAnnotation<CR>
-au FileType purescript nmap <leader>i :PSCIDEimportIdentifier<CR>
-au FileType purescript nmap <leader>qd :PSCIDEremoveImportQualifications<CR>
-au FileType purescript nmap <leader>qa :PSCIDEaddImportQualifications<CR>
 
 call plug#end()

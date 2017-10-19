@@ -5,8 +5,8 @@ if filereadable(glob("~/.vimrc.plugins"))
   source ~/.vimrc.plugins
 endif
 
-set number               " line numbers
-set fileformat=unix      " LF line endings
+set number           " line numbers
+set fileformat=unix  " LF line endings
 
 " Turn on auto indentation
 filetype indent on
@@ -28,10 +28,6 @@ function CommentFrontMatter()
 endfunction
 
 autocmd BufNewFile,BufRead *.rst,*.md,*.markdown call CommentFrontMatter()
-autocmd BufNewFile,BufRead *.deface set filetype=eruby.html
-autocmd BufNewFile,BufRead *.mrb set filetype=ruby
-autocmd BufNewFile,BufRead *.js.erb set filetype=javascript
-autocmd BufNewFile,BufRead *.boot set filetype=clojure
 
 function! WordMode()
   setlocal formatoptions=t1
