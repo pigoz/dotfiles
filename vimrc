@@ -22,23 +22,6 @@ autocmd FileType make set noexpandtab " make needs them tabs
 autocmd FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null
 autocmd FileType json setlocal equalprg=jsonlint\ -\ 2>/dev/null
 
-" Comment out Jekyll / Middelman frontmatter for files that commonly have it
-function CommentFrontMatter()
-  syntax match Comment /\%^---\_.\{-}---$/ contains=@Spell
-endfunction
-
-autocmd BufNewFile,BufRead *.rst,*.md,*.markdown call CommentFrontMatter()
-
-function! WordMode()
-  setlocal formatoptions=t1
-  setlocal textwidth=80
-  map j gj
-  map k gk
-  setlocal smartindent
-  setlocal spell spelllang=en_us
-endfunction
-command! WordMode call WordMode()
-
 " Colorscheme
 syntax on
 set t_Co=256
