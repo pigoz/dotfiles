@@ -26,6 +26,7 @@ autocmd FileType json setlocal equalprg=jsonlint\ -\ 2>/dev/null
 syntax on
 colorscheme space-vim-dark
 hi Comment cterm=italic
+hi SpellCap guisp=#af87d7
 
 set listchars=tab:▸·,eol:¬,trail:·
 set cursorline   " Highlight current line
