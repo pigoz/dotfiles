@@ -24,19 +24,10 @@ autocmd FileType json setlocal equalprg=jsonlint\ -\ 2>/dev/null
 
 " Colorscheme
 syntax on
-set t_Co=256
 set background=dark
 colorscheme herald
 
 set listchars=tab:▸·,eol:¬,trail:·
-
-" The following assume t_Co == 256 for term colors
-" For a color table check http://en.wikipedia.org/wiki/Xterm
-highlight NonText ctermfg=236 guifg=#303030
-highlight SpecialKey ctermfg=236 guifg=#303030
-highlight ColorColumn ctermbg=0
-highlight CursorLine term=none gui=none
-
 set cursorline   " Highlight current line
 set list         " Activate listchars configuration
 set ruler        " Show row / column
