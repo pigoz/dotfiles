@@ -48,15 +48,7 @@ set hlsearch     " Highlight search results
 set splitbelow
 set splitright
 
-" Setting fonts
-if hostname() == "kaze.local"
-  " laptop
-  let s:fontsize = 16
-else
-  " desktop
-  let s:fontsize = 20
-endif
-
+let s:fontsize = 20
 let &guifont = escape("Menlo" . ":h" . s:fontsize, ' ')
 
 " Hide MacVim GUI elements
