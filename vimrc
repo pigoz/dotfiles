@@ -138,8 +138,8 @@ nnoremap <PageUp> <C-u>
 nnoremap <PageDown> <C-d>
 
 " fold like no tomorrow (toggle)
-nnoremap <Leader>ft za
+nnoremap <Leader>ff za
 " fold like no tomorrow (clear all)
-nnoremap <Leader>ff zR
+nnoremap <Leader>fd zR
 nnoremap <Leader>gb :Gblame<cr>
 nnoremap <Leader>gh :Gbrowse<cr>
