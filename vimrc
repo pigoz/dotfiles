@@ -65,7 +65,8 @@ set go-=m
 
 set virtualedit=all      " Allow to move cursor anywhere
 set clipboard=unnamed    " Uses system clipboard
-let mapleader = 'm'
+let mapleader = ' '
+nnoremap <SPACE> <Nop>
 
 " Folding options
 set foldmethod=syntax
@@ -128,7 +129,7 @@ nnoremap Q <Nop>
 imap <Home> <Esc>
 vnoremap <Home> <Esc>
 
-" Move through windows
+" easier window navigation
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
@@ -139,9 +140,7 @@ nnoremap <c-up> <c-w>k
 nnoremap <c-left> <c-w>h
 nnoremap <c-right> <c-w>l
 
-nnoremap <PageUp> <C-u>
-nnoremap <PageDown> <C-d>
-
+" OSX-like window navigation
 map <D-M-Left> <c-w>h
 imap <D-M-Left> <c-w>h
 map <D-M-Right> <c-w>l
@@ -150,3 +149,13 @@ map <D-M-Up> <c-w>k
 imap <D-M-Up> <c-w>k
 map <D-M-Down> <c-w>j
 imap <D-M-Down> <c-w>j
+
+nnoremap <PageUp> <C-u>
+nnoremap <PageDown> <C-d>
+
+" fold like no tomorrow (toggle)
+nnoremap <Leader>ft za
+" fold like no tomorrow (clear all)
+nnoremap <Leader>ff zR
+nnoremap <Leader>gb :Gblame<cr>
+nnoremap <Leader>gh :Gbrowse<cr>

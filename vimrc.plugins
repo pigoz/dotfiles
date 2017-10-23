@@ -6,7 +6,6 @@ Plug 'sheerun/vim-polyglot'
 
 Plug 'Valloric/YouCompleteMe'
 set completeopt-=preview
-let g:ycm_key_detailed_diagnostics = '<leader>c'
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_semantic_triggers = {'clojure': ['(', 're!\[.*\]\s']}
 
