@@ -143,3 +143,7 @@ nnoremap <Leader>ff za
 nnoremap <Leader>fd zR
 nnoremap <Leader>gb :Gblame<cr>
 nnoremap <Leader>gh :Gbrowse<cr>
+nnoremap ; :CtrlP<CR>
+nnoremap <Leader>; :CtrlPBuffer<CR>
+imap jj <Esc>
+imap jk <Esc>
