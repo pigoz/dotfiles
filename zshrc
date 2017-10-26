@@ -143,8 +143,24 @@ yt-playlist() {
   mpv --volume=50 --no-video --term-playing-msg='Title: ${media-title}' https://www.youtube.com/playlist\?list\=$1
 }
 
-miku() {
+yt-music() {
+  mpv --volume=50 --no-video --term-playing-msg='Title: ${media-title}' https://www.youtube.com/watch\?v\=$1
+}
+
+music.miku() {
   yt-playlist PLLoRe_7Ei6nQ1vgFyVWxNVz2gjPFC7LIA
+}
+
+music.persona5() {
+  yt-music 30Ef7i3qq-U
+}
+
+music.persona4() {
+  yt-music vUjVFZN25Eg
+}
+
+music.nier() {
+  yt-music 8D6kHaJd2Iw
 }
 
 make-kanji-avatar() {
