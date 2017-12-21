@@ -3,6 +3,7 @@ call plug#begin('~/.vim/plugged')
 " search, completion, code analysis and general IDE stuff
 Plug 'vim-scripts/vim-niji', {'for': 'clojure'} " colored parens for lisps
 Plug 'sheerun/vim-polyglot'
+Plug 'reasonml-editor/vim-reason'
 
 Plug 'Valloric/YouCompleteMe'
 set completeopt-=preview
