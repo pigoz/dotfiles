@@ -149,5 +149,7 @@ nnoremap <Leader>gh :Gbrowse<cr>
 nnoremap <Leader>p gp
 nnoremap ; :CtrlP<CR>
 nnoremap <Leader>; :CtrlPBuffer<CR>
+nnoremap <Leader>v :vsplit<CR>
+nnoremap <Leader>h :split<CR>
 imap jj <Esc>
 imap jk <Esc>
