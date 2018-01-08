@@ -137,12 +137,15 @@ imap <D-M-Down> <c-w>j
 nnoremap <PageUp> <C-u>
 nnoremap <PageDown> <C-d>
 
+nnoremap gp :silent %!prettier --stdin<cr>
+
 " fold like no tomorrow (toggle)
 nnoremap <Leader>ff za
 " fold like no tomorrow (clear all)
 nnoremap <Leader>fd zR
 nnoremap <Leader>gb :Gblame<cr>
 nnoremap <Leader>gh :Gbrowse<cr>
+nnoremap <Leader>p gp
 nnoremap ; :CtrlP<CR>
 nnoremap <Leader>; :CtrlPBuffer<CR>
 imap jj <Esc>
