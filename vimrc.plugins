@@ -15,14 +15,16 @@ let g:ale_sign_warning='⚠'
 let g:ale_linters = {
 \ 'ruby': ['rubocop'],
 \ 'javascript': ['eslint', 'flow'],
+\ 'javascript.jsx': ['eslint', 'flow'],
 \ 'scss': ['scss_lint'],
 \ }
 
-" don't autofix for now
-" let g:ale_fixers = {}
-" let g:ale_fixers['javascript'] = ['prettier']
-" let g:ale_fix_on_save = 1
-" let g:ale_javascript_prettier_use_local_config = 1
+let g:ale_fixers = {
+\ 'javascript': ['prettier'],
+\ 'javascript.jsx': ['prettier'],
+\ }
+let g:ale_fix_on_save = 1
+let g:ale_javascript_prettier_use_local_config = 1
 
 Plug 'tpope/vim-fugitive' " for :Gblame
 Plug 'vim-airline/vim-airline' " small ui
