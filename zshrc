@@ -4,6 +4,7 @@ compinit
 
 export ZSH=$HOME/.oh-my-zsh
 export ZSH_THEME="jreese"
+export EDITOR=vim
 plugins=(rails git ruby textmate)
 source $ZSH/oh-my-zsh.sh
 unsetopt correct_all

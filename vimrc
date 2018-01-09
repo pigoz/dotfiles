@@ -24,6 +24,7 @@ autocmd FileType json setlocal equalprg=jsonlint\ -\ 2>/dev/null
 
 " Colorscheme
 syntax on
+set termguicolors
 colorscheme space-vim-dark
 hi Comment cterm=italic
 hi SpellCap guisp=#af87d7

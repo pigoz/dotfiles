@@ -25,7 +25,7 @@
 [merge]
   tool = opendiff
 [mergetool "mvim"]
-  cmd=mvim -d -g $LOCAL $MERGED $REMOTE
+  cmd=vim -d -g $LOCAL $MERGED $REMOTE
   keepbackup=false
 [alias]
   st = status
