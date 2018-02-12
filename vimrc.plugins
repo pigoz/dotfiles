@@ -21,6 +21,7 @@ let g:ale_linters = {
 \ }
 
 let g:ale_fixers = {
+\ 'ruby': ['rubocop'],
 \ 'javascript': ['prettier'],
 \ 'javascript.jsx': ['prettier'],
 \ }
