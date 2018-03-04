@@ -95,16 +95,16 @@ f() {
   ag --smart-case --skip-vcs-ignores $1
 }
 
-sprunge() {
-  curl -F 'sprunge=<-' http://sprunge.us
-}
-
-sprunge-cb() {
-  pbpaste | curl -F 'sprunge=<-' http://sprunge.us
-}
-
-upload-image() {
+upload-file() {
   curl -F "file=@$1" https://0x0.st
+}
+
+upload-cb() {
+  pbpaste | curl -F'file=@-' https://0x0.st
+}
+
+upload() {
+  curl -F'file=@-' https://0x0.st
 }
 
 what-the-commit() {
