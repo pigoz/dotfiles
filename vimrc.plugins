@@ -17,7 +17,7 @@ let g:ale_linters = {
 \ 'ruby': ['rubocop'],
 \ 'javascript': ['eslint', 'flow'],
 \ 'javascript.jsx': ['eslint', 'flow'],
-\ 'scss': ['scss_lint'],
+\ 'scss': ['stylelint'],
 \ }
 
 let g:ale_fixers = {
