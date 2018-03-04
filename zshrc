@@ -65,11 +65,11 @@ alias -g be='bundle exec'
 alias -g sudo='nocorrect sudo'
 
 plug-install() {
-  vim +PlugInstall +qall
+  mvim -v +PlugInstall +qall
 }
 
 plug-update() {
-  vim +PlugUpdate +qall
+  mvim -v +PlugUpdate +qall
 }
 
 yt() {

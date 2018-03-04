@@ -5,10 +5,24 @@ Plug 'vim-scripts/vim-niji', {'for': 'clojure'} " colored parens for lisps
 Plug 'sheerun/vim-polyglot'
 Plug 'reasonml-editor/vim-reason'
 
-Plug 'Valloric/YouCompleteMe'
-set completeopt-=preview
-let g:ycm_confirm_extra_conf = 0
-let g:ycm_semantic_triggers = {'clojure': ['(', 're!\[.*\]\s']}
+Plug 'Shougo/deoplete.nvim'
+Plug 'carlitux/deoplete-ternjs', { 'do': 'yarn global add ternjs' }
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
+let g:deoplete#enable_at_startup = 1
+
+Plug 'autozimu/LanguageClient-neovim', {
+\ 'branch': 'next',
+\ 'do': 'bash install.sh',
+\ }
+
+let g:LanguageClient_serverCommands = {
+\ 'javascript': ['flow-language-server', '--stdio'],
+\ 'javascript.jsx': ['flow-language-server', '--stdio'],
+\ }
+
+" automatically start language servers
+let g:LanguageClient_autoStart = 1
 
 Plug 'w0rp/ale'
 let g:ale_sign_error='✗'
@@ -24,7 +38,9 @@ let g:ale_fixers = {
 \ 'ruby': ['rubocop'],
 \ 'javascript': ['prettier'],
 \ 'javascript.jsx': ['prettier'],
+\ 'scss': ['stylelint'],
 \ }
+
 let g:ale_fix_on_save = 1
 let g:ale_javascript_prettier_use_local_config = 1
 
