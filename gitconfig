@@ -21,11 +21,11 @@
   untracked = cyan
 [core]
   excludesfile = ~/.gitignore
-  editor = vim
+  editor = mvim -v
 [merge]
   tool = opendiff
 [mergetool "mvim"]
-  cmd=vim -d -g $LOCAL $MERGED $REMOTE
+  cmd=mvim -v -d -g $LOCAL $MERGED $REMOTE
   keepbackup=false
 [alias]
   st = status
