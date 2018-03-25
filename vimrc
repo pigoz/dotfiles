@@ -20,7 +20,6 @@ autocmd FileType make set noexpandtab " make needs them tabs
 
 " Serious indentation for XML
 autocmd FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null
-autocmd FileType json setlocal equalprg=jsonlint\ -\ 2>/dev/null
 
 " Colorscheme
 syntax on
