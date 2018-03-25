@@ -54,7 +54,7 @@ let mapleader = ' '
 nnoremap <SPACE> <Nop>
 
 " Folding options
-set foldmethod=syntax
+" set foldmethod=syntax
 set nofoldenable         " Don't fold by default
 
 " Allow backgrounding buffers without writing them, and remember marks/undo
@@ -86,6 +86,10 @@ set modelines=2
 set t_ti= t_te=
 " keep more context when scrolling off the end of a buffer
 set scrolloff=3
+
+" Disable hover tooltips (makes vim-ruby faster)
+set noballooneval
+let g:netrw_nobeval = 1
 
 " Ignore these files when using CtrlP
 " * Rails specific
