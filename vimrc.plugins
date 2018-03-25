@@ -4,6 +4,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'vim-scripts/vim-niji', {'for': 'clojure'} " colored parens for lisps
 Plug 'sheerun/vim-polyglot'
 Plug 'reasonml-editor/vim-reason'
+Plug 'jparise/vim-graphql'
 
 Plug 'Shougo/deoplete.nvim'
 Plug 'carlitux/deoplete-ternjs', { 'do': 'yarn global add ternjs' }
