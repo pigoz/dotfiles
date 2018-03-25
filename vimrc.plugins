@@ -10,17 +10,9 @@ Plug 'Shougo/deoplete.nvim'
 Plug 'carlitux/deoplete-ternjs', { 'do': 'yarn global add ternjs' }
 Plug 'fishbullet/deoplete-ruby'
 
-" vim8 -> nvim shim for LanguageClient
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_smart_case = 1
-let g:deoplete#omni#input_patterns = {
-\ 'javascript': '[^.]+\..*',
-\ 'javascript.jsx': '[^.]+\..*',
-\ }
-
-inoremap <expr> <C-Space> deoplete#mappings#manual_complete()
 
 Plug 'autozimu/LanguageClient-neovim', {
 \ 'branch': 'next',
