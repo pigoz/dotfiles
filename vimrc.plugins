@@ -5,7 +5,10 @@ Plug 'sheerun/vim-polyglot'
 Plug 'reasonml-editor/vim-reason'
 Plug 'jparise/vim-graphql'
 
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --js-completer' }
+Plug 'Valloric/YouCompleteMe', {
+\ 'do': './install.py --js-completer --rust-completer'
+\ }
+
 set completeopt-=preview
 let g:ycm_confirm_extra_conf = 0
 
