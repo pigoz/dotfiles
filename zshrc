@@ -168,11 +168,12 @@ music.jpophits() {
   mpv --volume=100 --no-video --term-playing-msg='Title: ${media-title}' http://192.99.62.212:9764/stream
 }
 
-make-kanji-avatar() {
-  file=/tmp/kanji.png
+mkavatar() {
+  file="$(mktemp -t kanji).png"
   font='/System/Library/Fonts/ヒラギノ角ゴシック W6.ttc'
   convert -size 200x200 -pointsize 190 -gravity center -font $font caption:"$1" $file
-  upload-image $file
+  upload-file $file
+  echo "image: $file"
 }
 
 bindkey '^[^[[D' backward-word
