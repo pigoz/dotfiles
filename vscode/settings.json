@@ -1,9 +1,11 @@
 {
-  "window.zoomLevel": 1,
+  "window.zoomLevel": 2,
   "editor.fontFamily": "Inconsolata, Monaco",
   "editor.fontSize": 18,
   "editor.tabSize": 2,
-  "editor.rulers": [80],
+  "editor.rulers": [
+    80
+  ],
   "editor.renderWhitespace": "boundary",
   "editor.minimap.enabled": false,
   "workbench.colorTheme": "Spacemacs - dark",
@@ -11,4 +13,24 @@
   "workbench.editor.enablePreview": false,
   "workbench.editor.enablePreviewFromQuickOpen": false,
   "workbench.editor.showTabs": false,
+  "[javascript]": {
+    "editor.formatOnSave": true
+  },
+  "[json]": {
+    "editor.formatOnSave": true
+  },
+  "vim.otherModesKeyBindingsNonRecursive": [
+    {
+      "before": [
+        ";"
+      ],
+      "after": [],
+      "commands": [
+        {
+          "command": "workbench.action.quickOpen",
+          "args": []
+        }
+      ]
+    },
+  ]
 }

@@ -19,5 +19,9 @@
   {
     "key": "cmd+w",
     "command": "workbench.action.closeEditorsInGroup"
+  },
+  {
+    "key": "cmd+d",
+    "command": "workbench.action.toggleSidebarVisibility"
   }
 ]
