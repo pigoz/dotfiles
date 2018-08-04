@@ -28,7 +28,6 @@ let g:ale_fixers = {
 \ 'javascript.jsx': ['prettier'],
 \ 'typescript': ['prettier'],
 \ 'typescript.tsx': ['prettier'],
-\ 'json': ['prettier'],
 \ 'scss': ['stylelint'],
 \ }
 let g:ale_fix_on_save = 1
