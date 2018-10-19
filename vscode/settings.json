@@ -1,5 +1,5 @@
 {
-  "window.zoomLevel": 2,
+  "window.zoomLevel": 1,
   "editor.fontFamily": "Inconsolata, Monaco",
   "editor.fontSize": 18,
   "editor.tabSize": 2,
@@ -32,5 +32,7 @@
         }
       ]
     },
-  ]
+  ],
+  "search.location": "panel",
+  "window.nativeTabs": true
 }
