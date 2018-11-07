@@ -1,5 +1,6 @@
 " Basic stuff
 set nocompatible         " no vi compatibility
+set pythonthreedll=/usr/local/bin/python
 
 if filereadable(glob("~/.vimrc.plugins")) 
   source ~/.vimrc.plugins
