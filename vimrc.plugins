@@ -2,15 +2,45 @@ call plug#begin('~/.vim/plugged')
 
 " search, completion, code analysis and general IDE stuff
 Plug 'sheerun/vim-polyglot'
-Plug 'reasonml-editor/vim-reason'
 Plug 'jparise/vim-graphql'
 
 Plug 'Valloric/YouCompleteMe', {
 \ 'do': './install.py'
 \ }
 
-set completeopt-=preview
 let g:ycm_confirm_extra_conf = 0
+
+Plug 'Quramy/tsuquyomi'
+
+Plug 'autozimu/LanguageClient-neovim', {
+\ 'branch': 'next',
+\ 'do': 'bash install.sh',
+\ }
+
+let g:LanguageClient_serverCommands = {
+\ 'javascript': ['flow', 'lsp', '--from', './node_modules/.bin'],
+\ 'javascript.jsx': ['flow', 'lsp', '--from', './node_modules/.bin'],
+\ 'ruby': ['solargraph stdio'],
+\}
+
+let g:LanguageClient_loggingFile = "/tmp/LanguageClient.log"
+let g:LanguageClient_autoStart = 1
+
+nnoremap <silent> <Leader>k :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> <Leader>gd :call LanguageClient#textDocument_definition()<CR>
+
+let g:LanguageClient_rootMarkers = ['.flowconfig']
+
+" Plug 'Shougo/deoplete.nvim'
+" Plug 'roxma/nvim-yarp'
+" Plug 'roxma/vim-hug-neovim-rpc'
+" let g:deoplete#enable_at_startup = 1
+
+" sets tab as an alternative for selection
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+set completeopt-=preview
 
 Plug 'w0rp/ale'
 let g:ale_sign_error='✗'

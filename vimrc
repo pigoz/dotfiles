@@ -21,6 +21,8 @@ autocmd FileType make set noexpandtab " make needs them tabs
 
 " Serious indentation for XML
 autocmd FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null
+autocmd FileType javascript set omnifunc=LanguageClient#complete
+
 
 " Colorscheme
 syntax on
