@@ -6,7 +6,7 @@ Plug 'reasonml-editor/vim-reason'
 Plug 'jparise/vim-graphql'
 
 Plug 'Valloric/YouCompleteMe', {
-\ 'do': './install.py --rust-completer'
+\ 'do': './install.py'
 \ }
 
 set completeopt-=preview
