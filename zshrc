@@ -50,6 +50,14 @@ subdl() {
   subliminal --debug download --language=en --single -f $*
 }
 
+mc() {
+  # brew install switchaudio-osx
+  SwitchAudioSource -s HDMI
+  ~/dev/fps.rb $*
+  mpv -fs -screen=1 $*
+  SwitchAudioSource -s "Built-in Output"
+}
+
 yarr() {
   src="/home/debian-transmission/Downloads"
   dst="/Volumes/Mechanical Disk/Movies (External)/Downloads"
