@@ -32,6 +32,9 @@ export PATH=/usr/local/bin:$PATH
 export GOPATH=$HOME/dev/gocode
 export PATH=$GOPATH/bin:$PATH
 
+# Rust
+export PATH=$HOME/.cargo/env:$PATH
+
 export PATH=/Applications/Wine\ Staging.app/Contents/Resources/wine/bin:$PATH
 
 export ANDROID_HOME=~/Library/Android/sdk
