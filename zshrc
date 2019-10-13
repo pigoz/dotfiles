@@ -53,9 +53,14 @@ subdl() {
 mc() {
   # brew install switchaudio-osx
   SwitchAudioSource -s HDMI
-  ~/dev/fps.rb $*
+  ~/dev/fps/fps.rb ${@: -1}
   mpv -fs -screen=1 $*
   SwitchAudioSource -s "Built-in Output"
+}
+
+mch() {
+  ~/dev/fps/fps.rb ${@: -1}
+  mpv --volume=43 -fs -screen=1 $*
 }
 
 yarr() {
