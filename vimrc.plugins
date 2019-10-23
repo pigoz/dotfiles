@@ -4,10 +4,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'sheerun/vim-polyglot'
 Plug 'jparise/vim-graphql'
 
-" sets tab as an alternative for selection
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
 set completeopt-=preview
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -19,6 +15,11 @@ let g:coc_global_extensions = [
 \]
 
 let g:coc_node_path = "/Users/pigoz/.nvm/versions/node/v10.6.0/bin/node"
+
+inoremap <silent><expr> <c-space> coc#refresh()
+
+nmap <silent> <D-k> <Plug>(coc-fix-current)
+nmap <silent> <D-l> :call CocAction('doHover')<CR>
 
 " Use `lp` and `ln` for navigate diagnostics
 nmap <silent> <leader>lp <Plug>(coc-diagnostic-prev)
@@ -32,9 +33,6 @@ nmap <silent> <leader>lf <Plug>(coc-references)
 
 " Remap for rename current word
 nmap <leader>lr <Plug>(coc-rename)
-
-" Use K for show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
   if &filetype == 'vim'
