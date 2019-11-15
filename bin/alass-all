@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+
+def usage
+  puts %(USAGE:\n\t./#{File.basename(__FILE__)} DIR)
+end
+
+if ARGV.size != 1
+  usage
+  exit(-1)
+end
+
+dir = ARGV[0]
+
+unless File.exist?(dir)
+  puts "Directory '#{dir}' doesn't exist"
+  exit(-1)
+end
+
+files = Dir.glob(File.join(dir, '*.{mkv,mp4}'))
+
+files.each do |file|
+  name = File.basename(file, File.extname(file))
+  sub = File.join(dir, "#{name}.srt")
+  puts `alass-cli "#{file}" "#{sub}" "#{sub}"`
+end
