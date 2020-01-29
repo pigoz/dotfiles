@@ -79,6 +79,7 @@ imap <D-b> :CtrlPBuffer<CR>
 map <D-t> :CtrlP<CR>
 imap <D-t> :CtrlP<CR>
 let g:ctrlp_max_height = 30
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|page-data\|vendor'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTree
