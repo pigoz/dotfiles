@@ -53,7 +53,6 @@ fi
 
 # Load Node Version Manager
 export NVM_DIR="$HOME/.nvm"
-source "/usr/local/opt/nvm/nvm.sh"
 
 # https://github.com/nvm-sh/nvm#zshttps://github.com/nvm-sh/nvm#zshh
 autoload -U add-zsh-hook

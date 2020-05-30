@@ -14,7 +14,7 @@ let g:coc_global_extensions = [
 \ 'coc-css', 'coc-json', 'coc-pyls', 'coc-yaml'
 \]
 
-let g:coc_node_path = "/Users/pigoz/.nvm/versions/node/v12.11.1/bin/node"
+let g:coc_node_path = "/Users/pigoz/.nvm/versions/node/v14.3.0/bin/node"
 
 inoremap <silent><expr> <c-space> coc#refresh()
 
