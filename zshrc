@@ -161,6 +161,14 @@ yt-music() {
   mpv --volume=50 --no-video --term-playing-msg='Title: ${media-title}' https://www.youtube.com/watch\?v\=$1
 }
 
+subs.ass2srt() {
+  find . -name \*.ass | sed 's/\.ass$//' | xargs -I{} ffmpeg -i {}.ass -c:s text {}.srt
+}
+
+subs.retimemkv() {
+  find . -name \*.srt | sed 's/\.srt$//' | xargs -I{} alass-cli {}.mkv {}.srt {}.srt
+}
+
 music.miku() {
   yt-playlist PLLoRe_7Ei6nQ1vgFyVWxNVz2gjPFC7LIA
 }
