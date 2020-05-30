@@ -57,7 +57,7 @@ let g:ale_linters = {
 \ }
 
 let g:ale_fixers = {
-\ 'ruby': ['prettier'],
+\ 'ruby': ['rubocop'],
 \ 'javascript': ['prettier'],
 \ 'javascript.jsx': ['prettier'],
 \ 'typescript': ['prettier'],
