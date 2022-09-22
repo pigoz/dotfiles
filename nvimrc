@@ -1,12 +1,12 @@
 " Basic stuff
 set nocompatible         " no vi compatibility
 
-if filereadable(glob("~/.nvimrc.plugins")) 
+if filereadable(glob("~/.nvimrc.plugins"))
   source ~/.nvimrc.plugins
 endif
 
-set number               " line numbers
-set fileformat=unix      " LF line endings
+set number           " line numbers
+set fileformat=unix  " LF line endings
 
 " Turn on auto indentation
 filetype indent on
@@ -17,47 +17,16 @@ filetype plugin on
 autocmd FileType * set ts=2 sw=2 sts=2 expandtab
 autocmd FileType c,m,h,cpp,hpp,glsl,objc,python,php,swift,rust set ts=4 sw=4 sts=4 expandtab
 autocmd FileType make set noexpandtab " make needs them tabs
-
-" Serious indentation for XML
-autocmd FileType xml setlocal equalprg=xmllint\ --format\ --recover\ -\ 2>/dev/null
-autocmd FileType json setlocal equalprg=jsonlint\ -\ 2>/dev/null
-
-" Comment out Jekyll / Middelman frontmatter for files that commonly have it
-function CommentFrontMatter()
-  syntax match Comment /\%^---\_.\{-}---$/ contains=@Spell
-endfunction
-
-autocmd BufNewFile,BufRead *.rst,*.md,*.markdown call CommentFrontMatter()
-autocmd BufNewFile,BufRead *.deface set filetype=eruby.html
-autocmd BufNewFile,BufRead *.mrb set filetype=ruby
-autocmd BufNewFile,BufRead *.js.erb set filetype=javascript
-autocmd BufNewFile,BufRead *.boot set filetype=clojure
-
-function! WordMode()
-  setlocal formatoptions=t1
-  setlocal textwidth=80
-  map j gj
-  map k gk
-  setlocal smartindent
-  setlocal spell spelllang=en_us
-endfunction
-command! WordMode call WordMode()
+autocmd FileType css set ft=scss
 
 " Colorscheme
-syntax on
-set t_Co=256
-set background=dark
-colorscheme herald
+" syntax on
+" set termguicolors
+colorscheme onedark
+hi Comment cterm=italic
+hi SpellCap guisp=#af87d7
 
 set listchars=tab:▸·,eol:¬,trail:·
-
-" The following assume t_Co == 256 for term colors
-" For a color table check http://en.wikipedia.org/wiki/Xterm
-highlight NonText ctermfg=236 guifg=#303030
-highlight SpecialKey ctermfg=236 guifg=#303030
-highlight ColorColumn ctermbg=0
-highlight CursorLine term=none gui=none
-
 set cursorline   " Highlight current line
 set list         " Activate listchars configuration
 set ruler        " Show row / column
@@ -69,13 +38,21 @@ set hlsearch     " Highlight search results
 set splitbelow
 set splitright
 
-set virtualedit=all " Allow to move cursor anywhere
-set clipboard=unnamed " Uses system clipboard
-let mapleader = 'm'
+let s:fontsize = 28
+let &guifont = escape("Menlo" . ":h" . s:fontsize, ' ')
+
+" Hide MacVim GUI elements
+set go-=T
+set go-=m
+
+set virtualedit=all      " Allow to move cursor anywhere
+set clipboard=unnamed    " Uses system clipboard
+let mapleader = ' '
+nnoremap <SPACE> <Nop>
 
 " Folding options
-set foldmethod=syntax
-set nofoldenable " Don't fold by default
+" set foldmethod=syntax
+set nofoldenable         " Don't fold by default
 
 " Allow backgrounding buffers without writing them, and remember marks/undo
 " for backgrounded buffers
@@ -107,6 +84,9 @@ set t_ti= t_te=
 " keep more context when scrolling off the end of a buffer
 set scrolloff=3
 
+" Disable hover tooltips (makes vim-ruby faster)
+let g:netrw_nobeval = 1
+
 " Ignore these files when using CtrlP
 " * Rails specific
 set wildignore+=*/tmp/*,*/.sass_cache/*,*/vendor/assets/*,*/public/assets/*
@@ -134,7 +114,7 @@ nnoremap Q <Nop>
 imap <Home> <Esc>
 vnoremap <Home> <Esc>
 
-" Move through windows
+" easier window navigation
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
@@ -145,11 +125,28 @@ nnoremap <c-up> <c-w>k
 nnoremap <c-left> <c-w>h
 nnoremap <c-right> <c-w>l
 
+" OSX-like window navigation
+map <D-M-Left> <c-w>h
+imap <D-M-Left> <c-w>h
+map <D-M-Right> <c-w>l
+imap <D-M-Right> <c-w>l
+map <D-M-Up> <c-w>k
+imap <D-M-Up> <c-w>k
+map <D-M-Down> <c-w>j
+imap <D-M-Down> <c-w>j
+
 nnoremap <PageUp> <C-u>
 nnoremap <PageDown> <C-d>
 
-" Next/prev buffer bindings
-map <D-M-Left> :bprev<CR>
-imap <D-M-Left> <Esc>:bprev<CR>
-map <D-M-Right> :bnext<CR>
-imap <D-M-Right> <Esc>:bnext<CR>
+" fold like no tomorrow (toggle)
+nnoremap <Leader>ff za
+
+" fold like no tomorrow (clear all)
+nnoremap <Leader>fd zR
+nnoremap <Leader>gb :Gblame<cr>
+nnoremap <Leader>gh :Gbrowse<cr>
+nnoremap <Leader>p gp
+nnoremap ; :CtrlP<CR>
+nnoremap <Leader>; :CtrlPBuffer<CR>
+nnoremap <Leader>v :vsplit<CR>
+nnoremap <Leader>h :split<CR>

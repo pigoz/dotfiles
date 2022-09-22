@@ -1,53 +1,96 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
-"------------------------------------------------------------------------------
-" NerdTree
-"------------------------------------------------------------------------------
-"
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+" search, completion, code analysis and general IDE stuff
+Plug 'sheerun/vim-polyglot'
 
-" Toggle drawer bindings
-map <D-d> :NERDTreeToggle<CR>
-imap <D-d> <Esc>:NERDTreeToggle<CR>
+set completeopt-=preview
 
-let NERDTreeShowHidden=1 " Show dotfiles in NERDTree
-let NERDTreeHijackNetrw = 1 " Don't hijack Netrw
-let NERDTreeIgnore = ['\.pyc$', '\.d$', '\.o$', '^.waf-']
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-"------------------------------------------------------------------------------
-" CtrlP
-"------------------------------------------------------------------------------
-"
+let g:coc_global_extensions = [
+\ 'coc-emoji', 'coc-eslint', 'coc-prettier',  'coc-tsserver', 'coc-css',
+\ 'coc-json', 'coc-pyls', 'coc-yaml'
+\]
+
+let g:coc_node_path = "/Users/pigoz/.nvm/versions/node/v18.8.0/bin/node"
+
+inoremap <silent><expr> <c-space> coc#refresh()
+
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+nmap <silent> <D-k> <Plug>(coc-fix-current)
+nmap <silent> <D-l> :call CocAction('doHover')<CR>
+
+" Use `lp` and `ln` for navigate diagnostics
+nmap <silent> <leader>lp <Plug>(coc-diagnostic-prev)
+nmap <silent> <leader>ln <Plug>(coc-diagnostic-next)
+
+" Remap keys for gotos
+nmap <silent> <leader>ld <Plug>(coc-definition)
+nmap <silent> <leader>lt <Plug>(coc-type-definition)
+nmap <silent> <leader>li <Plug>(coc-implementation)
+nmap <silent> <leader>lf <Plug>(coc-references)
+
+" Remap for rename current word
+nmap <leader>lr <Plug>(coc-rename)
+
+" Plug 'w0rp/ale'
+" 
+" let g:ale_sign_error='✗'
+" let g:ale_sign_warning='⚠'
+" let g:ale_linters = {
+" \ 'ruby': ['rubocop'],
+" \ 'javascript': ['eslint', 'flow'],
+" \ 'javascript.jsx': ['eslint', 'flow'],
+" \ 'scss': ['prettier'],
+" \ 'css': ['prettier'],
+" \ }
+" 
+" let g:ale_fixers = {
+" \ 'ruby': ['rubocop'],
+" \ 'javascript': ['prettier'],
+" \ 'javascript.jsx': ['prettier'],
+" \ 'javascriptreact': ['prettier'],
+" \ 'typescript': ['prettier'],
+" \ 'typescript.tsx': ['prettier'],
+" \ 'typescriptreact': ['prettier'],
+" \ 'scss': ['prettier'],
+" \ 'css': ['prettier'],
+" \ }
+" 
+" let g:ale_fix_on_save = 1
+" let g:ale_javascript_prettier_use_local_config = 1
+
+Plug 'tpope/vim-fugitive' " for :Gblame
+Plug 'vim-airline/vim-airline' " small ui
+set laststatus=2
+
 Plug 'ctrlpvim/ctrlp.vim'
 map <D-b> :CtrlPBuffer<CR>
 imap <D-b> :CtrlPBuffer<CR>
 map <D-t> :CtrlP<CR>
 imap <D-t> :CtrlP<CR>
 let g:ctrlp_max_height = 30
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|page-data\|vendor|public|picons'
 
-"------------------------------------------------------------------------------
-" UI & Misc
-"------------------------------------------------------------------------------
-"
-Plug 'tpope/vim-fugitive' " for :Gblame
-Plug 'vim-airline/vim-airline' " small ui
-set laststatus=2
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" NERDTree
+Plug 'scrooloose/nerdtree'
 
-"------------------------------------------------------------------------------
-" Colors
-"------------------------------------------------------------------------------
-"
-Plug 'pigoz/herald'
+" Toggle drawer bindings
+map <D-d> :NERDTreeToggle<CR>
+imap <D-d> <Esc>:NERDTreeToggle<CR>
 
-"------------------------------------------------------------------------------
-" Linters, etc
-"------------------------------------------------------------------------------
-"
-Plug 'neomake/neomake'
+let NERDTreeShowHidden=1    " Show dotfiles in NERDTree
+let NERDTreeHijackNetrw = 1 " Don't hijack Netrw
+let NERDTreeIgnore = ['\.pyc$', '\.d$', '\.o$', '^.waf-']
 
-"------------------------------------------------------------------------------
-" Linters, etc
-"------------------------------------------------------------------------------
-"
+autocmd vimenter * if !argc() | NERDTree | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") &&
+  \ b:NERDTreeType == "primary") | q | endif
+
+" colorschemes
+Plug 'navarasu/onedark.nvim'
 
 call plug#end()
