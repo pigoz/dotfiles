@@ -1,6 +1,13 @@
 " Basic stuff
 set nocompatible         " no vi compatibility
 
+" disable netrw
+let g:loaded_netrw       = 1
+let g:loaded_netrwPlugin = 1
+
+" Disable hover tooltips (makes vim-ruby faster)
+let g:netrw_nobeval = 1
+
 if filereadable(glob("~/.nvimrc.plugins"))
   source ~/.nvimrc.plugins
 endif
@@ -37,9 +44,6 @@ set hlsearch     " Highlight search results
 " Natural splits
 set splitbelow
 set splitright
-
-let s:fontsize = 28
-let &guifont = escape("Menlo" . ":h" . s:fontsize, ' ')
 
 " Hide MacVim GUI elements
 set go-=T
@@ -83,9 +87,6 @@ set modelines=2
 set t_ti= t_te=
 " keep more context when scrolling off the end of a buffer
 set scrolloff=3
-
-" Disable hover tooltips (makes vim-ruby faster)
-let g:netrw_nobeval = 1
 
 " Ignore these files when using CtrlP
 " * Rails specific
