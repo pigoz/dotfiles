@@ -18,6 +18,10 @@ alias la='ls -GAlw'        # show hidden files
 
 pg_dir='/usr/local/var/postgres'
 
+mvim() {
+  vimr $*
+}
+
 pg.start() {
   pg_ctl -D $pg_dir -l $pg_dir/server.log start
 }
@@ -59,8 +63,8 @@ mc() {
 }
 
 mch() {
-  ~/dev/fps/fps.rb ${@: -1}
-  mpv --volume=43 -fs -screen=1 $*
+  # ~/dev/fps/fps.rb ${@: -1}
+  mpv-cli --volume=70 --fullscreen --display=1 $*
 }
 
 yarr() {
@@ -108,16 +112,20 @@ f() {
   ag --smart-case --skip-vcs-ignores $1
 }
 
+brewcurl() {
+  PATH="/usr/local/opt/curl/bin:$PATH" curl $*
+}
+
 upload-file() {
-  curl -F "file=@$1" https://0x0.st
+  brewcurl -F "file=@$1" https://0x0.st
 }
 
 upload-cb() {
-  pbpaste | curl -F'file=@-' https://0x0.st
+  pbpaste | brewcurl -F'file=@-' https://0x0.st
 }
 
 upload() {
-  curl -F'file=@-' https://0x0.st
+  brewcurl -F'file=@-' https://0x0.st
 }
 
 what-the-commit() {
@@ -220,3 +228,9 @@ source ~/.zshpath
 
 # OPAM configuration
 source ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
+PATH="/Users/pigoz/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/Users/pigoz/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/Users/pigoz/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/Users/pigoz/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/Users/pigoz/perl5"; export PERL_MM_OPT;

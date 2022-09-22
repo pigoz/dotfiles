@@ -1,0 +1,21 @@
+#!/usr/bin/env ruby
+
+def usage
+  puts %(USAGE:\n\t./#{File.basename(__FILE__)} "glob" "search" "replace")
+end
+
+if ARGV.size != 3
+  usage
+  puts ARGV.inspect
+  exit(-1)
+end
+
+glob = ARGV[0]
+search = ARGV[1]
+replace = ARGV[2]
+
+Dir[glob].each do |path|
+  buffer = IO.read(path)
+  result = buffer.gsub(search, replace)
+  IO.write(path, result)
+end
