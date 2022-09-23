@@ -1,0 +1,6 @@
+*
+!coc
+!coc/*
+!nvim
+!nvim/*
+!.gitignore
