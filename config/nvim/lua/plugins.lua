@@ -21,6 +21,7 @@ vim.g.ctrlp_max_height = 30
 
 Plug('kyazdani42/nvim-web-devicons')
 Plug('kyazdani42/nvim-tree.lua')
+Plug('nvim-treesitter/nvim-treesitter', {['do'] = ':TSUpdate'})
 
 Plug('navarasu/onedark.nvim') -- colorscheme
 
