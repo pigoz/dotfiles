@@ -18,6 +18,7 @@ Plug('nvim-lualine/lualine.nvim')
 Plug('ctrlpvim/ctrlp.vim')
 
 vim.g.ctrlp_max_height = 30
+vim.g.ctrlp_user_command = {'.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard'}
 
 Plug('kyazdani42/nvim-web-devicons')
 Plug('kyazdani42/nvim-tree.lua')
