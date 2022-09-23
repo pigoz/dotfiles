@@ -62,9 +62,8 @@ vim.o.hidden = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
 vim.o.colorcolumn = '80'
-vim.o.winwidth = 83
 
-vim.o.winwidth = 83 -- 79(+4 for line numbers)
+-- vim.o.winwidth = 83 -- 79(+4 for line numbers) fucks vim tree up
 vim.o.cmdheight = 2 -- Command buffer height = 2
 
 vim.o.title = true -- Change the terminal's title
