@@ -1,4 +1,6 @@
 vim.cmd([[
+nnoremap <CR> :nohlsearch<cr>
+
 vnoremap < <gv
 vnoremap > >gv
 
