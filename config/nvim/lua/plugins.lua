@@ -8,7 +8,7 @@ Plug('neoclide/coc.nvim', { branch = 'release'})
 
 vim.g.coc_global_extensions = {
   'coc-emoji', 'coc-eslint', 'coc-prettier',  'coc-tsserver', 'coc-css',
-  'coc-json', 'coc-pyls', 'coc-yaml'
+  'coc-json', 'coc-pyls', 'coc-yaml', 'coc-sumneko-lua'
 }
 
 vim.g.coc_node_path = "/Users/pigoz/.nvm/versions/node/v18.8.0/bin/node"
@@ -18,7 +18,10 @@ Plug('nvim-lualine/lualine.nvim')
 Plug('ctrlpvim/ctrlp.vim')
 
 vim.g.ctrlp_max_height = 30
-vim.g.ctrlp_user_command = {'.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard'}
+vim.g.ctrlp_user_command = {
+  '.git/',
+  'git --git-dir=%s/.git ls-files -oc --exclude-standard'
+}
 
 Plug('kyazdani42/nvim-web-devicons')
 Plug('kyazdani42/nvim-tree.lua')

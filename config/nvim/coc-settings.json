@@ -7,5 +7,6 @@
   "diagnostic.hintSign": "",
   "diagnostic.infoSign": "",
   "diagnostic.virtualText": true,
-  "diagnostic.virtualTextCurrentLineOnly": false
+  "diagnostic.virtualTextCurrentLineOnly": false,
+  "sumneko-lua.enableNvimLuaDev": true
 }

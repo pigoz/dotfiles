@@ -1,20 +1,21 @@
 local wk = require("which-key")
+local u = require("utils")
 
 wk.register({
-  ['='] = { function() PickWindow() end , "pick window" },
+  ['='] = { u.pick_window, "pick window" },
   [";"] = { ":CtrlP<cr>", "CtrlP" },
 
   ["<leader>a"] = { "<Plug>(coc-codeaction)", "lsp line action" },
   ["<leader>b"] = { ":CtrlPBuffer<cr>", "ctrlp buffer" },
-  ["<leader>f"] = { ":CtrlP<cr>", "ctrlp" },
+  ["<leader>d"] = { ":CtrlP<cr>", "ctrlp" },
 
   ["<leader>s"] = { ":NvimTreeToggle<cr>", "nvim tree toggle" },
-  ["<leader>j"] = { function() PickWindow() end , "pick window" },
+  ["<leader>j"] = { u.pick_window, "pick window" },
 
   ["<leader>c"] = {
     name = "+config",
     ['e'] = { ':e $MYVIMRC<cr>', 'edit' },
-    ['r'] = { function() ReloadConfig() end, 'reload' },
+    ['r'] = { u.reload_config, 'reload' },
   },
   -- ["<leader>f"] = {
   --   name = '+fold',
@@ -60,17 +61,17 @@ wk.register({
   },
 })
 
-vim.cmd([[
+u.cmd([[
 inoremap <silent><expr> <D-f> coc#refresh()
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 ]])
 
-key("n", "Q", "<Nop>") -- disable ex mode
+u.key("n", "Q", "<Nop>") -- disable ex mode
 
-key("n", "<PageUp>", "<C-u>")
-key("n", "<PageDown>", "<C-d>")
+u.key("n", "<PageUp>", "<C-u>")
+u.key("n", "<PageDown>", "<C-d>")
 
-key("n", "<cr>", ":nohlsearch<cr>") -- remove highlights
+u.key("n", "<cr>", ":nohlsearch<cr>") -- remove highlights
 
 -- easier window navigation
 -- key("n", "<c-h>", "<c-w>h")
@@ -79,33 +80,20 @@ key("n", "<cr>", ":nohlsearch<cr>") -- remove highlights
 -- key("n", "<c-l>", "<c-w>l")
 
 -- better visual-mode indentation
-key("v", "<", "<gv")
-key("v", ">", ">gv")
+u.key("v", "<", "<gv")
+u.key("v", ">", ">gv")
 
-key("n", "<D-d>", ":NvimTreeToggle<cr>")
-key("n", "<D-f>", ":CtrlP<cr>")
-key("n", "<D-t>", deprecated('LEADER-f or CMD-f'))
-key("n", "<D-b>", deprecated('LEADER-b'))
+u.key("n", "<D-d>", ":NvimTreeToggle<cr>")
+u.key("n", "<D-f>", ":CtrlP<cr>")
+u.key("n", "<D-t>", u.deprecated('LEADER-f or CMD-f'))
+u.key("n", "<D-b>", u.deprecated('LEADER-b'))
 
-key("i", "<D-d>", ":NvimTreeToggle<cr>")
-key("i", "<D-f>", ":CtrlP<cr>")
-key("i", "<D-t>", deprecated('LEADER-f or CMD-f'))
-key("i", "<D-b>", deprecated('LEADER-b'))
+u.key("i", "<D-d>", ":NvimTreeToggle<cr>")
+u.key("i", "<D-f>", ":CtrlP<cr>")
+u.key("i", "<D-t>", u.deprecated('LEADER-f or CMD-f'))
+u.key("i", "<D-b>", u.deprecated('LEADER-b'))
 
-key("n", "<c-w>h", deprecated("LEADER-j or ="))
-key("n", "<c-w>j", deprecated("LEADER-j or ="))
-key("n", "<c-w>k", deprecated("LEADER-j or ="))
-key("n", "<c-w>l", deprecated("LEADER-j or ="))
-
-function ReloadConfig()
-  for name,_ in pairs(package.loaded) do
-    package.loaded[name] = nil
-  end
-
-  dofile(vim.env.MYVIMRC)
-  vim.notify("nvim config reloaded!", vim.log.levels.INFO)
-end
-
-function PickWindow()
-  require('nvim-window').pick()
-end
+u.key("n", "<c-w>h", u.deprecated("LEADER-j or ="))
+u.key("n", "<c-w>j", u.deprecated("LEADER-j or ="))
+u.key("n", "<c-w>k", u.deprecated("LEADER-j or ="))
+u.key("n", "<c-w>l", u.deprecated("LEADER-j or ="))
