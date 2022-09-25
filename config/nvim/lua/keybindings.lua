@@ -1,22 +1,27 @@
 local wk = require("which-key")
 
 wk.register({
-  ["<leader>d"] = { ":NvimTreeToggle<cr>", "toggle tree" },
-  ["<leader>."] = {
+  ['='] = { function() PickWindow() end , "pick window" },
+  [";"] = { ":CtrlP<cr>", "CtrlP" },
+
+  ["<leader>a"] = { "<Plug>(coc-codeaction)", "lsp line action" },
+  ["<leader>b"] = { ":CtrlPBuffer<cr>", "ctrlp buffer" },
+  ["<leader>d"] = { ":CtrlP<cr>", "ctrlp" },
+
+  ["<leader>s"] = { ":NvimTreeToggle<cr>", "nvim tree toggle" },
+  ["<leader>j"] = { function() PickWindow() end , "pick window" },
+
+  ["<leader>c"] = {
     name = "+config",
     ['e'] = { ':e $MYVIMRC<cr>', 'edit' },
     ['r'] = { function() ReloadConfig() end, 'reload' },
   },
-  ["<leader>w"] = {
-    name = '+nav',
-    h = { '<c-w>h', 'Left Window' },
-    j = { '<c-w>j', 'Bottom Window' },
-    k = { '<c-w>k', 'Top Window' },
-    l = { '<c-w>l', 'Right Window' },
+  ["<leader>f"] = {
+    name = '+fold',
     f = { 'za', 'fold toggle' },
     d = { 'zR', 'fold clear all' },
   },
-  ["<leader>j"] = {
+  ["<leader>l"] = {
     name = '+lsp',
     ['.'] = { ':CocConfig'                          , 'config'},
     [';'] = { '<Plug>(coc-refactor)'                , 'refactor'},
@@ -61,13 +66,6 @@ inoremap <silent><expr> <c-space> coc#refresh()
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
-map <D-b> :CtrlPBuffer<CR>
-imap <D-b> :CtrlPBuffer<CR>
-map <D-t> :CtrlP<CR>
-imap <D-t> :CtrlP<CR>
-map <D-d> :NvimTreeToggle<CR>
-imap <D-d> <Esc>:NvimTreeToggle<CR>
-
 nnoremap <CR> :nohlsearch<cr>
 
 vnoremap < <gv
@@ -84,25 +82,8 @@ nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
-nnoremap <c-down> <c-w>j
-nnoremap <c-up> <c-w>k
-nnoremap <c-left> <c-w>h
-nnoremap <c-right> <c-w>l
-
-" OSX-like window navigation
-map <D-M-Left> <c-w>h
-imap <D-M-Left> <c-w>h
-map <D-M-Right> <c-w>l
-imap <D-M-Right> <c-w>l
-map <D-M-Up> <c-w>k
-imap <D-M-Up> <c-w>k
-map <D-M-Down> <c-w>j
-imap <D-M-Down> <c-w>j
-
 nnoremap <PageUp> <C-u>
 nnoremap <PageDown> <C-d>
-
-nnoremap ; :CtrlP<CR>
 ]])
 
 function ReloadConfig()
@@ -112,4 +93,8 @@ function ReloadConfig()
 
   dofile(vim.env.MYVIMRC)
   vim.notify("nvim config reloaded!", vim.log.levels.INFO)
+end
+
+function PickWindow()
+  require('nvim-window').pick()
 end
