@@ -12,7 +12,7 @@ function _G.mergetbl(a, b)
 end
 
 function _G.deprecated(key)
-  return ':echo "deprecated, please use \\"'.. key .. '\\" instead"<cr>'
+  return ':echo "deprecated, please use «'.. key .. '» instead"<cr>'
 end
 
 local default_opts = { noremap = true, silent = true }

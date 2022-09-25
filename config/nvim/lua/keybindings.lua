@@ -73,10 +73,10 @@ key("n", "<PageDown>", "<C-d>")
 key("n", "<cr>", ":nohlsearch<cr>") -- remove highlights
 
 -- easier window navigation
-key("n", "<c-h>", "<c-w>h")
-key("n", "<c-j>", "<c-w>j")
-key("n", "<c-k>", "<c-w>k")
-key("n", "<c-l>", "<c-w>l")
+-- key("n", "<c-h>", "<c-w>h")
+-- key("n", "<c-j>", "<c-w>j")
+-- key("n", "<c-k>", "<c-w>k")
+-- key("n", "<c-l>", "<c-w>l")
 
 -- better visual-mode indentation
 key("v", "<", "<gv")
@@ -85,12 +85,17 @@ key("v", ">", ">gv")
 key("n", "<D-d>", ":NvimTreeToggle<cr>")
 key("n", "<D-f>", ":CtrlP<cr>")
 key("n", "<D-t>", deprecated('LEADER-f or CMD-f'))
-key("n", "<D-b>", deprecated('(leader)b'))
+key("n", "<D-b>", deprecated('LEADER-b'))
 
 key("i", "<D-d>", ":NvimTreeToggle<cr>")
 key("i", "<D-f>", ":CtrlP<cr>")
 key("i", "<D-t>", deprecated('LEADER-f or CMD-f'))
-key("i", "<D-b>", deprecated('(leader)b'))
+key("i", "<D-b>", deprecated('LEADER-b'))
+
+key("n", "<c-w>h", deprecated("LEADER-j or ="))
+key("n", "<c-w>j", deprecated("LEADER-j or ="))
+key("n", "<c-w>k", deprecated("LEADER-j or ="))
+key("n", "<c-w>l", deprecated("LEADER-j or ="))
 
 function ReloadConfig()
   for name,_ in pairs(package.loaded) do
