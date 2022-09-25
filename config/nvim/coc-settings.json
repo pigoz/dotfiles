@@ -2,10 +2,10 @@
   "coc.preferences.formatOnSaveFiletypes": [
     "css", "typescript", "typescriptreact", "javascript", "javascriptreact"],
   "diagnostic.checkCurrentLine": true,
-  "diagnostic.errorSign": "✕",
-  "diagnostic.warningSign": "⚠",
-  "diagnostic.infoSign": "☀",
-  "diagnostic.hintSign": "⚙",
+  "diagnostic.errorSign": "",
+  "diagnostic.warningSign": "",
+  "diagnostic.hintSign": "",
+  "diagnostic.infoSign": "",
   "diagnostic.virtualText": true,
   "diagnostic.virtualTextCurrentLineOnly": false
 }
