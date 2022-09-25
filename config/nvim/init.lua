@@ -38,7 +38,7 @@ vim.o.signcolumn = 'yes:2'
 vim.o.cursorline = true
 
 vim.o.list = true -- Activate listchars configuration
-vim.o.listchars="tab:▸·,eol:¬,trail:·"
+vim.opt.listchars = { tab = "▸·", eol = "¬", trail = "·" }
 vim.o.cursorline = true -- Highlight current line
 vim.o.ruler = true -- Show row / column
 vim.o.showcmd = true -- Shows selection
