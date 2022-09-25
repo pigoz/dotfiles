@@ -6,7 +6,7 @@ wk.register({
 
   ["<leader>a"] = { "<Plug>(coc-codeaction)", "lsp line action" },
   ["<leader>b"] = { ":CtrlPBuffer<cr>", "ctrlp buffer" },
-  ["<leader>d"] = { ":CtrlP<cr>", "ctrlp" },
+  ["<leader>f"] = { ":CtrlP<cr>", "ctrlp" },
 
   ["<leader>s"] = { ":NvimTreeToggle<cr>", "nvim tree toggle" },
   ["<leader>j"] = { function() PickWindow() end , "pick window" },
@@ -16,11 +16,11 @@ wk.register({
     ['e'] = { ':e $MYVIMRC<cr>', 'edit' },
     ['r'] = { function() ReloadConfig() end, 'reload' },
   },
-  ["<leader>f"] = {
-    name = '+fold',
-    f = { 'za', 'fold toggle' },
-    d = { 'zR', 'fold clear all' },
-  },
+  -- ["<leader>f"] = {
+  --   name = '+fold',
+  --   f = { 'za', 'fold toggle' },
+  --   d = { 'zR', 'fold clear all' },
+  -- },
   ["<leader>l"] = {
     name = '+lsp',
     ['.'] = { ':CocConfig'                          , 'config'},
@@ -61,30 +61,36 @@ wk.register({
 })
 
 vim.cmd([[
-inoremap <silent><expr> <c-space> coc#refresh()
-
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
-nnoremap <CR> :nohlsearch<cr>
-
-vnoremap < <gv
-vnoremap > >gv
-
-" disable Ex mode
-nnoremap Q <Nop>
-imap <Home> <Esc>
-vnoremap <Home> <Esc>
-
-" easier window navigation
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
-nnoremap <c-h> <c-w>h
-nnoremap <c-l> <c-w>l
-
-nnoremap <PageUp> <C-u>
-nnoremap <PageDown> <C-d>
+inoremap <silent><expr> <D-f> coc#refresh()
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 ]])
+
+key("n", "Q", "<Nop>") -- disable ex mode
+
+key("n", "<PageUp>", "<C-u>")
+key("n", "<PageDown>", "<C-d>")
+
+key("n", "<cr>", ":nohlsearch<cr>") -- remove highlights
+
+-- easier window navigation
+key("n", "<c-h>", "<c-w>h")
+key("n", "<c-j>", "<c-w>j")
+key("n", "<c-k>", "<c-w>k")
+key("n", "<c-l>", "<c-w>l")
+
+-- better visual-mode indentation
+key("v", "<", "<gv")
+key("v", ">", ">gv")
+
+key("n", "<D-d>", ":NvimTreeToggle<cr>")
+key("n", "<D-f>", ":CtrlP<cr>")
+key("n", "<D-t>", deprecated('LEADER-f or CMD-f'))
+key("n", "<D-b>", deprecated('(leader)b'))
+
+key("i", "<D-d>", ":NvimTreeToggle<cr>")
+key("i", "<D-f>", ":CtrlP<cr>")
+key("i", "<D-t>", deprecated('LEADER-f or CMD-f'))
+key("i", "<D-b>", deprecated('(leader)b'))
 
 function ReloadConfig()
   for name,_ in pairs(package.loaded) do
