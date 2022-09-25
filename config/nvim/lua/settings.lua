@@ -13,10 +13,14 @@ vim.o.encoding="utf-8"
 -- Use 2 spaces softtabs for everything except for languages where the
 -- convention is 4spaces softtabs
 vim.cmd([[
-autocmd FileType * set ts=2 sw=2 sts=2 expandtab
-autocmd FileType c,m,h,cpp,hpp,glsl,objc,python,php,swift,rust set ts=4 sw=4 sts=4 expandtab
-autocmd FileType make set noexpandtab " make needs them tabs
-autocmd FileType css set ft=scss
+augroup SettingsFileTypes
+  au!
+  au FileType * set ts=2 sw=2 sts=2 expandtab
+  au FileType c,m,h,cpp,hpp,glsl,objc set ts=4 sw=4 sts=4 expandtab
+  au FileType python,php,swift,rust set ts=4 sw=4 sts=4 expandtab
+  au FileType make set noexpandtab " make needs them tabs
+  au FileType css set ft=scss
+augroup END
 ]])
 
 -- editor ui
@@ -51,7 +55,7 @@ vim.o.ignorecase = true
 vim.o.smartcase = true
 vim.o.colorcolumn = '80'
 
--- vim.o.winwidth = 83 -- 79(+4 for line numbers) fucks vim tree up
+vim.o.winwidth = 87 -- fucks vim tree up
 vim.o.cmdheight = 2 -- Command buffer height = 2
 
 vim.o.title = true -- Change the terminal's title
@@ -76,14 +80,14 @@ vim.g.maplocalleader = ' '
 
 -- Ignore these files when using CtrlP
 vim.opt.wildignore:append {
--- Rails specific
-'*/tmp/*','*/.sass_cache/*','*/vendor/assets/*','*/public/assets/*',
--- Python specific
-'*.pyc*',
--- C specific
-'*/build/*','*.d','*.o',
--- SCM specific
-'*/.git/*','*/.hg/*','*/.svn/*',
--- JavaScript specific
-'*/dist/*','*/node_modules/*'
+  -- Rails specific
+  '*/tmp/*','*/.sass_cache/*','*/vendor/assets/*','*/public/assets/*',
+  -- Python specific
+  '*.pyc*',
+  -- C specific
+  '*/build/*','*.d','*.o',
+  -- SCM specific
+  '*/.git/*','*/.hg/*','*/.svn/*',
+  -- JavaScript specific
+  '*/dist/*','*/node_modules/*'
 }
