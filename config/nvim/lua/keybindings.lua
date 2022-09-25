@@ -1,4 +1,73 @@
+local wk = require("which-key")
+
+wk.register({
+  ["<leader>d"] = { ":NvimTreeToggle<cr>", "toggle tree" },
+  ["<leader>."] = {
+    name = "+config",
+    ['e'] = { ':e $MYVIMRC<cr>', 'edit' },
+    ['r'] = { function() ReloadConfig() end, 'reload' },
+  },
+  ["<leader>w"] = {
+    name = '+nav',
+    h = { '<c-w>h', 'Left Window' },
+    j = { '<c-w>j', 'Bottom Window' },
+    k = { '<c-w>k', 'Top Window' },
+    l = { '<c-w>l', 'Right Window' },
+    f = { 'za', 'fold toggle' },
+    d = { 'zR', 'fold clear all' },
+  },
+  ["<leader>j"] = {
+    name = '+lsp',
+    ['.'] = { ':CocConfig'                          , 'config'},
+    [';'] = { '<Plug>(coc-refactor)'                , 'refactor'},
+    ['a'] = { '<Plug>(coc-codeaction)'              , 'line action'},
+    ['A'] = { '<Plug>(coc-codeaction-selected)'     , 'selected action'},
+    ['b'] = { ':CocNext'                            , 'next action'},
+    ['B'] = { ':CocPrev'                            , 'prev action'},
+    ['c'] = { ':CocList commands'                   , 'commands'},
+    ['d'] = { '<Plug>(coc-definition)'              , 'definition'},
+    ['D'] = { '<Plug>(coc-declaration)'             , 'declaration'},
+    ['e'] = { ':CocList extensions'                 , 'extensions'},
+    ['f'] = { '<Plug>(coc-format-selected)'         , 'format selected'},
+    ['F'] = { '<Plug>(coc-format)'                  , 'format'},
+    ['h'] = { '<Plug>(coc-float-hide)'              , 'hide'},
+    ['i'] = { '<Plug>(coc-implementation)'          , 'implementation'},
+    ['I'] = { ':CocList diagnostics'                , 'diagnostics'},
+    ['j'] = { '<Plug>(coc-float-jump)'              , 'float jump'},
+    ['l'] = { '<Plug>(coc-codelens-action)'         , 'code lens'},
+    ['n'] = { '<Plug>(coc-diagnostic-next)'         , 'next diagnostic'},
+    ['N'] = { '<Plug>(coc-diagnostic-next-error)'   , 'next error'},
+    ['o'] = { '<Plug>(coc-openlink)'                , 'open link'},
+    ['O'] = { ':CocList outline'                    , 'outline'},
+    ['p'] = { '<Plug>(coc-diagnostic-prev)'         , 'prev diagnostic'},
+    ['P'] = { '<Plug>(coc-diagnostic-prev-error)'   , 'prev error'},
+    ['q'] = { '<Plug>(coc-fix-current)'             , 'quickfix'},
+    ['r'] = { '<Plug>(coc-rename)'                  , 'rename'},
+    ['R'] = { '<Plug>(coc-references)'              , 'references'},
+    ['s'] = { ':CocList -I symbols'                 , 'references'},
+    ['S'] = { ':CocList snippets'                   , 'snippets'},
+    ['t'] = { '<Plug>(coc-type-definition)'         , 'type definition'},
+    ['u'] = { ':CocListResume'                      , 'resume list'},
+    ['U'] = { ':CocUpdate'                          , 'update CoC'},
+    ['v'] = { ':Vista!!'                            , 'tag viewer'},
+    ['z'] = { ':CocDisable'                         , 'disable CoC'},
+    ['Z'] = { ':CocEnable'                          , 'enable CoC'},
+  },
+})
+
 vim.cmd([[
+inoremap <silent><expr> <c-space> coc#refresh()
+
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+map <D-b> :CtrlPBuffer<CR>
+imap <D-b> :CtrlPBuffer<CR>
+map <D-t> :CtrlP<CR>
+imap <D-t> :CtrlP<CR>
+map <D-d> :NvimTreeToggle<CR>
+imap <D-d> <Esc>:NvimTreeToggle<CR>
+
 nnoremap <CR> :nohlsearch<cr>
 
 vnoremap < <gv
@@ -33,16 +102,14 @@ imap <D-M-Down> <c-w>j
 nnoremap <PageUp> <C-u>
 nnoremap <PageDown> <C-d>
 
-" fold like no tomorrow (toggle)
-nnoremap <Leader>ff za
-
-" fold like no tomorrow (clear all)
-nnoremap <Leader>fd zR
-nnoremap <Leader>gb :Gblame<cr>
-nnoremap <Leader>gh :Gbrowse<cr>
-nnoremap <Leader>p gp
 nnoremap ; :CtrlP<CR>
-nnoremap <Leader>; :CtrlPBuffer<CR>
-nnoremap <Leader>v :vsplit<CR>
-nnoremap <Leader>h :split<CR>
 ]])
+
+function ReloadConfig()
+  for name,_ in pairs(package.loaded) do
+    package.loaded[name] = nil
+  end
+
+  dofile(vim.env.MYVIMRC)
+  vim.notify("nvim config reloaded!", vim.log.levels.INFO)
+end

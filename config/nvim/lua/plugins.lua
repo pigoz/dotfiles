@@ -23,6 +23,7 @@ vim.g.ctrlp_user_command = {'.git/', 'git --git-dir=%s/.git ls-files -oc --exclu
 Plug('kyazdani42/nvim-web-devicons')
 Plug('kyazdani42/nvim-tree.lua')
 Plug('nvim-treesitter/nvim-treesitter', {['do'] = ':TSUpdate'})
+Plug('folke/which-key.nvim')
 
 Plug('navarasu/onedark.nvim') -- colorscheme
 
@@ -54,31 +55,5 @@ require("nvim-tree").setup({
 })
 
 require("lualine").setup()
-
+require("which-key").setup()
 require('onedark').load()
-
-vim.cmd([[
-inoremap <silent><expr> <c-space> coc#refresh()
-
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
-nmap <silent> <D-k> <Plug>(coc-fix-current)
-nmap <silent> <D-l> :call CocAction('doHover')<CR>
-
-nmap <silent> <leader>lp <Plug>(coc-diagnostic-prev)
-nmap <silent> <leader>ln <Plug>(coc-diagnostic-next)
-
-nmap <silent> <leader>ld <Plug>(coc-definition)
-nmap <silent> <leader>lt <Plug>(coc-type-definition)
-nmap <silent> <leader>li <Plug>(coc-implementation)
-nmap <silent> <leader>lf <Plug>(coc-references)
-
-nmap <leader>lr <Plug>(coc-rename)
-map <D-b> :CtrlPBuffer<CR>
-imap <D-b> :CtrlPBuffer<CR>
-map <D-t> :CtrlP<CR>
-imap <D-t> :CtrlP<CR>
-map <D-d> :NvimTreeToggle<CR>
-imap <D-d> <Esc>:NvimTreeToggle<CR>
-]])
