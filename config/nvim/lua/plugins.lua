@@ -58,7 +58,7 @@ require("nvim-tree").setup({
   }
 })
 
-require("lualine").setup()
+require("lualine").setup({})
 require("which-key").setup()
 require('onedark').load()
 

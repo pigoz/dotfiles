@@ -1,5 +1,5 @@
 local M = {}
---
+
 ---Pretty print lua table
 function M.dump(...)
     local objects = vim.tbl_map(vim.inspect, { ... })
@@ -24,7 +24,7 @@ function M.key(mode, key, action)
 end
 
 function M.keyo(mode, key, action, given_opts)
-  local opts = mergetbl(default_opts, given_opts)
+  local opts = M.mergetbl(default_opts, given_opts)
   vim.api.nvim_set_keymap(mode, key, action, opts)
 end
 
