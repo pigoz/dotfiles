@@ -86,4 +86,4 @@ vim.opt.wildignore:append {
 '*/.git/*','*/.hg/*','*/.svn/*',
 -- JavaScript specific
 '*/dist/*','*/node_modules/*'
-}      
+}
