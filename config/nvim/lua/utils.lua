@@ -41,8 +41,13 @@ function M.pick_window()
   require('nvim-window').pick()
 end
 
-function M.cmd(cmd)
-  vim.cmd(cmd)
+function M.cycle_buffer()
+  -- M.dump(vim.api.nvim_tabpage_list_wins(0))
+  vim.api.nvim_command('FocusSplitCycle')
+end
+
+function M.cycle_buffer_reverse()
+  vim.api.nvim_command('FocusSplitCycle reverse')
 end
 
 return M

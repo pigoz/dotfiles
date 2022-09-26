@@ -2,12 +2,17 @@ local wk = require("which-key")
 local u = require("utils")
 
 wk.register({
+  ["<D-k>"] = { u.cycle_buffer, "focus split cycle" },
+  ["<D-j>"] = { u.cycle_buffer_reverse, "focus split cycle (reverse)" },
+
   ['='] = { u.pick_window, "pick window" },
   [";"] = { ":CtrlP<cr>", "CtrlP" },
 
   ["<leader>a"] = { "<Plug>(coc-codeaction)", "lsp line action" },
   ["<leader>b"] = { ":CtrlPBuffer<cr>", "ctrlp buffer" },
   ["<leader>d"] = { ":CtrlP<cr>", "ctrlp" },
+  ["<leader>y"] = { ":FocusSplitNicely<cr>", "focus split nicely" },
+  ["<leader>h"] = { ":FocusSplitCycle<cr>", "focus split cycle" },
 
   ["<leader>s"] = { ":NvimTreeToggle<cr>", "nvim tree toggle" },
   ["<leader>j"] = { u.pick_window, "pick window" },
@@ -61,7 +66,7 @@ wk.register({
   },
 })
 
-u.cmd([[
+vim.cmd([[
 inoremap <silent><expr> <D-f> coc#refresh()
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 ]])

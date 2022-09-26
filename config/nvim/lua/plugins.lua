@@ -28,6 +28,7 @@ Plug('kyazdani42/nvim-tree.lua')
 Plug('nvim-treesitter/nvim-treesitter', {['do'] = ':TSUpdate'})
 Plug('folke/which-key.nvim')
 Plug('https://gitlab.com/yorickpeterse/nvim-window.git')
+Plug('beauwilliams/focus.nvim')
 
 Plug('navarasu/onedark.nvim') -- colorscheme
 
@@ -65,3 +66,5 @@ require('onedark').load()
 require('nvim-window').setup({
   chars = { 'd', 'f', 'v', 'e', 'r', 'g' },
 })
+
+require('focus').setup({})
