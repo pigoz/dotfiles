@@ -4,17 +4,14 @@ local u = require("utils")
 wk.register({
   ["<D-k>"] = { u.cycle_buffer, "focus split cycle" },
   ["<D-j>"] = { u.cycle_buffer_reverse, "focus split cycle (reverse)" },
+  [";"]     = { ":CtrlP<cr>", "CtrlP" },
 
   ['='] = { u.pick_window, "pick window" },
-  [";"] = { ":CtrlP<cr>", "CtrlP" },
 
   ["<leader>a"] = { "<Plug>(coc-codeaction)", "lsp line action" },
-  ["<leader>b"] = { ":CtrlPBuffer<cr>", "ctrlp buffer" },
-  ["<leader>d"] = { ":CtrlP<cr>", "ctrlp" },
+  ["<leader>d"] = { "<Plug>(coc-definition)", "lsp definition" },
   ["<leader>y"] = { ":FocusSplitNicely<cr>", "focus split nicely" },
   ["<leader>h"] = { ":FocusSplitCycle<cr>", "focus split cycle" },
-
-  ["<leader>s"] = { ":NvimTreeToggle<cr>", "nvim tree toggle" },
   ["<leader>j"] = { u.pick_window, "pick window" },
 
   ["<leader>c"] = {
@@ -90,13 +87,13 @@ u.key("v", ">", ">gv")
 
 u.key("n", "<D-d>", ":NvimTreeToggle<cr>")
 u.key("n", "<D-f>", ":CtrlP<cr>")
+u.key("n", "<D-b>", ":CtrlPBuffer<cr>")
 u.key("n", "<D-t>", u.deprecated('LEADER-f or CMD-f'))
-u.key("n", "<D-b>", u.deprecated('LEADER-b'))
 
 u.key("i", "<D-d>", ":NvimTreeToggle<cr>")
 u.key("i", "<D-f>", ":CtrlP<cr>")
+u.key("i", "<D-b>", ":CtrlPBuffer<cr>")
 u.key("i", "<D-t>", u.deprecated('LEADER-f or CMD-f'))
-u.key("i", "<D-b>", u.deprecated('LEADER-b'))
 
 u.key("n", "<c-w>h", u.deprecated("LEADER-j or ="))
 u.key("n", "<c-w>j", u.deprecated("LEADER-j or ="))
