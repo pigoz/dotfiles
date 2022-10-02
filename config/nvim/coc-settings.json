@@ -1,6 +1,7 @@
 {
   "coc.preferences.formatOnSaveFiletypes": [
-    "css", "typescript", "typescriptreact", "javascript", "javascriptreact"],
+    "css", "typescript", "typescriptreact", "javascript", "javascriptreact",
+    "lua", "ruby"],
   "diagnostic.checkCurrentLine": true,
   "diagnostic.errorSign": "",
   "diagnostic.warningSign": "",
@@ -8,5 +9,8 @@
   "diagnostic.infoSign": "",
   "diagnostic.virtualText": true,
   "diagnostic.virtualTextCurrentLineOnly": false,
-  "sumneko-lua.enableNvimLuaDev": true
+  "sumneko-lua.enableNvimLuaDev": true,
+  "solargraph.autoformat": true,
+  "solargraph.diagnostics": true,
+  "solargraph.formatting": true
 }

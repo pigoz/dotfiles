@@ -8,7 +8,7 @@ Plug('neoclide/coc.nvim', { branch = 'release'})
 
 vim.g.coc_global_extensions = {
   'coc-emoji', 'coc-eslint', 'coc-prettier',  'coc-tsserver', 'coc-css',
-  'coc-json', 'coc-pyls', 'coc-yaml', 'coc-sumneko-lua'
+  'coc-json', 'coc-pyls', 'coc-yaml', 'coc-sumneko-lua', 'coc-solargraph'
 }
 
 vim.g.coc_node_path = "/Users/pigoz/.nvm/versions/node/v18.8.0/bin/node"
