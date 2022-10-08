@@ -1,7 +1,6 @@
 local utils = require('user.utils');
-local packer_bootstrap = utils.packer_install()
 
-return utils.packer_init(function(packer, use)
+return utils.packer_setup(function(use)
   use { 'wbthomason/packer.nvim' }
 
   use { 'sheerun/vim-polyglot' }
@@ -100,9 +99,4 @@ return utils.packer_init(function(packer, use)
 
   use { 'navarasu/onedark.nvim' }
   utils.prequire('onedark', function(onedark) onedark.load() end)
-
-  -- Automatically set up your configuration after cloning packer.nvim
-  if packer_bootstrap then
-    packer.sync()
-  end
 end)

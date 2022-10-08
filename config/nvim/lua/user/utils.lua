@@ -61,7 +61,9 @@ function M.packer_install()
   return false
 end
 
-function M.packer_init(fn)
+function M.packer_setup(callback)
+  local packer_bootstrap = M.packer_install()
+
   -- reload neovim whenever plugins.lua is saved
   vim.cmd([[
     augroup packer_user_config
@@ -80,7 +82,15 @@ function M.packer_init(fn)
       }
     })
 
-    return packer.startup(function(use) return fn(packer, use) end)
+    return packer.startup(function(use)
+      local result = callback(use)
+
+      if packer_bootstrap then
+        packer.sync()
+      end
+
+      return result
+    end)
   end)
 end
 
