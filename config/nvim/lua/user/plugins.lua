@@ -2,11 +2,11 @@ local utils = require('user.utils');
 local packer_bootstrap = utils.packer_install()
 
 return utils.packer_init(function(packer, use)
-  use('wbthomason/packer.nvim')
+  use { 'wbthomason/packer.nvim' }
 
-  use('sheerun/vim-polyglot')
+  use { 'sheerun/vim-polyglot' }
 
-  use({
+  use {
     'neoclide/coc.nvim',
     branch = 'release',
     config = function()
@@ -16,25 +16,28 @@ return utils.packer_init(function(packer, use)
       }
       vim.g.coc_node_path = "/Users/pigoz/.nvm/versions/node/v18.8.0/bin/node"
     end
-  })
+  }
 
-  local devicons = { "kyazdani42/nvim-web-devicons", config = function()
-    require 'nvim-web-devicons'.setup({
-      default = true,
-    })
-  end }
+  local devicons = {
+    "kyazdani42/nvim-web-devicons",
+    config = function()
+      require 'nvim-web-devicons'.setup({
+        default = true,
+      })
+    end
+  }
 
-  use('tpope/vim-fugitive') -- for :Gblame
+  use { 'tpope/vim-fugitive' } -- for :Gblame
 
-  use({
+  use {
     'nvim-lualine/lualine.nvim',
     requires = { devicons },
     config = function()
       require('lualine').setup {}
     end
-  })
+  }
 
-  use({
+  use {
     'ctrlpvim/ctrlp.vim',
     config = function()
       vim.g.ctrlp_max_height = 30
@@ -43,9 +46,9 @@ return utils.packer_init(function(packer, use)
         'git --git-dir=%s/.git ls-files -oc --exclude-standard'
       }
     end
-  })
+  }
 
-  use({
+  use {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v2.x",
     requires = {
@@ -57,9 +60,9 @@ return utils.packer_init(function(packer, use)
       vim.g.neo_tree_remove_legacy_commands = 1
       require("neo-tree").setup {}
     end
-  })
+  }
 
-  use({
+  use {
     'nvim-treesitter/nvim-treesitter',
     run = function()
       require('nvim-treesitter.install').update({ with_sync = true })
@@ -70,32 +73,32 @@ return utils.packer_init(function(packer, use)
         ensure_installed = { "c", "lua", "typescript", "ruby", "scss", "css" },
       }
     end
-  })
+  }
 
-  use({
+  use {
     'folke/which-key.nvim',
     config = function()
       require("which-key").setup()
     end
-  })
+  }
 
-  use({
+  use {
     'https://gitlab.com/yorickpeterse/nvim-window.git',
     config = function()
       require('nvim-window').setup({
         chars = { 'd', 'f', 'v', 'e', 'r', 'g' },
       })
     end
-  })
+  }
 
-  use({
+  use {
     'beauwilliams/focus.nvim',
     config = function()
       require('focus').setup({})
     end
-  })
+  }
 
-  use('navarasu/onedark.nvim')
+  use { 'navarasu/onedark.nvim' }
   utils.prequire('onedark', function(onedark) onedark.load() end)
 
   -- Automatically set up your configuration after cloning packer.nvim
