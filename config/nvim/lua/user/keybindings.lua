@@ -1,4 +1,4 @@
-local u = require("utils")
+local u = require("user.utils")
 
 u.prequire('which-key', function(wk)
   wk.register({

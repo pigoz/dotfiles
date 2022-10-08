@@ -1,4 +1,4 @@
-local utils = require('utils');
+local utils = require('user.utils');
 local packer_bootstrap = utils.packer_install()
 local status_ok, packer = utils.packer_require()
 
