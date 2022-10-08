@@ -1,8 +1,0 @@
-#!/bin/sh
-if [ "$#" -ne 1 ]; then
-    echo -e "usage: $0 [channel]\navailable channels:"
-    curl -s https://mov3.co/ | grep 'target="_blank"' | cut -d'/' -f4
-    exit 1
-fi
-CHAN=$1
-exec mpv `curl -s https://mov3.co/ja/$CHAN/ | grep -ohE 'https://ok.ru/videoembed/[0-9]+'`

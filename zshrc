@@ -67,27 +67,12 @@ mch() {
   mpv-cli --volume=70 --fullscreen --display=1 $*
 }
 
-yarr() {
-  src="/home/debian-transmission/Downloads"
-  dst="/Volumes/Mechanical Disk/Movies (External)/Downloads"
-  cd $dst
-  lftp sftp://loli.wakku.to:$src
-}
-
 # point java_home to system java
 # export JAVA_HOME=$(/usr/libexec/java_home)
 
 # aliases
 alias -g be='bundle exec'
 alias -g sudo='nocorrect sudo'
-
-plug-install() {
-  vim +PlugInstall +qall
-}
-
-plug-update() {
-  vim +PlugUpdate +qall
-}
 
 yt() {
   video=$1
@@ -128,10 +113,6 @@ upload() {
   brewcurl -F'file=@-' https://0x0.st
 }
 
-what-the-commit() {
-   git commit -m "$(curl --silent http://whatthecommit.com/index.txt)"
-}
-
 remote-sha1() {
   curl $1 | openssl sha1
 }
@@ -140,61 +121,12 @@ bigscp() {
   rsync -avz --partial --progress --rsh=ssh $1 $2
 }
 
-solr-reindex() {
-  bundle exec rake sunspot:solr:reindex
-}
-
-rpi.dump() {
-  if [ -z  "$1" ] || [ -z "$2" ] ; then
-    echo 'USAGE: rpi.dump /dev/disk3 $HOME/image.gz'
-  else
-    sudo dd if="$1" bs=1m | gzip > "$2"
-  fi
-}
-
-rpi.flash() {
-  if [ -z  "$1" ] || [ -z "$2" ] ; then
-    echo 'USAGE: rpi.flash /dev/disk3 $HOME/image.gz'
-  else
-    diskutil unmountDisk "$1"
-    gzip -dc "$2" | sudo dd of="$1" bs=1m
-  fi
-}
-
-yt-playlist() {
-  mpv --volume=50 --no-video --term-playing-msg='Title: ${media-title}' https://www.youtube.com/playlist\?list\=$1
-}
-
-yt-music() {
-  mpv --volume=50 --no-video --term-playing-msg='Title: ${media-title}' https://www.youtube.com/watch\?v\=$1
-}
-
 subs.ass2srt() {
   find . -name \*.ass | sed 's/\.ass$//' | xargs -I{} ffmpeg -i {}.ass -c:s text {}.srt
 }
 
 subs.retimemkv() {
   find . -name \*.srt | sed 's/\.srt$//' | xargs -I{} alass-cli {}.mkv {}.srt {}.srt
-}
-
-music.miku() {
-  yt-playlist PLLoRe_7Ei6nQ1vgFyVWxNVz2gjPFC7LIA
-}
-
-music.persona5() {
-  yt-music 30Ef7i3qq-U
-}
-
-music.persona4() {
-  yt-music vUjVFZN25Eg
-}
-
-music.nier() {
-  yt-music 8D6kHaJd2Iw
-}
-
-music.jpophits() {
-  mpv --volume=100 --no-video --term-playing-msg='Title: ${media-title}' http://192.99.62.212:9764/stream
 }
 
 mkavatar() {
