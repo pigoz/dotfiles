@@ -59,7 +59,18 @@ return utils.packer_init(function(packer, use)
     end
   })
 
-  use('nvim-treesitter/nvim-treesitter', { ['do'] = ':TSUpdate' })
+  use({
+    'nvim-treesitter/nvim-treesitter',
+    run = function()
+      require('nvim-treesitter.install').update({ with_sync = true })
+    end,
+    config = function()
+      require 'nvim-treesitter.configs'.setup {
+        -- A list of parser names, or "all"
+        ensure_installed = { "c", "lua", "typescript", "ruby", "scss", "css" },
+      }
+    end
+  })
 
   use({
     'folke/which-key.nvim',
