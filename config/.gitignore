@@ -2,4 +2,5 @@
 !nvim/
 !nvim/**
 nvim/plugged
+nvim/plugin/packer_compiled.lua
 !.gitignore

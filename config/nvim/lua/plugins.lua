@@ -1,70 +1,100 @@
-local Plug = vim.fn['plug#']
+local utils = require('utils');
+local packer_bootstrap = utils.packer_install()
+local status_ok, packer = utils.packer_require()
 
-vim.call('plug#begin', '~/.config/nvim/plugged')
+if not status_ok then
+  return
+end
 
--- search, completion, code analysis and general IDE stuff
-Plug('sheerun/vim-polyglot')
-Plug('neoclide/coc.nvim', { branch = 'release'})
+return packer.startup(function(use)
+  use('wbthomason/packer.nvim')
 
-vim.g.coc_global_extensions = {
-  'coc-emoji', 'coc-eslint', 'coc-prettier',  'coc-tsserver', 'coc-css',
-  'coc-json', 'coc-pyls', 'coc-yaml', 'coc-sumneko-lua', 'coc-solargraph'
-}
+  use('sheerun/vim-polyglot')
 
-vim.g.coc_node_path = "/Users/pigoz/.nvm/versions/node/v18.8.0/bin/node"
-
-Plug('tpope/vim-fugitive') -- for :Gblame
-Plug('nvim-lualine/lualine.nvim')
-Plug('ctrlpvim/ctrlp.vim')
-
-vim.g.ctrlp_max_height = 30
-vim.g.ctrlp_user_command = {
-  '.git/',
-  'git --git-dir=%s/.git ls-files -oc --exclude-standard'
-}
-
-Plug('kyazdani42/nvim-web-devicons')
-Plug('kyazdani42/nvim-tree.lua')
-Plug('nvim-treesitter/nvim-treesitter', {['do'] = ':TSUpdate'})
-Plug('folke/which-key.nvim')
-Plug('https://gitlab.com/yorickpeterse/nvim-window.git')
-Plug('beauwilliams/focus.nvim')
-
-Plug('navarasu/onedark.nvim') -- colorscheme
-
-vim.call('plug#end')
-
-require'nvim-web-devicons'.setup {
- -- globally enable default icons (default to false)
- -- will get overriden by `get_icons` option
- default = true;
-}
-
-require("nvim-tree").setup({
-  sort_by = "case_sensitive",
-  view = {
-    adaptive_size = true,
-    mappings = {},
-  },
-  renderer = {
-    group_empty = true,
-  },
-  filters = {
-    dotfiles = true,
-  },
-  actions = {
-    open_file = {
-      resize_window = true
-    }
+  use {
+    'neoclide/coc.nvim',
+    branch = 'release',
+    config = function()
+      vim.g.coc_global_extensions = {
+        'coc-emoji', 'coc-eslint', 'coc-prettier', 'coc-tsserver', 'coc-css',
+        'coc-json', 'coc-pyls', 'coc-yaml', 'coc-sumneko-lua', 'coc-solargraph'
+      }
+      vim.g.coc_node_path = "/Users/pigoz/.nvm/versions/node/v18.8.0/bin/node"
+    end
   }
-})
 
-require("lualine").setup({})
-require("which-key").setup()
-require('onedark').load()
+  local devicons = { "kyazdani42/nvim-web-devicons", config = function()
+    require 'nvim-web-devicons'.setup({
+      default = true,
+    })
+  end }
 
-require('nvim-window').setup({
-  chars = { 'd', 'f', 'v', 'e', 'r', 'g' },
-})
+  use('tpope/vim-fugitive') -- for :Gblame
 
-require('focus').setup({})
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = { devicons },
+    config = function()
+      require('lualine').setup {}
+    end
+  }
+
+  use {
+    'ctrlpvim/ctrlp.vim',
+    config = function()
+      vim.g.ctrlp_max_height = 30
+      vim.g.ctrlp_user_command = {
+        '.git/',
+        'git --git-dir=%s/.git ls-files -oc --exclude-standard'
+      }
+    end
+  }
+
+  use {
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v2.x",
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+      devicons
+    },
+    config = function()
+      vim.g.neo_tree_remove_legacy_commands = 1
+      require("neo-tree").setup {}
+    end
+  }
+
+  use('nvim-treesitter/nvim-treesitter', { ['do'] = ':TSUpdate' })
+
+  use {
+    'folke/which-key.nvim',
+    config = function()
+      require("which-key").setup()
+    end
+  }
+
+  use {
+    'https://gitlab.com/yorickpeterse/nvim-window.git',
+    config = function()
+      require('nvim-window').setup({
+        chars = { 'd', 'f', 'v', 'e', 'r', 'g' },
+      })
+    end
+  }
+
+  use {
+    'beauwilliams/focus.nvim',
+    config = function()
+      require('focus').setup({})
+    end
+  }
+
+  use('navarasu/onedark.nvim')
+  utils.prequire('onedark', function(onedark) onedark.load() end)
+
+  -- Automatically set up your configuration after cloning packer.nvim
+  -- Put this at the end after all plugins
+  if packer_bootstrap then
+    require('packer').sync()
+  end
+end)
