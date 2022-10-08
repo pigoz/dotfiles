@@ -1,4 +1,4 @@
-return require('user.utils').packer_setup(function(use)
+return require('user.packer').setup(function(use)
   use { 'wbthomason/packer.nvim' }
 
   use { 'sheerun/vim-polyglot' }
