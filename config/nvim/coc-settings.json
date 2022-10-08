@@ -10,6 +10,8 @@
   "diagnostic.virtualText": true,
   "diagnostic.virtualTextCurrentLineOnly": false,
   "sumneko-lua.enableNvimLuaDev": true,
+  "Lua.hint.paramName": "Disable",
+  "Lua.hint.paramType": false,
   "solargraph.autoformat": true,
   "solargraph.diagnostics": true,
   "solargraph.formatting": true
