@@ -141,6 +141,10 @@ mount.veda() {
   sshfs pigoz@veda.local:/var/lib/transmission-daemon/downloads /Volumes/veda -o volname=veda
 }
 
+vim-reset() {
+  rm -rf ~/.local/share/nvim ~/.config/nvim/plugin/packer_compiled.lua
+}
+
 bindkey '^[^[[D' backward-word
 bindkey '^[^[[C' forward-word
 bindkey '^[[5D' beginning-of-line
