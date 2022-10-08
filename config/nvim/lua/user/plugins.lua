@@ -13,7 +13,8 @@ return utils.packer_setup(function(use)
         'coc-emoji', 'coc-eslint', 'coc-prettier', 'coc-tsserver', 'coc-css',
         'coc-json', 'coc-pyls', 'coc-yaml', 'coc-sumneko-lua', 'coc-solargraph'
       }
-      vim.g.coc_node_path = vim.fs.normalize(
+      -- XXX use vim.fs.normalize when upgraded to nvim 0.8
+      vim.g.coc_node_path = vim.fn.expand(
         '~/.nvm/versions/node/v18.8.0/bin/node')
     end
   }
