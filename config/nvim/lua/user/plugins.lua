@@ -1,12 +1,7 @@
 local utils = require('user.utils');
 local packer_bootstrap = utils.packer_install()
-local status_ok, packer = utils.packer_require()
 
-if not status_ok then
-  return
-end
-
-return packer.startup(function(use)
+return utils.packer_init(function(packer, use)
   use('wbthomason/packer.nvim')
 
   use('sheerun/vim-polyglot')

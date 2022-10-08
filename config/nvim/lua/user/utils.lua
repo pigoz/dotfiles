@@ -61,7 +61,7 @@ function M.packer_install()
   return false
 end
 
-function M.packer_require()
+function M.packer_init(fn)
   -- reload neovim whenever plugins.lua is saved
   vim.cmd([[
     augroup packer_user_config
@@ -79,6 +79,8 @@ function M.packer_require()
         end
       }
     })
+
+    return packer.startup(function(use) return fn(packer, use) end)
   end)
 end
 
@@ -87,10 +89,9 @@ function M.prequire(module_name, fn)
   if not status_ok then
     local msg = "couldn't require '" .. module_name .. "'"
     vim.notify(msg, vim.log.levels.ERROR)
-    return status_ok, mod
+    return
   end
-  fn(mod)
-  return status_ok, mod
+  return fn(mod)
 end
 
 return M
