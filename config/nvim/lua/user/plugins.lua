@@ -1,6 +1,4 @@
-local utils = require('user.utils');
-
-return utils.packer_setup(function(use)
+return require('user.utils').packer_setup(function(use)
   use { 'wbthomason/packer.nvim' }
 
   use { 'sheerun/vim-polyglot' }
@@ -79,7 +77,9 @@ return utils.packer_setup(function(use)
   use {
     'folke/which-key.nvim',
     config = function()
-      require("which-key").setup()
+      local wk = require("which-key")
+      wk.setup {}
+      require("user.keybindings").setup_which_key_bindings(wk)
     end
   }
 
@@ -99,6 +99,10 @@ return utils.packer_setup(function(use)
     end
   }
 
-  use { 'navarasu/onedark.nvim' }
-  utils.prequire('onedark', function(onedark) onedark.load() end)
+  use {
+    'navarasu/onedark.nvim',
+    config = function()
+      require('onedark').load()
+    end
+  }
 end)

@@ -1,6 +1,7 @@
-local u = require("user.utils")
+local u = require('user.utils')
+local M = {}
 
-u.prequire('which-key', function(wk)
+function M.setup_which_key_bindings(wk)
   wk.register({
     ["<D-k>"] = { u.cycle_buffer, "focus split cycle" },
     ["<D-j>"] = { u.cycle_buffer_reverse, "focus split cycle (reverse)" },
@@ -62,41 +63,45 @@ u.prequire('which-key', function(wk)
       ['Z'] = { ':CocEnable', 'enable CoC' },
     },
   })
-end)
+end
 
-vim.cmd([[
-inoremap <silent><expr> <D-f> coc#refresh()
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
-]])
+function M.setup_global_key_bindings()
+  vim.cmd([[
+    inoremap <silent><expr> <D-f> coc#refresh()
+    inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+  ]])
 
-u.key("n", "Q", "<Nop>") -- disable ex mode
+  u.key("n", "Q", "<Nop>") -- disable ex mode
 
-u.key("n", "<PageUp>", "<C-u>")
-u.key("n", "<PageDown>", "<C-d>")
+  u.key("n", "<PageUp>", "<C-u>")
+  u.key("n", "<PageDown>", "<C-d>")
 
-u.key("n", "<cr>", ":nohlsearch<cr>") -- remove highlights
+  u.key("n", "<cr>", ":nohlsearch<cr>") -- remove highlights
 
--- easier window navigation
--- key("n", "<c-h>", "<c-w>h")
--- key("n", "<c-j>", "<c-w>j")
--- key("n", "<c-k>", "<c-w>k")
--- key("n", "<c-l>", "<c-w>l")
+  -- easier window navigation
+  -- key("n", "<c-h>", "<c-w>h")
+  -- key("n", "<c-j>", "<c-w>j")
+  -- key("n", "<c-k>", "<c-w>k")
+  -- key("n", "<c-l>", "<c-w>l")
 
--- better visual-mode indentation
-u.key("v", "<", "<gv")
-u.key("v", ">", ">gv")
+  -- better visual-mode indentation
+  u.key("v", "<", "<gv")
+  u.key("v", ">", ">gv")
 
-u.key("n", "<D-d>", ":Neotree filesystem toggle left<cr>")
-u.key("n", "<D-f>", ":CtrlP<cr>")
-u.key("n", "<D-b>", ":CtrlPBuffer<cr>")
-u.key("n", "<D-t>", u.deprecated('LEADER-f or CMD-f'))
+  u.key("n", "<D-d>", ":Neotree filesystem toggle left<cr>")
+  u.key("n", "<D-f>", ":CtrlP<cr>")
+  u.key("n", "<D-b>", ":CtrlPBuffer<cr>")
+  u.key("n", "<D-t>", u.deprecated('LEADER-f or CMD-f'))
 
-u.key("i", "<D-d>", ":Neotree filesystem toggle left<cr>")
-u.key("i", "<D-f>", ":CtrlP<cr>")
-u.key("i", "<D-b>", ":CtrlPBuffer<cr>")
-u.key("i", "<D-t>", u.deprecated('LEADER-f or CMD-f'))
+  u.key("i", "<D-d>", ":Neotree filesystem toggle left<cr>")
+  u.key("i", "<D-f>", ":CtrlP<cr>")
+  u.key("i", "<D-b>", ":CtrlPBuffer<cr>")
+  u.key("i", "<D-t>", u.deprecated('LEADER-f or CMD-f'))
 
-u.key("n", "<c-w>h", u.deprecated("LEADER-j or ="))
-u.key("n", "<c-w>j", u.deprecated("LEADER-j or ="))
-u.key("n", "<c-w>k", u.deprecated("LEADER-j or ="))
-u.key("n", "<c-w>l", u.deprecated("LEADER-j or ="))
+  u.key("n", "<c-w>h", u.deprecated("LEADER-j or ="))
+  u.key("n", "<c-w>j", u.deprecated("LEADER-j or ="))
+  u.key("n", "<c-w>k", u.deprecated("LEADER-j or ="))
+  u.key("n", "<c-w>l", u.deprecated("LEADER-j or ="))
+end
+
+return M
