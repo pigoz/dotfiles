@@ -50,7 +50,7 @@ function M.cycle_buffer_reverse()
   vim.api.nvim_command('FocusSplitCycle reverse')
 end
 
-function M.packer_install()
+local function packer_install()
   local fn = vim.fn
   local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
   if fn.empty(fn.glob(install_path)) > 0 then
@@ -62,7 +62,7 @@ function M.packer_install()
 end
 
 function M.packer_setup(callback)
-  local packer_bootstrap = M.packer_install()
+  local packer_bootstrap = packer_install()
 
   -- reload neovim whenever plugins.lua is saved
   vim.cmd([[
