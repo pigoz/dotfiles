@@ -11,7 +11,7 @@ return packer.startup(function(use)
 
   use('sheerun/vim-polyglot')
 
-  use {
+  use({
     'neoclide/coc.nvim',
     branch = 'release',
     config = function()
@@ -21,7 +21,7 @@ return packer.startup(function(use)
       }
       vim.g.coc_node_path = "/Users/pigoz/.nvm/versions/node/v18.8.0/bin/node"
     end
-  }
+  })
 
   local devicons = { "kyazdani42/nvim-web-devicons", config = function()
     require 'nvim-web-devicons'.setup({
@@ -31,15 +31,15 @@ return packer.startup(function(use)
 
   use('tpope/vim-fugitive') -- for :Gblame
 
-  use {
+  use({
     'nvim-lualine/lualine.nvim',
     requires = { devicons },
     config = function()
       require('lualine').setup {}
     end
-  }
+  })
 
-  use {
+  use({
     'ctrlpvim/ctrlp.vim',
     config = function()
       vim.g.ctrlp_max_height = 30
@@ -48,9 +48,9 @@ return packer.startup(function(use)
         'git --git-dir=%s/.git ls-files -oc --exclude-standard'
       }
     end
-  }
+  })
 
-  use {
+  use({
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v2.x",
     requires = {
@@ -62,32 +62,32 @@ return packer.startup(function(use)
       vim.g.neo_tree_remove_legacy_commands = 1
       require("neo-tree").setup {}
     end
-  }
+  })
 
   use('nvim-treesitter/nvim-treesitter', { ['do'] = ':TSUpdate' })
 
-  use {
+  use({
     'folke/which-key.nvim',
     config = function()
       require("which-key").setup()
     end
-  }
+  })
 
-  use {
+  use({
     'https://gitlab.com/yorickpeterse/nvim-window.git',
     config = function()
       require('nvim-window').setup({
         chars = { 'd', 'f', 'v', 'e', 'r', 'g' },
       })
     end
-  }
+  })
 
-  use {
+  use({
     'beauwilliams/focus.nvim',
     config = function()
       require('focus').setup({})
     end
-  }
+  })
 
   use('navarasu/onedark.nvim')
   utils.prequire('onedark', function(onedark) onedark.load() end)
