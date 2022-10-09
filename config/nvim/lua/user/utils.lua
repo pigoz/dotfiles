@@ -20,12 +20,12 @@ end
 local default_opts = { noremap = true, silent = true }
 
 function M.key(mode, key, action)
-  vim.api.nvim_set_keymap(mode, key, action, default_opts)
+  vim.keymap.set(mode, key, action, default_opts)
 end
 
 function M.keyo(mode, key, action, given_opts)
   local opts = M.mergetbl(default_opts, given_opts)
-  vim.api.nvim_set_keymap(mode, key, action, opts)
+  vim.keymap.set(mode, key, action, opts)
 end
 
 function M.reload_config()

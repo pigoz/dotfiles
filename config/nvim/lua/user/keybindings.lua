@@ -89,19 +89,37 @@ function M.setup_global_key_bindings()
   u.key("v", ">", ">gv")
 
   u.key("n", "<D-d>", ":Neotree filesystem toggle left<cr>")
-  u.key("n", "<D-f>", ":Telescope git_files theme=dropdown prompt_prefix=🔍 previewer=false<cr>")
-  u.key("n", "<D-b>", ":Telescope buffers theme=dropdown prompt_prefix=🔍 previewer=false<cr>")
+  u.key("n", "<D-f>", M.telescope_git_files)
+  u.key("n", "<D-b>", M.telescope_buffers)
   u.key("n", "<D-t>", u.deprecated('LEADER-f or CMD-f'))
 
   u.key("i", "<D-d>", ":Neotree filesystem toggle left<cr>")
-  u.key("i", "<D-f>", ":Telescope git_files theme=dropdown prompt_prefix=🔍 previewer=false<cr>")
-  u.key("i", "<D-b>", ":Telescope buffers theme=dropdown prompt_prefix=🔍 previewer_false<cr>")
+  u.key("i", "<D-f>", M.telescope_git_files)
+  u.key("i", "<D-b>", M.telescope_buffers)
   u.key("i", "<D-t>", u.deprecated('LEADER-f or CMD-f'))
 
   u.key("n", "<c-w>h", u.deprecated("LEADER-j or ="))
   u.key("n", "<c-w>j", u.deprecated("LEADER-j or ="))
   u.key("n", "<c-w>k", u.deprecated("LEADER-j or ="))
   u.key("n", "<c-w>l", u.deprecated("LEADER-j or ="))
+end
+
+function M.telescope_git_files()
+  require('telescope.builtin').git_files(
+    require('telescope.themes').get_dropdown {
+      prompt_title = "Search files...",
+      prompt_prefix = "🔍",
+      previewer = false
+    })
+end
+
+function M.telescope_buffers()
+  require('telescope.builtin').find_files(
+    require('telescope.themes').get_dropdown {
+      prompt_title = "Search files...",
+      prompt_prefix = "🔍",
+      previewer = false
+    })
 end
 
 return M
