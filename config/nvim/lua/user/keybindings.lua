@@ -5,15 +5,12 @@ function M.setup_which_key_bindings(wk)
   wk.register({
     ["<D-k>"] = { u.cycle_buffer, "focus split cycle" },
     ["<D-j>"] = { u.cycle_buffer_reverse, "focus split cycle (reverse)" },
-    [";"]     = { ":CtrlP<cr>", "CtrlP" },
-
     ['='] = { u.pick_window, "pick window" },
 
     ["<leader>a"] = { "<Plug>(coc-codeaction)", "lsp line action" },
     ["<leader>d"] = { "<Plug>(coc-definition)", "lsp definition" },
     ["<leader>y"] = { ":FocusSplitNicely<cr>", "focus split nicely" },
     ["<leader>h"] = { ":FocusSplitCycle<cr>", "focus split cycle" },
-    ["<leader>j"] = { u.pick_window, "pick window" },
 
     ["<leader>c"] = {
       name = "+config",
