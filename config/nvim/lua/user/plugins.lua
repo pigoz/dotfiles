@@ -37,12 +37,18 @@ return require('user.packer').setup(function(use)
   }
 
   use {
-    'ctrlpvim/ctrlp.vim',
+    'nvim-telescope/telescope.nvim',
+    requires = { 'nvim-lua/plenary.nvim' },
     config = function()
-      vim.g.ctrlp_max_height = 30
-      vim.g.ctrlp_user_command = {
-        '.git/',
-        'git --git-dir=%s/.git ls-files -oc --exclude-standard'
+      require('telescope').setup {
+        defaults = {
+          mappings = {
+            i = {
+              -- instantly quit telescope instead of switching to normal mode
+              ["<esc>"] = require('telescope.actions').close,
+            },
+          }
+        }
       }
     end
   }

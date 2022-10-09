@@ -89,13 +89,13 @@ function M.setup_global_key_bindings()
   u.key("v", ">", ">gv")
 
   u.key("n", "<D-d>", ":Neotree filesystem toggle left<cr>")
-  u.key("n", "<D-f>", ":CtrlP<cr>")
-  u.key("n", "<D-b>", ":CtrlPBuffer<cr>")
+  u.key("n", "<D-f>", ":Telescope git_files theme=dropdown prompt_prefix=🔍<cr>")
+  u.key("n", "<D-b>", ":Telescope buffers theme=dropdown prompt_prefix=🔍<cr>")
   u.key("n", "<D-t>", u.deprecated('LEADER-f or CMD-f'))
 
   u.key("i", "<D-d>", ":Neotree filesystem toggle left<cr>")
-  u.key("i", "<D-f>", ":CtrlP<cr>")
-  u.key("i", "<D-b>", ":CtrlPBuffer<cr>")
+  u.key("i", "<D-f>", ":Telescope git_files theme=dropdown prompt_prefix=🔍<cr>")
+  u.key("i", "<D-b>", ":Telescope buffers theme=dropdown prompt_prefix=🔍<cr>")
   u.key("i", "<D-t>", u.deprecated('LEADER-f or CMD-f'))
 
   u.key("n", "<c-w>h", u.deprecated("LEADER-j or ="))
