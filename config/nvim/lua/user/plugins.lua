@@ -84,8 +84,10 @@ return require('user.packer').setup(function(use)
     'folke/which-key.nvim',
     config = function()
       local wk = require("which-key")
+      local keys = require("user.keys")
       wk.setup {}
-      require("user.keybindings").setup_which_key_bindings(wk)
+      keys.setup_which_key_bindings(wk)
+      keys.setup_global_key_bindings()
     end
   }
 

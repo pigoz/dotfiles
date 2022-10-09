@@ -104,7 +104,7 @@ end
 function M.telescope_git_files()
   require('telescope.builtin').git_files(
     require('telescope.themes').get_dropdown {
-      prompt_title = "Search files...",
+      prompt_title = "git files",
       prompt_prefix = "🔍",
       previewer = false
     })
@@ -113,7 +113,7 @@ end
 function M.telescope_buffers()
   require('telescope.builtin').find_files(
     require('telescope.themes').get_dropdown {
-      prompt_title = "Search files...",
+      prompt_title = "buffers",
       prompt_prefix = "🔍",
       previewer = false
     })
