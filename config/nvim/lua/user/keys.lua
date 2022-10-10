@@ -111,7 +111,7 @@ function M.telescope_git_files()
 end
 
 function M.telescope_buffers()
-  require('telescope.builtin').find_files(
+  require('telescope.builtin').buffers(
     require('telescope.themes').get_dropdown {
       prompt_title = "buffers",
       prompt_prefix = "🔍",
