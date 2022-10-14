@@ -8,9 +8,8 @@ function M.setup_which_key_bindings(wk)
     ['='] = { u.pick_window, "pick window" },
 
     ["<leader>a"] = { "<Plug>(coc-codeaction)", "lsp line action" },
-    ["<leader>d"] = { "<Plug>(coc-definition)", "lsp definition" },
-    ["<leader>y"] = { ":FocusSplitNicely<cr>", "focus split nicely" },
-    ["<leader>h"] = { ":FocusSplitCycle<cr>", "focus split cycle" },
+    ["<leader>k"] = { M.coc_documentation, "lsp show documentation" },
+    ["<leader>j"] = { "<Plug>(coc-definition)", "lsp jump definition" },
 
     ["<leader>c"] = {
       name = "+config",
@@ -40,6 +39,7 @@ function M.setup_which_key_bindings(wk)
       ['i'] = { '<Plug>(coc-implementation)', 'implementation' },
       ['I'] = { ':CocList diagnostics', 'diagnostics' },
       ['j'] = { '<Plug>(coc-float-jump)', 'float jump' },
+      ['k'] = { M.coc_documentation, 'show documentation' },
       ['l'] = { '<Plug>(coc-codelens-action)', 'code lens' },
       ['n'] = { '<Plug>(coc-diagnostic-next)', 'next diagnostic' },
       ['N'] = { '<Plug>(coc-diagnostic-next-error)', 'next error' },
@@ -63,10 +63,10 @@ function M.setup_which_key_bindings(wk)
 end
 
 function M.setup_global_key_bindings()
-  vim.cmd([[
-    inoremap <silent><expr> <D-f> coc#refresh()
-    inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
-  ]])
+  -- D-k starts autocompletion
+  u.keye('i', '<D-k>', 'coc#refresh()')
+  -- enter selects current item
+  u.key('i', '<CR>', M.coc_confirm { or_send = "\\<CR>" })
 
   u.key("n", "Q", "<Nop>") -- disable ex mode
 
@@ -117,6 +117,22 @@ function M.telescope_buffers()
       prompt_prefix = "🔍",
       previewer = false
     })
+end
+
+function M.coc_confirm(opt)
+  return function()
+    if vim.fn['coc#pum#visible']() then
+      vim.fn['coc#pum#confirm']()
+    else
+      vim.fn.feedkeys(opt.or_send, 'in')
+    end
+  end
+end
+
+function M.coc_documentation()
+  if vim.fn.CocAction('hasProvider', 'hover') then
+    vim.fn.CocActionAsync('doHover')
+  end
 end
 
 return M
