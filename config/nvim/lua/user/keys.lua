@@ -65,8 +65,9 @@ end
 function M.setup_global_key_bindings()
   -- D-k starts autocompletion
   u.keye('i', '<D-k>', 'coc#refresh()')
-  -- enter selects current item
-  u.key('i', '<CR>', M.coc_confirm { or_send = "\\<CR>" })
+
+  -- CR selects current item is coc completion is visible, otherwise send CR
+  u.keye('i', '<CR>', 'coc#pum#visible() ? coc#pum#confirm() : "\\<CR>""')
 
   u.key("n", "Q", "<Nop>") -- disable ex mode
 
@@ -117,16 +118,6 @@ function M.telescope_buffers()
       prompt_prefix = "🔍",
       previewer = false
     })
-end
-
-function M.coc_confirm(opt)
-  return function()
-    if vim.fn['coc#pum#visible']() then
-      vim.fn['coc#pum#confirm']()
-    else
-      vim.fn.feedkeys(opt.or_send, 'in')
-    end
-  end
 end
 
 function M.coc_documentation()
