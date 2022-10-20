@@ -1,7 +1,0 @@
-:vs() {
-  tmux split-window -h
-}
-
-:s() {
-  tmux split-window
-}

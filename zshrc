@@ -4,8 +4,8 @@ compinit
 
 export ZSH=$HOME/.oh-my-zsh
 export ZSH_THEME="jreese"
-export EDITOR=vim
-plugins=(rails git ruby zsh-nvm)
+export NVM_LAZY=1
+plugins=(git ruby nvm)
 source $ZSH/oh-my-zsh.sh
 unsetopt correct_all
 
@@ -16,11 +16,14 @@ alias ls='ls -Gw'
 alias ll='ls -Glw'         # standard vertical listing
 alias la='ls -GAlw'        # show hidden files
 
-pg_dir='/usr/local/var/postgres'
-
 mvim() {
   vimr $*
 }
+
+export EDITOR=nvim
+export VISUAL="mvim --nofork"
+
+pg_dir='/usr/local/var/postgres'
 
 pg.start() {
   pg_ctl -D $pg_dir -l $pg_dir/server.log start
@@ -50,10 +53,6 @@ redis.stop() {
   launchctl unload $redis_plist
 }
 
-subdl() {
-  subliminal --debug download --language=en --single -f $*
-}
-
 mc() {
   # brew install switchaudio-osx
   SwitchAudioSource -s HDMI
@@ -67,18 +66,9 @@ mch() {
   mpv-cli --volume=70 --fullscreen --display=1 $*
 }
 
-# point java_home to system java
-# export JAVA_HOME=$(/usr/libexec/java_home)
-
 # aliases
 alias -g be='bundle exec'
 alias -g sudo='nocorrect sudo'
-
-yt() {
-  video=$1
-  quality=${2:=360p}
-  livestreamer "http://www.youtube.com/watch?v=$video" $quality
-}
 
 # $1 search
 # $2 replace
@@ -129,18 +119,6 @@ subs.retimemkv() {
   find . -name \*.srt | sed 's/\.srt$//' | xargs -I{} alass-cli {}.mkv {}.srt {}.srt
 }
 
-mkavatar() {
-  file="$(mktemp -t kanji).png"
-  font='/System/Library/Fonts/ヒラギノ角ゴシック W6.ttc'
-  convert -size 200x200 -pointsize 190 -gravity center -font $font caption:"$1" $file
-  upload-file $file
-  echo "image: $file"
-}
-
-mount.veda() {
-  sshfs pigoz@veda.local:/var/lib/transmission-daemon/downloads /Volumes/veda -o volname=veda
-}
-
 vim-reset() {
   rm -rf ~/.local/share/nvim ~/.config/nvim/plugin/packer_compiled.lua
 }
@@ -150,23 +128,8 @@ bindkey '^[^[[C' forward-word
 bindkey '^[[5D' beginning-of-line
 bindkey '^[[5C' end-of-line
 
-# Tmux productivity stuff
-source ~/.zshtmux
-
 # Aliases
 source ~/.localrc
 
 # PATH setup
 source ~/.zshpath
-
-# added by travis gem
-[ -f /Users/pigoz/.travis/travis.sh ] && source /Users/pigoz/.travis/travis.sh
-
-# OPAM configuration
-source ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
-
-PATH="/Users/pigoz/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="/Users/pigoz/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/Users/pigoz/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/Users/pigoz/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/Users/pigoz/perl5"; export PERL_MM_OPT;

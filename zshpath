@@ -9,22 +9,15 @@ fi
 # add rbenv shims to path
 export PATH=$HOME/.rbenv/bin:$PATH
 
+# Rust
+export PATH=$HOME/.cargo/env:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
-
-# add yarn global bin
-export PATH="$PATH:`yarn global bin`"
 
 # add dotfiles bin path
 export PATH=$HOME/.bin:$PATH
 
 # nodejs paths
 export PATH=/usr/local/share/npm/bin:$PATH
-
-# add cabal binaries
-export PATH=~/.cabal/bin:$PATH
-
-# mactex basic
-export PATH=~/usr/local/texlive/2015basic/bin/x86_64-darwin:$PATH
 
 # system bin
 export PATH=/usr/local/sbin:$PATH
@@ -34,10 +27,6 @@ export PATH=/usr/local/bin:$PATH
 export GOPATH=$HOME/dev/gocode
 export PATH=$GOPATH/bin:$PATH
 
-# Rust
-export PATH=$HOME/.cargo/env:$PATH
-
-export PATH=/Applications/Wine\ Staging.app/Contents/Resources/wine/bin:$PATH
 
 export ANDROID_HOME=~/Library/Android/sdk
 export MACVIM_BIN=/Applications/MacVim.app/Contents/bin
@@ -52,28 +41,3 @@ fi
 if command_exists rbenv ; then
   eval "$(rbenv init - zsh)"
 fi
-
-# Load Node Version Manager
-export NVM_DIR="$HOME/.nvm"
-
-# https://github.com/nvm-sh/nvm#zshttps://github.com/nvm-sh/nvm#zshh
-autoload -U add-zsh-hook
-load-nvmrc() {
-  local node_version="$(nvm version)"
-  local nvmrc_path="$(nvm_find_nvmrc)"
-
-  if [ -n "$nvmrc_path" ]; then
-    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
-
-    if [ "$nvmrc_node_version" = "N/A" ]; then
-      nvm install
-    elif [ "$nvmrc_node_version" != "$node_version" ]; then
-      nvm use
-    fi
-  elif [ "$node_version" != "$(nvm version default)" ]; then
-    echo "Reverting to nvm default version"
-    nvm use default
-  fi
-}
-add-zsh-hook chpwd load-nvmrc
-load-nvmrc
