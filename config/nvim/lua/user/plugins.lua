@@ -108,6 +108,13 @@ return require('user.packer').setup(function(use)
   }
 
   use {
+    'ggandor/leap.nvim',
+    config = function()
+      require('leap').add_default_mappings()
+    end
+  }
+
+  use {
     'navarasu/onedark.nvim',
     config = function()
       require('onedark').load()
