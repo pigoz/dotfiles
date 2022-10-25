@@ -10,6 +10,7 @@ function M.setup_which_key_bindings(wk)
     ["<leader>a"] = { "<Plug>(coc-codeaction)", "lsp line action" },
     ["<leader>k"] = { M.coc_documentation, "lsp show documentation" },
     ["<leader>j"] = { "<Plug>(coc-definition)", "lsp jump definition" },
+    ["<leader>g"] = { ":LazyGit<cr>", "lazygit" },
 
     ["<leader>c"] = {
       name = "+config",
@@ -91,6 +92,7 @@ function M.setup_global_key_bindings()
   u.key("n", "<D-r>", M.telescope_grep)
   u.key("n", "<D-b>", M.telescope_buffers)
   u.key("n", "<D-t>", u.deprecated('LEADER-f or CMD-f'))
+  u.key("n", "<D-g>", ":LazyGit<cr>")
 
   u.key("i", "<D-d>", ":Neotree filesystem toggle left<cr>")
   u.key("i", "<D-f>", M.telescope_files)

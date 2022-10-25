@@ -27,6 +27,7 @@ return require('user.packer').setup(function(use)
   }
 
   use { 'tpope/vim-fugitive' } -- for :Gblame
+  use { 'kdheepak/lazygit.nvim' }
 
   use {
     'nvim-lualine/lualine.nvim',
