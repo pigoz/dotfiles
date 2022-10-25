@@ -25,6 +25,10 @@ export VISUAL="mvim --nofork"
 
 pg_dir='/usr/local/var/postgres'
 
+lg() {
+  lazygit
+}
+
 pg.start() {
   pg_ctl -D $pg_dir -l $pg_dir/server.log start
 }
