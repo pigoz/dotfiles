@@ -101,15 +101,6 @@ return require('user.packer').setup(function(use)
   end }
 
   use {
-    'https://gitlab.com/yorickpeterse/nvim-window.git',
-    config = function()
-      require('nvim-window').setup({
-        chars = { 'd', 'f', 'v', 'e', 'r', 'g' },
-      })
-    end
-  }
-
-  use {
     'beauwilliams/focus.nvim',
     config = function()
       require('focus').setup({})
