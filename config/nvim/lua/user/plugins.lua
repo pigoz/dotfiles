@@ -20,7 +20,7 @@ return require('user.packer').setup(function(use)
           'cssls',
           'sumneko_lua',
           'tsserver',
-          'ruby_ls'
+          -- 'ruby_ls'
         },
         -- automatic_installation = true,
       })
