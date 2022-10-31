@@ -122,6 +122,13 @@ return require('user.packer').setup(function(use)
   }
 
   use {
+    'numToStr/Comment.nvim',
+    config = function()
+      require('Comment').setup()
+    end
+  }
+
+  use {
     'navarasu/onedark.nvim',
     config = function()
       require('onedark').load()
