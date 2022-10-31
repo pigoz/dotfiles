@@ -64,18 +64,20 @@ function M.setup_which_key_bindings(wk)
 end
 
 function M.setup_global_key_bindings()
+  local set = vim.keymap.set
+  local expr = { expr = true }
   -- D-k starts autocompletion
-  u.keye('i', '<D-k>', 'coc#refresh()')
+  set('i', '<D-k>', 'coc#refresh()', expr)
 
   -- CR selects current item is coc completion is visible, otherwise send CR
-  u.keye('i', '<CR>', 'coc#pum#visible() ? coc#pum#confirm() : "\\<CR>""')
+  set('i', '<CR>', 'coc#pum#visible() ? coc#pum#confirm() : "\\<CR>""', expr)
 
-  u.key("n", "Q", "<Nop>") -- disable ex mode
+  set("n", "Q", "<Nop>") -- disable ex mode
 
-  u.key("n", "<PageUp>", "<C-u>")
-  u.key("n", "<PageDown>", "<C-d>")
+  set("n", "<PageUp>", "<C-u>")
+  set("n", "<PageDown>", "<C-d>")
 
-  u.key("n", "<cr>", ":nohlsearch<cr>") -- remove highlights
+  set("n", "<cr>", ":nohlsearch<cr>") -- remove highlights
 
   -- easier window navigation
   -- key("n", "<c-h>", "<c-w>h")
@@ -84,26 +86,26 @@ function M.setup_global_key_bindings()
   -- key("n", "<c-l>", "<c-w>l")
 
   -- better visual-mode indentation
-  u.key("v", "<", "<gv")
-  u.key("v", ">", ">gv")
+  set("v", "<", "<gv")
+  set("v", ">", ">gv")
 
-  u.key("n", "<D-d>", ":Neotree filesystem toggle left<cr>")
-  u.key("n", "<D-f>", M.telescope_files)
-  u.key("n", "<D-r>", M.telescope_grep)
-  u.key("n", "<D-b>", M.telescope_buffers)
-  u.key("n", "<D-t>", u.deprecated('LEADER-f or CMD-f'))
-  u.key("n", "<D-g>", ":LazyGit<cr>")
+  set("n", "<D-d>", ":Neotree filesystem toggle left<cr>")
+  set("n", "<D-f>", M.telescope_files)
+  set("n", "<D-r>", M.telescope_grep)
+  set("n", "<D-b>", M.telescope_buffers)
+  set("n", "<D-t>", u.deprecated('LEADER-f or CMD-f'))
+  set("n", "<D-g>", ":LazyGit<cr>")
 
-  u.key("i", "<D-d>", ":Neotree filesystem toggle left<cr>")
-  u.key("i", "<D-f>", M.telescope_files)
-  u.key("n", "<D-r>", M.telescope_grep)
-  u.key("i", "<D-b>", M.telescope_buffers)
-  u.key("i", "<D-t>", u.deprecated('LEADER-f or CMD-f'))
+  set("i", "<D-d>", ":Neotree filesystem toggle left<cr>")
+  set("i", "<D-f>", M.telescope_files)
+  set("n", "<D-r>", M.telescope_grep)
+  set("i", "<D-b>", M.telescope_buffers)
+  set("i", "<D-t>", u.deprecated('LEADER-f or CMD-f'))
 
-  u.key("n", "<c-w>h", u.deprecated("LEADER-j or ="))
-  u.key("n", "<c-w>j", u.deprecated("LEADER-j or ="))
-  u.key("n", "<c-w>k", u.deprecated("LEADER-j or ="))
-  u.key("n", "<c-w>l", u.deprecated("LEADER-j or ="))
+  set("n", "<c-w>h", u.deprecated("LEADER-j or ="))
+  set("n", "<c-w>j", u.deprecated("LEADER-j or ="))
+  set("n", "<c-w>k", u.deprecated("LEADER-j or ="))
+  set("n", "<c-w>l", u.deprecated("LEADER-j or ="))
 end
 
 function M.telescope_files()

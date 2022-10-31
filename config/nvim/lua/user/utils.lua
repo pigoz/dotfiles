@@ -17,21 +17,6 @@ function M.deprecated(key)
   return ':echo "deprecated, please use «' .. key .. '» instead"<cr>'
 end
 
-local default_opts = { noremap = true, silent = true }
-
-function M.key(mode, key, action)
-  vim.keymap.set(mode, key, action, default_opts)
-end
-
-function M.keye(mode, key, action)
-  vim.keymap.set(mode, key, action, M.mergetbl(default_opts, { expr = true }))
-end
-
-function M.keyo(mode, key, action, given_opts)
-  local opts = M.mergetbl(default_opts, given_opts)
-  vim.keymap.set(mode, key, action, opts)
-end
-
 function M.reload_config()
   for name, _ in pairs(package.loaded) do
     package.loaded[name] = nil
