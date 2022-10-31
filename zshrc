@@ -29,6 +29,10 @@ lg() {
   lazygit
 }
 
+gitx() {
+  lazygit
+}
+
 pg.start() {
   pg_ctl -D $pg_dir -l $pg_dir/server.log start
 }
