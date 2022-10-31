@@ -59,3 +59,5 @@
   show-rev-graph = yes
 [push]
   default = simple
+[pull]
+  rebase = true
