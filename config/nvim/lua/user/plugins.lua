@@ -3,50 +3,6 @@ return require('user.packer').setup(function(use)
 
   use { 'sheerun/vim-polyglot' }
 
-  use {
-    "neovim/nvim-lspconfig",
-    requires = {
-      "williamboman/mason.nvim",
-      "williamboman/mason-lspconfig.nvim",
-    },
-    config = function()
-      require("mason").setup()
-      require('mason-lspconfig').setup({
-        ensure_installed = {
-          'jsonls',
-          'yamlls',
-          'cssls',
-          'sumneko_lua',
-          'tsserver',
-          -- 'ruby_ls'
-        },
-        -- automatic_installation = true,
-      })
-      require("mason-lspconfig").setup_handlers({
-        function(server)
-          require("lspconfig")[server].setup({
-            on_attach = function()
-              require('user.keys').setup_lsp_keybindings()
-            end
-          })
-
-          if server == 'sumneko_lua' then
-            require('lspconfig').sumneko_lua.setup({
-              settings = {
-                Lua = {
-                  diagnostics = {
-                    globals = { "vim" },
-                  },
-                },
-              },
-            })
-          end
-        end
-      })
-      vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
-    end
-  }
-
   local devicons = {
     "kyazdani42/nvim-web-devicons",
     config = function()
@@ -54,6 +10,25 @@ return require('user.packer').setup(function(use)
         default = true,
       })
     end
+  }
+
+  use {
+    'neovim/nvim-lspconfig',
+    requires = {
+      'williamboman/mason.nvim',
+      'williamboman/mason-lspconfig.nvim',
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-nvim-lua',
+      'hrsh7th/nvim-cmp',
+      'onsails/lspkind.nvim',
+      'L3MON4D3/LuaSnip',
+      'saadparwaiz1/cmp_luasnip',
+      'folke/trouble.nvim',
+      devicons
+    },
+    config = require('user.lsp').config
   }
 
   use { 'tpope/vim-fugitive' } -- for :Gblame

@@ -8,7 +8,7 @@ vim.o.updatetime = 200
 
 vim.o.termguicolors = true
 vim.o.fileformat = 'unix'
-vim.o.encoding="utf-8"
+vim.o.encoding = "utf-8"
 
 -- Use 2 spaces softtabs for everything except for languages where the
 -- convention is 4spaces softtabs
@@ -81,13 +81,13 @@ vim.g.maplocalleader = ' '
 -- Ignore these files when using CtrlP
 vim.opt.wildignore:append {
   -- Rails specific
-  '*/tmp/*','*/.sass_cache/*','*/vendor/assets/*','*/public/assets/*',
+  '*/tmp/*', '*/.sass_cache/*', '*/vendor/assets/*', '*/public/assets/*',
   -- Python specific
   '*.pyc*',
   -- C specific
-  '*/build/*','*.d','*.o',
+  '*/build/*', '*.d', '*.o',
   -- SCM specific
-  '*/.git/*','*/.hg/*','*/.svn/*',
+  '*/.git/*', '*/.hg/*', '*/.svn/*',
   -- JavaScript specific
-  '*/dist/*','*/node_modules/*'
+  '*/dist/*', '*/node_modules/*'
 }
