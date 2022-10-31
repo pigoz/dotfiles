@@ -8,9 +8,31 @@ return require('user.packer').setup(function(use)
     requires = {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
-      "ms-jpq/coq_nvim",
+      {
+        "ms-jpq/coq_nvim",
+        run = ':COQdeps',
+        branch = 'coq'
+      }
     },
     config = function()
+      vim.g.coq_settings = {
+        auto_start = 'shut-up',
+        clients = {
+          tree_sitter = { enabled = true },
+          paths = { enabled = true, resolution = { 'file' } },
+          snippets = { enabled = false, warn = {} },
+          tags = { enabled = false }
+        },
+        keymap = {
+          recommended = true,
+          pre_select = true,
+        },
+        display = {
+          icons = {
+            mode = "short"
+          }
+        }
+      }
       local coq = require('coq')
       require("mason").setup()
       require('mason-lspconfig').setup({
