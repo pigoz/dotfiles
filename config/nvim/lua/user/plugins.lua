@@ -8,37 +8,8 @@ return require('user.packer').setup(function(use)
     requires = {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
-      {
-        "ms-jpq/coq_nvim",
-        run = ':COQdeps',
-        branch = 'coq',
-        requires = {
-          'ms-jpq/coq.thirdparty',
-          branch = '3p'
-        }
-      }
     },
     config = function()
-      vim.g.coq_settings = {
-        auto_start = 'shut-up',
-        clients = {
-          tree_sitter = { enabled = false },
-          paths = { enabled = false, resolution = { 'file' } },
-          snippets = { enabled = false, warn = {} },
-          tags = { enabled = false },
-          lsp = { enabled = true, always_on_top = { 'lsp/tsserver' } }
-        },
-        keymap = {
-          recommended = true,
-          pre_select = true,
-        },
-        display = {
-          icons = {
-            mode = "short"
-          }
-        }
-      }
-      local coq = require('coq')
       require("mason").setup()
       require('mason-lspconfig').setup({
         ensure_installed = {
@@ -53,11 +24,11 @@ return require('user.packer').setup(function(use)
       })
       require("mason-lspconfig").setup_handlers({
         function(server)
-          require("lspconfig")[server].setup(coq.lsp_ensure_capabilities({
+          require("lspconfig")[server].setup({
             on_attach = function()
               require('user.keys').setup_lsp_keybindings()
             end
-          }))
+          })
 
           if server == 'sumneko_lua' then
             require('lspconfig').sumneko_lua.setup({
