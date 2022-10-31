@@ -11,14 +11,18 @@ return require('user.packer').setup(function(use)
       {
         "ms-jpq/coq_nvim",
         run = ':COQdeps',
-        branch = 'coq'
+        branch = 'coq',
+        requires = {
+          'ms-jpq/coq.thirdparty',
+          branch = '3p'
+        }
       }
     },
     config = function()
       vim.g.coq_settings = {
         auto_start = 'shut-up',
         clients = {
-          tree_sitter = { enabled = true },
+          tree_sitter = { enabled = false },
           paths = { enabled = true, resolution = { 'file' } },
           snippets = { enabled = false, warn = {} },
           tags = { enabled = false }
