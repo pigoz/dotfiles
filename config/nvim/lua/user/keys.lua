@@ -36,8 +36,12 @@ function M.setup_which_key_bindings(wk)
     },
     ['<leader>d'] = {
       name = '+diagnostics',
+      ['t'] = { ':TroubleToggle<cr>', 'toggle' },
       ['d'] = { ':TroubleToggle document_diagnostics<cr>', 'document' },
       ['w'] = { ':TroubleToggle workspace_diagnostics<cr>', 'workspace' },
+      ['l'] = { ':TroubleToggle loclist<cr>', 'loclist' },
+      ['q'] = { ':TroubleToggle quickfix<cr>', 'quickfix' },
+      ['r'] = { ':TroubleToggle lsp_references<cr>', 'lsp references' },
     }
   })
 end
