@@ -26,10 +26,6 @@ function M.reload_config()
   vim.notify("nvim config reloaded!", vim.log.levels.INFO)
 end
 
-function M.pick_window()
-  require('nvim-window').pick()
-end
-
 function M.cycle_buffer()
   -- M.dump(vim.api.nvim_tabpage_list_wins(0))
   vim.api.nvim_command('FocusSplitCycle')

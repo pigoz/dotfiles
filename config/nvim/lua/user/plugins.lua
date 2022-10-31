@@ -4,18 +4,36 @@ return require('user.packer').setup(function(use)
   use { 'sheerun/vim-polyglot' }
 
   use {
-    'neoclide/coc.nvim',
-    branch = 'release',
+    "neovim/nvim-lspconfig",
+    requires = {
+      "williamboman/mason.nvim",
+      "williamboman/mason-lspconfig.nvim",
+    },
     config = function()
-      vim.g.coc_global_extensions = {
-        'coc-emoji', 'coc-eslint', 'coc-prettier', 'coc-tsserver', 'coc-css',
-        'coc-json', 'coc-pyls', 'coc-yaml', 'coc-sumneko-lua', 'coc-solargraph'
-      }
-      -- XXX use vim.fs.normalize when upgraded to nvim 0.8
-      vim.g.coc_node_path = vim.fn.expand(
-        '~/.nvm/versions/node/v18.8.0/bin/node')
+      require("mason").setup()
+      require('mason-lspconfig').setup({
+        ensure_installed = {
+          'jsonls',
+          'yamlls',
+          'cssls',
+          'sumneko_lua',
+          'tsserver',
+          'ruby_ls'
+        },
+        -- automatic_installation = true,
+      })
+      require("mason-lspconfig").setup_handlers({
+        function(server_name)
+          require("lspconfig")[server_name].setup({
+            on_attach = function()
+              require('user.keys').setup_lsp_keybindings()
+            end
+          })
+        end
+      })
     end
   }
+
 
   local devicons = {
     "kyazdani42/nvim-web-devicons",

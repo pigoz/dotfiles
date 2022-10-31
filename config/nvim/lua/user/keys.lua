@@ -108,6 +108,16 @@ function M.setup_global_key_bindings()
   set("n", "<c-w>l", u.deprecated("LEADER-j or ="))
 end
 
+function M.setup_lsp_keybindings()
+  local set = vim.keymap.set
+  set('n', 'K', vim.lsp.buf.hover, { buffer = 0 })
+  set('n', 'gd', vim.lsp.buf.definition, { buffer = 0 })
+  set('n', 'gt', vim.lsp.buf.type_definition, { buffer = 0 })
+  set('n', 'gi', vim.lsp.buf.implementation, { buffer = 0 })
+  set('n', '<D-n>', vim.diagnostic.goto_prev, { buffer = 0 })
+  set('n', '<D-m>', vim.diagnostic.goto_next, { buffer = 0 })
+end
+
 function M.telescope_files()
   require('telescope.builtin').find_files(
     require('telescope.themes').get_dropdown {
