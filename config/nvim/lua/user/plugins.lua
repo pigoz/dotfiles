@@ -8,8 +8,10 @@ return require('user.packer').setup(function(use)
     requires = {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
+      "ms-jpq/coq_nvim",
     },
     config = function()
+      local coq = require('coq')
       require("mason").setup()
       require('mason-lspconfig').setup({
         ensure_installed = {
@@ -23,17 +25,17 @@ return require('user.packer').setup(function(use)
         -- automatic_installation = true,
       })
       require("mason-lspconfig").setup_handlers({
-        function(server_name)
-          require("lspconfig")[server_name].setup({
+        function(server)
+          require("lspconfig")[server].setup(coq.lsp_ensure_capabilities({
             on_attach = function()
               require('user.keys').setup_lsp_keybindings()
             end
-          })
+          }))
         end
       })
+      vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
     end
   }
-
 
   local devicons = {
     "kyazdani42/nvim-web-devicons",

@@ -6,8 +6,8 @@ function M.setup_which_key_bindings(wk)
     ["<D-k>"] = { u.cycle_buffer, "focus split cycle" },
     ["<D-j>"] = { u.cycle_buffer_reverse, "focus split cycle (reverse)" },
 
-    ["<leader>a"] = { "<Plug>(coc-codeaction)", "lsp line action" },
-    ["<leader>k"] = { M.coc_documentation, "lsp show documentation" },
+    ["<leader>a"] = { vim.lsp.buf.code_action, "lsp line action" },
+    ["<leader>k"] = { vim.lsp.buf.hover, "lsp show documentation" },
     ["<leader>j"] = { "<Plug>(coc-definition)", "lsp jump definition" },
     ["<leader>g"] = { ":LazyGit<cr>", "lazygit" },
 
@@ -65,12 +65,6 @@ end
 function M.setup_global_key_bindings()
   local set = vim.keymap.set
   local expr = { expr = true }
-  -- D-k starts autocompletion
-  set('i', '<D-k>', 'coc#refresh()', expr)
-
-  -- CR selects current item is coc completion is visible, otherwise send CR
-  set('i', '<CR>', 'coc#pum#visible() ? coc#pum#confirm() : "\\<CR>""', expr)
-
   set("n", "Q", "<Nop>") -- disable ex mode
 
   set("n", "<PageUp>", "<C-u>")
@@ -111,11 +105,12 @@ end
 function M.setup_lsp_keybindings()
   local set = vim.keymap.set
   set('n', 'K', vim.lsp.buf.hover, { buffer = 0 })
-  set('n', 'gd', vim.lsp.buf.definition, { buffer = 0 })
+  set('n', 'gd', vim.lsp.buf.definition, { buffer = 0, desc = 'Go to definition' })
   set('n', 'gt', vim.lsp.buf.type_definition, { buffer = 0 })
   set('n', 'gi', vim.lsp.buf.implementation, { buffer = 0 })
   set('n', '<D-n>', vim.diagnostic.goto_prev, { buffer = 0 })
   set('n', '<D-m>', vim.diagnostic.goto_next, { buffer = 0 })
+  set('n', '<D-l>', vim.lsp.buf.formatting_sync, { buffer = 0 })
 end
 
 function M.telescope_files()
@@ -143,12 +138,6 @@ function M.telescope_buffers()
       prompt_prefix = "🔍",
       previewer = false
     })
-end
-
-function M.coc_documentation()
-  if vim.fn.CocAction('hasProvider', 'hover') then
-    vim.fn.CocActionAsync('doHover')
-  end
 end
 
 return M
