@@ -5,7 +5,6 @@ function M.setup_which_key_bindings(wk)
   wk.register({
     ["<D-k>"] = { u.cycle_buffer, "focus split cycle" },
     ["<D-j>"] = { u.cycle_buffer_reverse, "focus split cycle (reverse)" },
-    ['='] = { u.pick_window, "pick window" },
 
     ["<leader>a"] = { "<Plug>(coc-codeaction)", "lsp line action" },
     ["<leader>k"] = { M.coc_documentation, "lsp show documentation" },
@@ -95,6 +94,7 @@ function M.setup_global_key_bindings()
   set("n", "<D-b>", M.telescope_buffers)
   set("n", "<D-t>", u.deprecated('LEADER-f or CMD-f'))
   set("n", "<D-g>", ":LazyGit<cr>")
+  set("n", "=", ":pop<cr>")
 
   set("i", "<D-d>", ":Neotree filesystem toggle left<cr>")
   set("i", "<D-f>", M.telescope_files)
