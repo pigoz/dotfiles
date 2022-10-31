@@ -23,9 +23,10 @@ return require('user.packer').setup(function(use)
         auto_start = 'shut-up',
         clients = {
           tree_sitter = { enabled = false },
-          paths = { enabled = true, resolution = { 'file' } },
+          paths = { enabled = false, resolution = { 'file' } },
           snippets = { enabled = false, warn = {} },
-          tags = { enabled = false }
+          tags = { enabled = false },
+          lsp = { enabled = true, always_on_top = { 'lsp/tsserver' } }
         },
         keymap = {
           recommended = true,
@@ -57,6 +58,18 @@ return require('user.packer').setup(function(use)
               require('user.keys').setup_lsp_keybindings()
             end
           }))
+
+          if server == 'sumneko_lua' then
+            require('lspconfig').sumneko_lua.setup({
+              settings = {
+                Lua = {
+                  diagnostics = {
+                    globals = { "vim" },
+                  },
+                },
+              },
+            })
+          end
         end
       })
       vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
