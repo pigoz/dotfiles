@@ -64,7 +64,6 @@ end
 
 function M.setup_global_key_bindings()
   local set = vim.keymap.set
-  local expr = { expr = true }
   set("n", "Q", "<Nop>") -- disable ex mode
 
   set("n", "<PageUp>", "<C-u>")
