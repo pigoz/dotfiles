@@ -50,7 +50,6 @@ function M.config()
   vim.opt.completeopt = { "menu", "menuone", "noselect" }
   vim.opt.shortmess:append "c"
 
-  local lspkind = require('lspkind')
   local cmp = require('cmp')
 
   cmp.setup({
@@ -60,8 +59,8 @@ function M.config()
       end,
     },
     window = {
-      -- completion = cmp.config.window.bordered(),
-      -- documentation = cmp.config.window.bordered(),
+      completion = cmp.config.window.bordered(),
+      documentation = cmp.config.window.bordered(),
     },
     mapping = cmp.mapping.preset.insert({
       ['<C-b>'] = cmp.mapping.scroll_docs(-4),
@@ -84,7 +83,7 @@ function M.config()
       ghost_text = true,
     },
     formatting = {
-      format = lspkind.cmp_format {
+      format = require('lspkind').cmp_format {
         with_text = true,
         menu = {
           buffer = "[buf]",
