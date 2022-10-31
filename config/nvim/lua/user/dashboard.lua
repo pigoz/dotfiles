@@ -15,7 +15,7 @@ end
 
 local home = os.getenv('HOME')
 
-M.custom_header = {
+local custom_header = {
     [[]],
     [[__________________|      |____________________________________________]],
     [[     ,--.    ,--.          ,--.   ,--.                                ]],
@@ -27,7 +27,7 @@ M.custom_header = {
     [[]],
 }
 
-M.custom_center = {
+local custom_center = {
     { icon = '  ',
         desc = 'Recently latest session                  ',
         shortcut = 'SPC s l',
@@ -54,9 +54,16 @@ M.custom_center = {
         shortcut = 'SPC f d' },
 }
 
-M.custom_footer = {
+local custom_footer = {
     nvim_version(),
     table.concat({ lua_version(), luajit_version() }, ' ')
 }
+
+M.config = function()
+    local db = require('dashboard')
+    db.custom_header = custom_header
+    db.custom_center = custom_center
+    db.custom_footer = custom_footer
+end
 
 return M

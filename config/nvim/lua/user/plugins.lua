@@ -122,13 +122,7 @@ return require('user.packer').setup(function(use)
     end
   }
 
-  use { 'glepnir/dashboard-nvim', config = function()
-    local db = require('dashboard')
-    local dbconfig = require('user.dashboard')
-    db.custom_header = dbconfig.custom_header
-    db.custom_center = dbconfig.custom_center
-    db.custom_footer = dbconfig.custom_footer
-  end }
+  use { 'glepnir/dashboard-nvim', config = require('user.dashboard').config }
 
   use {
     'beauwilliams/focus.nvim',
