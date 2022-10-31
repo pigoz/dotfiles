@@ -122,7 +122,13 @@ return require('user.packer').setup(function(use)
     end
   }
 
-  use { 'glepnir/dashboard-nvim', config = require('user.dashboard').config }
+  use {
+    'goolord/alpha-nvim',
+    requires = { devicons },
+    config = function()
+      require('alpha').setup(require('alpha.themes.startify').config)
+    end
+  }
 
   use {
     'beauwilliams/focus.nvim',
