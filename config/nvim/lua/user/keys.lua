@@ -13,11 +13,15 @@ function M.setup_which_key_bindings(wk)
       ['e'] = { ':e $MYVIMRC<cr>', 'edit' },
       ['r'] = { u.reload_config, 'reload' },
     },
-    -- ["<leader>f"] = {
-    --   name = '+fold',
-    --   f = { 'za', 'fold toggle' },
-    --   d = { 'zR', 'fold clear all' },
-    -- },
+    ["<leader>f"] = {
+      name = '+find',
+      f = { M.telescope_files, 'files' },
+      b = { M.telescope_buffers, 'buffers' },
+      h = { M.telescope_help, 'help tags' },
+      g = { M.telescope_grep, 'grep files' },
+      -- f = { 'za', 'fold toggle' },
+      -- d = { 'zR', 'fold clear all' },
+    },
     ["<leader>j"] = {
       name = '+lsp',
       ['q'] = { M.quickfix, 'quickfix' },
@@ -138,6 +142,15 @@ function M.telescope_buffers()
   require('telescope.builtin').buffers(
     require('telescope.themes').get_dropdown {
       prompt_title = "buffers",
+      prompt_prefix = "🔍",
+      previewer = false
+    })
+end
+
+function M.telescope_help()
+  require('telescope.builtin').buffers(
+    require('telescope.themes').get_dropdown {
+      prompt_title = "help tags",
       prompt_prefix = "🔍",
       previewer = false
     })
