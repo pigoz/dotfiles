@@ -18,7 +18,7 @@ function M.setup_which_key_bindings(wk)
     --   f = { 'za', 'fold toggle' },
     --   d = { 'zR', 'fold clear all' },
     -- },
-    ["<leader>l"] = {
+    ["<leader>j"] = {
       name = '+lsp',
       ['q'] = { M.quickfix, 'quickfix' },
       ['k'] = { vim.lsp.buf.hover, 'show documentation' },
@@ -26,7 +26,8 @@ function M.setup_which_key_bindings(wk)
       ['d'] = { vim.lsp.buf.definition, 'definition' },
       ['D'] = { vim.lsp.buf.declaration, 'declaration' },
       ['t'] = { vim.lsp.buf.type_definition, 'type definition' },
-      ['f'] = { vim.lsp.buf.range_formatting, 'format selected' },
+      ['f'] = { require('user.lsp').format, 'format' },
+      -- ['g'] = { vim.lsp.buf.range_formatting, 'format ranGe' },
       ['i'] = { vim.lsp.buf.implementation, 'implementation' },
       ['n'] = { vim.diagnostic.goto_next, 'next diagnostic' },
       ['p'] = { vim.diagnostic.goto_prev, 'prev diagnostic' },
@@ -106,12 +107,13 @@ function M.setup_global_key_bindings()
   set("v", '<D-v>', '"_c<C-r><C-o>+') -- don't update *-register with selection
 end
 
-function M.setup_lsp_keybindings()
+function M.setup_lsp_keybindings(_, bufnr)
   local set = vim.keymap.set
-  set('n', 'K', vim.lsp.buf.hover, { buffer = 0 })
-  set('n', 'gd', vim.lsp.buf.definition, { buffer = 0, desc = 'Go to definition' })
-  set('n', 'gt', vim.lsp.buf.type_definition, { buffer = 0 })
-  set('n', 'gi', vim.lsp.buf.implementation, { buffer = 0 })
+  local opt = { buffer = bufnr }
+  set('n', 'K', vim.lsp.buf.hover, opt)
+  set('n', 'gd', vim.lsp.buf.definition, opt)
+  set('n', 'gt', vim.lsp.buf.type_definition, opt)
+  set('n', 'gi', vim.lsp.buf.implementation, opt)
 end
 
 function M.telescope_files()

@@ -1,10 +1,20 @@
 local M = {}
 
+function M.format(bufnr)
+  vim.lsp.buf.format({
+    filter = function(client)
+      local blacklist = { 'tsserver' }
+      return not require('user.utils').table.contains(blacklist, client.name)
+    end,
+    bufnr = bufnr or vim.api.nvim_get_current_buf(),
+  })
+end
+
 function M.config()
   -- advertise lsp completion capabilities to the language server
   local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
   require("mason").setup()
+
   require('mason-lspconfig').setup({
     ensure_installed = {
       'jsonls',
@@ -16,12 +26,13 @@ function M.config()
     },
     -- automatic_installation = true,
   })
+
   require('mason-lspconfig').setup_handlers({
     function(server)
       require("lspconfig")[server].setup({
         capabilities = capabilities,
-        on_attach = function()
-          require('user.keys').setup_lsp_keybindings()
+        on_attach = function(client, bufnr)
+          require('user.keys').setup_lsp_keybindings(client, bufnr)
         end
       })
     end,
@@ -38,18 +49,28 @@ function M.config()
           },
         },
       })
-    end
+    end,
   })
 
-  require('trouble').setup()
+  local null_ls = require("null-ls")
+  local formatting = null_ls.builtins.formatting;
+  local diagnostics = null_ls.builtins.diagnostics;
+
+  -- XXX handle nvm lazy mode + prettier in a less shitty way
+  vim.opt.path:append(vim.fs.normalize('~/.nvm/versions/node/v18.8.0/bin'))
+
+  null_ls.setup({
+    sources = {
+      formatting.prettier,
+      formatting.rubocop,
+      diagnostics.rubocop
+    },
+  })
 
   -- auto format on save
-  vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
+  vim.cmd [[autocmd BufWritePre * lua require('user.lsp').format()]]
 
-  -- #########################################################################
-  -- completion setup
-  -- #########################################################################
-
+  -- setup completion
   vim.opt.completeopt = { "menu", "menuone", "noselect" }
   vim.opt.shortmess:append "c"
 
@@ -100,6 +121,9 @@ function M.config()
     }
   })
 
+  -- setup cosmetics
+  require('trouble').setup()
+
   local icons = {
     Error = "",
     Warn = "",
@@ -134,7 +158,7 @@ function M.config()
     )
   end
 
-  local config = {
+  local conf = {
     virtual_text = {
       prefix = '',
       spacing = 2,
@@ -156,7 +180,7 @@ function M.config()
     },
   }
 
-  vim.diagnostic.config(config)
+  vim.diagnostic.config(conf)
 end
 
 return M
