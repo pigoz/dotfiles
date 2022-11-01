@@ -17,7 +17,7 @@ alias ll='ls -Glw'         # standard vertical listing
 alias la='ls -GAlw'        # show hidden files
 
 mvim() {
-  vimr $*
+  nvim-qt $*
 }
 
 export EDITOR=nvim
