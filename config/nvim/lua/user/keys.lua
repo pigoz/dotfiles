@@ -87,6 +87,23 @@ function M.setup_global_key_bindings()
   set("n", "<c-w>j", u.deprecated("LEADER-j or ="))
   set("n", "<c-w>k", u.deprecated("LEADER-j or ="))
   set("n", "<c-w>l", u.deprecated("LEADER-j or ="))
+
+  -- macos mappings for casuals
+  set({ "n", "i", "v", "c" }, '<D-s>', '<cmd>write<cr>')
+  set({ "n", "i", "v", "c" }, '<D-a>', '<esc>ggVG')
+  set("n", '<D-w>', '<C-W>q')
+
+  -- copy
+  set({ "n", "i", "v" }, '<D-c>', '"+y')
+
+  -- cut
+  set({ "n", "i", "v" }, '<D-x>', '"+d')
+
+  -- paste (god this was hard)
+  set("n", '<D-v>', '"*p')
+  set("i", '<D-v>', '<C-o>"*p')
+  set("c", '<D-v>', '<C-R>"')
+  set("v", '<D-v>', '"_c<C-r><C-o>+') -- don't update *-register with selection
 end
 
 function M.setup_lsp_keybindings()

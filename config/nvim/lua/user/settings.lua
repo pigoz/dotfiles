@@ -24,6 +24,12 @@ augroup END
 ]])
 
 -- editor ui
+if vim.opt.guifont == nil then
+  vim.opt.guifont = "*"
+  -- doesn't seem to work
+  -- vim.opt.guifont = { "Hack Nerd Font Mono", "h28" }
+end
+
 vim.o.number = true
 vim.o.numberwidth = 3
 vim.o.signcolumn = 'yes:2'
