@@ -79,7 +79,7 @@ function M.setup_global_key_bindings()
   set("n", "<D-r>", M.telescope_grep)
   set("n", "<D-b>", M.telescope_buffers)
   set("n", "<D-t>", u.deprecated('LEADER-f or CMD-f'))
-  set("n", "<D-g>", ":LazyGit<cr>")
+  set("n", "<D-g>", M.lazygit)
   set("n", "=", ":pop<cr>")
 
   set("i", "<D-d>", ":Neotree filesystem toggle left<cr>")
@@ -154,6 +154,12 @@ function M.telescope_help()
       prompt_prefix = "🔍",
       previewer = false
     })
+end
+
+function M.lazygit()
+  vim.g.lazygit_use_custom_config_file_path = 1
+  vim.g.lazygit_config_file_path = "~/Library/Application\\ Support/lazygit/config.yml"
+  require('lazygit').lazygit()
 end
 
 return M
