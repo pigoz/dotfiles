@@ -22,8 +22,18 @@ function M.format(bufnr)
 end
 
 function M.setup()
-  -- auto format on save
-  vim.cmd [[autocmd BufWritePre * lua require('user.lsp.format').format()]]
+  local group = vim.api.nvim_create_augroup("LspFormat", { clear = true })
+  vim.api.nvim_create_autocmd("FileType", {
+    group = group,
+    pattern = require('user.utils.table').keys(M._config.client_whitelist),
+    callback = function()
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        group = group,
+        pattern = "*",
+        callback = function() require('user.lsp.format').format() end
+      })
+    end
+  })
 end
 
 return M

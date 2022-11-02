@@ -6,24 +6,6 @@ function M.dump(...)
   print(unpack(objects))
 end
 
-M.table = {}
-
-function M.table.merge(a, b)
-  local c = {}
-  for k, v in pairs(a) do c[k] = v end
-  for k, v in pairs(b) do c[k] = v end
-  return c
-end
-
-function M.table.contains(t, element)
-  for _, value in pairs(t) do
-    if value == element then
-      return true
-    end
-  end
-  return false
-end
-
 function M.deprecated(key)
   return ':echo "deprecated, please use «' .. key .. '» instead"<cr>'
 end
