@@ -32,7 +32,7 @@ return require("user.packer").setup(function(use)
       },
       devicons,
     },
-    config = require("user.lsp").config,
+    config = require("user.lsp").setup,
   })
 
   use({ "tpope/vim-fugitive" }) -- for :Gblame

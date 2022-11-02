@@ -30,7 +30,7 @@ function M.setup_which_key_bindings(wk)
       ['d'] = { vim.lsp.buf.definition, 'definition' },
       ['D'] = { vim.lsp.buf.declaration, 'declaration' },
       ['t'] = { vim.lsp.buf.type_definition, 'type definition' },
-      ['f'] = { require('user.lsp').format, 'format' },
+      ['f'] = { require('user.lsp.format').format, 'format' },
       -- ['g'] = { vim.lsp.buf.range_formatting, 'format ranGe' },
       ['i'] = { vim.lsp.buf.implementation, 'implementation' },
       ['n'] = { vim.diagnostic.goto_next, 'next diagnostic' },
