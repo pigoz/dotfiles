@@ -38,8 +38,12 @@ return require("user.packer").setup(function(use)
   use({ "tpope/vim-fugitive" }) -- for :Gblame
 
   use({ 'voldikss/vim-floaterm' })
-  use({ 'romgrk/barbar.nvim', config= function ()
-    require'bufferline'.setup{auto_hide = true, animation = false}
+  use({ 'romgrk/barbar.nvim', config = function()
+    require 'bufferline'.setup({
+      auto_hide = true,
+      animation = false,
+      hide = { current = false, inactive = true, visible = false }
+    })
   end })
 
   use({
