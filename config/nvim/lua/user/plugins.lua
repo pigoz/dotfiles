@@ -37,7 +37,16 @@ return require("user.packer").setup(function(use)
 
   use({ "tpope/vim-fugitive" }) -- for :Gblame
 
-  use({ 'voldikss/vim-floaterm' })
+  use({
+    "voldikss/vim-floaterm",
+    config = function()
+      vim.g.floaterm_height = 0.999
+      vim.g.floaterm_width = 0.999
+      vim.g.floaterm_title = ''
+      vim.g.floaterm_opener = 'tabe'
+    end
+  })
+
   use({ 'romgrk/barbar.nvim', config = function()
     require 'bufferline'.setup({
       auto_hide = true,

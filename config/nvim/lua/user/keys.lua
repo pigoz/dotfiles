@@ -47,6 +47,10 @@ function M.setup_which_key_bindings(wk)
       ['l'] = { ':TroubleToggle loclist<cr>', 'loclist' },
       ['q'] = { ':TroubleToggle quickfix<cr>', 'quickfix' },
       ['r'] = { ':TroubleToggle lsp_references<cr>', 'lsp references' },
+    },
+    ['<leader>h'] = {
+      name = '+terminal',
+      ['h'] = { M.run_tests, 'run project tests' }
     }
   })
 end
@@ -157,11 +161,12 @@ function M.telescope_help()
 end
 
 function M.lazygit()
-  vim.g.floaterm_height = 0.999
-  vim.g.floaterm_width = 0.999
-  vim.g.floaterm_title = ''
-  vim.g.floaterm_opener = 'tabe'
   vim.cmd(':FloatermNew --name=lazygit lazygit')
+end
+
+function M.run_tests()
+  -- XXX support multiple languages, current lines and file
+  vim.cmd(':FloatermNew --name=tests --autoclose=0 npm test')
 end
 
 return M
