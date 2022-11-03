@@ -39,6 +39,8 @@ return require("user.packer").setup(function(use)
 
   use({ "kdheepak/lazygit.nvim" })
 
+  use({ 'voldikss/vim-floaterm' })
+
   use({
     "nvim-lualine/lualine.nvim",
     requires = { devicons },
