@@ -104,10 +104,10 @@ function M.setup_global_key_bindings()
   -- cut
   set({ "n", "i", "v" }, '<D-x>', '"+d')
 
-  -- paste (god this was VERY hard)
+  -- paste (god this was very, VERY hard)
   set("n", '<D-v>', '"+p')
-  set("i", '<D-v>', '<C-R><C-P>"')
-  set("c", '<D-v>', '<C-R>"')
+  set("i", '<D-v>', '<C-R><C-P>+')
+  set("c", '<D-v>', '<C-R>+')
   set("v", '<D-v>', '"_c<C-r><C-o>+') -- don't update *-register with selection
 end
 
