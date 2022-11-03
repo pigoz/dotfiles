@@ -2,6 +2,9 @@ quitOnTopLevelReturn: true
 notARepository: 'quit'
 promptToReturnFromSubprocess: false
 
+gui:
+  showIcons: true
+
 keybinding:
   files:
     commitChanges: 'こ'
