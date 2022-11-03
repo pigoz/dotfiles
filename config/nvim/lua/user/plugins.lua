@@ -37,9 +37,10 @@ return require("user.packer").setup(function(use)
 
   use({ "tpope/vim-fugitive" }) -- for :Gblame
 
-  use({ "kdheepak/lazygit.nvim" })
-
   use({ 'voldikss/vim-floaterm' })
+  use({ 'romgrk/barbar.nvim', config= function ()
+    require'bufferline'.setup{auto_hide = true, animation = false}
+  end })
 
   use({
     "nvim-lualine/lualine.nvim",
