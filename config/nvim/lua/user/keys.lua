@@ -157,8 +157,8 @@ function M.telescope_help()
 end
 
 function M.lazygit()
-  vim.g.floaterm_height = 0.98
-  vim.g.floaterm_width = 0.98
+  vim.g.floaterm_height = 0.999
+  vim.g.floaterm_width = 0.999
   vim.g.floaterm_title = ''
   vim.g.floaterm_opener = 'tabe'
   vim.cmd(':FloatermNew --name=lazygit lazygit')
