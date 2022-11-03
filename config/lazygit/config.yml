@@ -1,0 +1,11 @@
+quitOnTopLevelReturn: true
+notARepository: 'quit'
+promptToReturnFromSubprocess: false
+
+keybinding:
+  files:
+    commitChanges: 'こ'
+    commitChangesWithEditor: 'c'
+  commits:
+    renameCommit: 'れ'
+    renameCommitWithEditor: 'r'
