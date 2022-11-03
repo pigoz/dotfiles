@@ -6,6 +6,9 @@ if command_exists rbenv ; then
   export VISUAL="mvim --nofork"
 fi
 
+# some programs prefer to use ~/Library/App Support otherwise (ie: lazygit)
+export XDG_CONFIG_HOME="$HOME/.config"
+
 # add rbenv shims to path
 export PATH=$HOME/.rbenv/bin:$PATH
 
