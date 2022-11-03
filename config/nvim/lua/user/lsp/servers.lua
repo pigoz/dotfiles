@@ -51,7 +51,7 @@ function M.setup()
 
   null_ls.setup({
     sources = {
-      formatting.prettier,
+      formatting.prettierd,
       formatting.rubocop,
       diagnostics.rubocop
     },
