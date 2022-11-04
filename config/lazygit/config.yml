@@ -12,3 +12,10 @@ keybinding:
   commits:
     renameCommit: 'れ'
     renameCommitWithEditor: 'r'
+
+customCommands:
+  - key: 'I'
+    command: "git rebase -i {{.SelectedLocalCommit.Sha}}^"
+    context: 'commits'
+    description: 'start interactive rebase'
+    subprocess: true
