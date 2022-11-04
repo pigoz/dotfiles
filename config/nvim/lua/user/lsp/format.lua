@@ -30,11 +30,13 @@ function M.setup()
   vim.api.nvim_create_autocmd("FileType", {
     group = group,
     pattern = require('user.utils.table').keys(M._config.client_whitelist),
-    callback = function()
+    callback = function(tbl)
+      -- local filetype = tbl.match i.e.: lua
+      local bufnr = tbl.buf
       vim.api.nvim_create_autocmd("BufWritePre", {
         group = group,
-        pattern = "*",
-        callback = function() require('user.lsp.format').format() end
+        buffer = bufnr,
+        callback = function() require('user.lsp.format').format(bufnr) end
       })
     end
   })
