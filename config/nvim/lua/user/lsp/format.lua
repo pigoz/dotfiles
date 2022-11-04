@@ -35,7 +35,6 @@ function M.setup()
       -- local filetype = tbl.match i.e.: lua
       local bufnr = tbl.buf
       vim.api.nvim_create_autocmd("BufWritePre", {
-        group = group,
         buffer = bufnr,
         callback = function() require('user.lsp.format').format(bufnr) end
       })
