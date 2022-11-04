@@ -27,9 +27,10 @@ end
 
 function M.setup()
   local group = vim.api.nvim_create_augroup("LspFormat", { clear = true })
+  local patterns = require('user.utils.table').keys(M._config.client_whitelist)
   vim.api.nvim_create_autocmd("FileType", {
     group = group,
-    pattern = require('user.utils.table').keys(M._config.client_whitelist),
+    pattern = patterns,
     callback = function(tbl)
       -- local filetype = tbl.match i.e.: lua
       local bufnr = tbl.buf
