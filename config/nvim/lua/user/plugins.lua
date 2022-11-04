@@ -30,6 +30,7 @@ return require("user.packer").setup(function(use)
         "jose-elias-alvarez/null-ls.nvim",
         requires = { "nvim-lua/plenary.nvim" },
       },
+      "b0o/SchemaStore.nvim", -- schema store for yaml and json files
       devicons,
     },
     config = require("user.lsp").setup,

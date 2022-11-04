@@ -24,4 +24,13 @@ function M.keys(tbl)
   return keys
 end
 
+function M.from_array(tbl, fn)
+  local map = {}
+  for _, n in ipairs(tbl) do
+    local k, v = fn(n)
+    map[k] = v
+  end
+  return map
+end
+
 return M

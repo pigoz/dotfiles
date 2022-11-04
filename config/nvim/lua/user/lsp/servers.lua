@@ -40,6 +40,25 @@ function M.setup()
         },
       })
     end,
+    ['yamlls'] = function()
+      require('lspconfig').yamlls.setup({
+        settings = {
+          yaml = {
+            schemas = require('user.lsp.schemastore').yaml(),
+          }
+        }
+      })
+    end,
+    ['jsonls'] = function()
+      require('lspconfig').jsonls.setup({
+        settings = {
+          json = {
+            schemas = require('user.lsp.schemastore').json(),
+            validate = { enable = true },
+          },
+        },
+      })
+    end,
   })
 
   local null_ls = require("null-ls")
