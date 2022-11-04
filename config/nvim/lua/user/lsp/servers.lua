@@ -65,8 +65,7 @@ function M.setup()
   local formatting = null_ls.builtins.formatting;
   local diagnostics = null_ls.builtins.diagnostics;
 
-  -- XXX handle nvm lazy mode + prettier in a less shitty way
-  vim.opt.path:append(vim.fs.normalize('~/.nvm/versions/node/v18.8.0/bin'))
+  require('user.utils.node').append_nvm_bin_path()
 
   null_ls.setup({
     sources = {
