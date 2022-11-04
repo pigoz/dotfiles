@@ -3,10 +3,14 @@ local M = {}
 M._config = {
   client_whitelist = {
     ['lua'] = 'sumneko_lua',
-    ['typescript'] = 'null-ls', -- prettier
+    -- prettier
+    ['typescript'] = 'null-ls',
     ['typescriptreact'] = 'null-ls',
     ['typescript.jsx'] = 'null-ls',
-    ['css'] = 'null-ls', -- prettier
+    ['css'] = 'null-ls',
+    ['json'] = 'null-ls',
+    ['yaml'] = 'null-ls',
+    ['html'] = 'null-ls',
   }
 }
 
