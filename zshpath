@@ -2,10 +2,6 @@ command_exists () {
   type "$1" &> /dev/null ;
 }
 
-if command_exists rbenv ; then
-  export VISUAL="mvim --nofork"
-fi
-
 # some programs prefer to use ~/Library/App Support otherwise (ie: lazygit)
 export XDG_CONFIG_HOME="$HOME/.config"
 

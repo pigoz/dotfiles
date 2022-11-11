@@ -21,7 +21,7 @@ mvim() {
 }
 
 export EDITOR=nvim
-export VISUAL="mvim --nofork"
+export VISUAL=nvim-qt
 
 pg_dir='/usr/local/var/postgres'
 
