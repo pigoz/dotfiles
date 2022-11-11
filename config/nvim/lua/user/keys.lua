@@ -113,6 +113,13 @@ function M.setup_global_key_bindings()
   set("i", '<D-v>', '<C-R><C-P>+')
   set("c", '<D-v>', '<C-R>+')
   set("v", '<D-v>', '"_c<C-r><C-o>+') -- don't update *-register with selection
+
+  -- handle URLs
+  if vim.fn.has("mac") == 1 then
+    set('n', 'gx', '<Cmd>call jobstart(["open", expand("<cfile>")], {"detach": v:true})<CR>')
+  elseif vim.fn.has("unix") == 1 then
+    set('n', 'gx', '<Cmd>call jobstart(["xdg-open", expand("<cfile>")], {"detach": v:true})<CR>')
+  end
 end
 
 function M.setup_lsp_keybindings(_, bufnr)
