@@ -1,0 +1,10 @@
+{
+  "Import react": {
+    "prefix": "ir",
+    "body": ["import * as React from 'react';"]
+  },
+  "Function component": {
+    "prefix": "rfc",
+    "body": ["import React from 'react'\n\ntype Props = {};\n\nexport function ${TM_FILENAME_BASE}(props : Props) {\n\treturn (\n\t\t<React.Fragment>\n\t\t\t$0\n\t\t</React.Fragment>\n\t)\n}"]
+  }
+}

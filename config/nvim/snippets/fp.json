@@ -1,0 +1,54 @@
+{
+  "Gen Function $": {
+    "prefix": "gen$",
+    "body": ["function* ($) {\n\t$0\n}"],
+    "description": "Generator function with $ input"
+  },
+  "Gen Function $ (wrapped)": {
+    "prefix": "zgen$",
+    "body": ["Z.gen(function* ($) {\n\t$0\n})"],
+    "description": "Generator function with $ input"
+  },
+  "Gen Yield $": {
+    "prefix": "yield$",
+    "body": ["yield* $($0)"],
+    "description": "Yield generator calling $()"
+  },
+  "Gen Yield $ (const)": {
+    "prefix": "cyield$",
+    "body": ["const $1 = yield* $($0)"],
+    "description": "Yield generator calling $()"
+  },
+  "Import pipe": {
+    "prefix": "ipipe",
+    "body": ["import { pipe } from '@fp-ts/data/Function';"]
+  },
+  "Import Effect as Z": {
+    "prefix": "iz",
+    "body": ["import * as Z from '@effect/io/Effect';"]
+  },
+  "Import Layer as ZL": {
+    "prefix": "izl",
+    "body": ["import * as ZL from '@effect/io/Layer';"]
+  },
+  "Import Option as O": {
+    "prefix": "ioption",
+    "body": ["import * as O from '@fp-ts/data/Option';"]
+  },
+  "Import Either as E": {
+    "prefix": "ieither",
+    "body": ["import * as E from '@fp-ts/data/Either';"]
+  },
+  "Import Context as Context": {
+    "prefix": "icontext",
+    "body": ["import * as Context from '@fp-ts/data/Context';"]
+  },
+  "Import fp-ts module": {
+    "prefix": "ifp",
+    "body": ["import * as $1 from '@fp-ts/data/$0';"]
+  },
+  "Import effect module": {
+    "prefix": "ieffect",
+    "body": ["import * as $1 from '@effect/io/$0';"]
+  }
+}
