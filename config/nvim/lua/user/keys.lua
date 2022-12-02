@@ -173,7 +173,7 @@ end
 
 function M.run_tests()
   -- XXX support multiple languages, current lines and file
-  vim.cmd(':FloatermNew --name=tests --autoclose=0 npm test')
+  vim.cmd(':FloatermNew --name=tests --autoclose=0 --autoinsert=false --wintype=split npm test')
 end
 
 return M
