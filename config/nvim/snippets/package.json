@@ -12,6 +12,9 @@
         "language": ["typescriptreact"],
         "path": "./react.json"
       }, {
+        "language": ["typescriptreact"],
+        "path": "./remix.json"
+      }, {
         "language": ["typescript", "typescriptreact"],
         "path": "./fp.json"
       }
