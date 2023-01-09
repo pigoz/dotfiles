@@ -45,10 +45,10 @@
   },
   "Import fp-ts module": {
     "prefix": "ifp",
-    "body": ["import * as $1 from '@fp-ts/data/$0';"]
+    "body": ["import * as $0 from '@fp-ts/data/$0';"]
   },
   "Import effect module": {
     "prefix": "ieffect",
-    "body": ["import * as $1 from '@effect/io/$0';"]
+    "body": ["import * as $0 from '@effect/io/$0';"]
   }
 }
