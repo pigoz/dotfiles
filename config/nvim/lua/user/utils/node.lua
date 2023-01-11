@@ -12,7 +12,7 @@ end
 function M.nvm_bin_path()
   local version = M.nvm_default_version()
   if version then
-    local path = string.format('~/.nvm/versions/node/%s/bin', version)
+    local path = string.format('~/.nvm/versions/node/v%s/bin', version)
     return vim.fs.normalize(path)
   end
 end
