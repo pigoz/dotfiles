@@ -1,12 +1,12 @@
 {
-  "zloader": {
+  "wloader": {
     "prefix": "wloader",
-    "body": ["export const loader = (_: DataArgs) => run(_, zloader);\n"],
+    "body": ["export const loader = /* @__PURE__ */ wrap(zloader);\n"],
     "description": "zloader wrapper"
   },
-  "zaction": {
+  "waction": {
     "prefix": "waction",
-    "body": ["export const action = (_: DataArgs) => run(_, zaction);\n"],
+    "body": ["export const action = /* @__PURE__ */ wrap(zaction);\n"],
     "description": "zaction wrapper"
   },
   "export loader": {
