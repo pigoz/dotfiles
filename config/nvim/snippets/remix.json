@@ -1,0 +1,37 @@
+{
+  "zloader": {
+    "prefix": "wloader",
+    "body": ["export const loader = (_: DataArgs) => run(_, zloader);\n"],
+    "description": "zloader wrapper"
+  },
+  "zaction": {
+    "prefix": "waction",
+    "body": ["export const action = (_: DataArgs) => run(_, zaction);\n"],
+    "description": "zaction wrapper"
+  },
+  "export loader": {
+    "prefix": "exloader",
+    "body": ["export { loader } from '~/runtime';"],
+    "description": "export loader"
+  },
+  "export action": {
+    "prefix": "exaction",
+    "body": ["export { action } from '~/runtime';"],
+    "description": "export action"
+  },
+  "export loader&action": {
+    "prefix": "exla",
+    "body": ["export { loader, action } from '~/runtime';"],
+    "description": "export loader & action"
+  },
+  "useLoaderData": {
+    "prefix": "useLoaderData",
+    "body": ["const $0 = useLoaderData<typeof zloader>();"],
+    "description": "useLoaderData"
+  },
+  "useActionData": {
+    "prefix": "useActionData",
+    "body": ["const $0 = useActionData<typeof zloader>();"],
+    "description": "useActionData"
+  }
+}
