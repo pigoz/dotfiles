@@ -1,28 +1,13 @@
 {
   "wloader": {
     "prefix": "wloader",
-    "body": ["export const loader = /* @__PURE__ */ wrap(zloader);\n"],
+    "body": ["export const loader = wrap(zloader);\n"],
     "description": "zloader wrapper"
   },
   "waction": {
     "prefix": "waction",
-    "body": ["export const action = /* @__PURE__ */ wrap(zaction);\n"],
+    "body": ["export const action = wrap(zaction);\n"],
     "description": "zaction wrapper"
-  },
-  "export loader": {
-    "prefix": "exloader",
-    "body": ["export { loader } from '~/runtime';"],
-    "description": "export loader"
-  },
-  "export action": {
-    "prefix": "exaction",
-    "body": ["export { action } from '~/runtime';"],
-    "description": "export action"
-  },
-  "export loader&action": {
-    "prefix": "exla",
-    "body": ["export { loader, action } from '~/runtime';"],
-    "description": "export loader & action"
   },
   "useLoaderData": {
     "prefix": "useLoaderData",
