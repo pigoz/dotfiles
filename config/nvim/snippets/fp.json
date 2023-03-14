@@ -21,7 +21,7 @@
   },
   "Import pipe": {
     "prefix": "ipipe",
-    "body": ["import { pipe } from '@fp-ts/data/Function';"]
+    "body": ["import { pipe } from '@effect/data/Function';"]
   },
   "Import Effect as Z": {
     "prefix": "iz",
@@ -29,23 +29,19 @@
   },
   "Import Layer as ZL": {
     "prefix": "izl",
-    "body": ["import * as ZL from '@effect/io/Layer';"]
+    "body": ["import * as Layer from '@effect/io/Layer';"]
   },
   "Import Option as O": {
     "prefix": "ioption",
-    "body": ["import * as O from '@fp-ts/data/Option';"]
+    "body": ["import * as O from '@effect/data/Option';"]
   },
   "Import Either as E": {
     "prefix": "ieither",
-    "body": ["import * as E from '@fp-ts/data/Either';"]
-  },
-  "Import Context as Context": {
-    "prefix": "icontext",
-    "body": ["import * as Context from '@fp-ts/data/Context';"]
+    "body": ["import * as E from '@effect/data/Either';"]
   },
   "Import fp-ts module": {
     "prefix": "ifp",
-    "body": ["import * as $0 from '@fp-ts/data/$0';"]
+    "body": ["import * as $0 from '@effect/data/$0';"]
   },
   "Import effect module": {
     "prefix": "ieffect",
