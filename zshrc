@@ -140,3 +140,8 @@ source ~/.localrc
 
 # PATH setup
 source ~/.zshpath
+
+# pnpm
+export PNPM_HOME="/Users/pigoz/Library/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end
