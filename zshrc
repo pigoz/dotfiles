@@ -4,8 +4,7 @@ compinit
 
 export ZSH=$HOME/.oh-my-zsh
 export ZSH_THEME="jreese"
-export NVM_LAZY=1
-plugins=(git ruby nvm)
+plugins=(git ruby)
 source $ZSH/oh-my-zsh.sh
 unsetopt correct_all
 
