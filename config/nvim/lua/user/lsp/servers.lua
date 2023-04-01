@@ -10,7 +10,7 @@ function M.setup()
       'jsonls',
       'yamlls',
       'cssls',
-      'sumneko_lua',
+      'lua_ls',
       'tsserver',
       -- 'ruby_ls'
     },
@@ -26,8 +26,8 @@ function M.setup()
         end
       })
     end,
-    ['sumneko_lua'] = function()
-      require('lspconfig').sumneko_lua.setup({
+    ['lua_ls'] = function()
+      require('lspconfig').lua_ls.setup({
         settings = {
           Lua = {
             runtime = {
@@ -64,8 +64,6 @@ function M.setup()
   local null_ls = require("null-ls")
   local formatting = null_ls.builtins.formatting;
   local diagnostics = null_ls.builtins.diagnostics;
-
-  require('user.utils.node').append_nvm_bin_path()
 
   null_ls.setup({
     sources = {

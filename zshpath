@@ -12,15 +12,16 @@ export PATH=$HOME/.rbenv/bin:$PATH
 export PATH=$HOME/.cargo/env:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
 
+export PATH=node_modules/.bin:$PATH
+
 # add dotfiles bin path
 export PATH=$HOME/.bin:$PATH
-
-# nodejs paths
-export PATH=/usr/local/share/npm/bin:$PATH
 
 # system bin
 export PATH=/usr/local/sbin:$PATH
 export PATH=/usr/local/bin:$PATH
+
+export PATH=~/.nodenv/shims:$PATH
 
 # Go stuff
 export GOPATH=$HOME/dev/gocode
