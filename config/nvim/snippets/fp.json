@@ -1,12 +1,7 @@
 {
-  "Gen Function $": {
-    "prefix": "gen$",
-    "body": ["function* ($) {\n\t$0\n}"],
-    "description": "Generator function with $ input"
-  },
   "Gen Function $ (wrapped)": {
     "prefix": "zgen$",
-    "body": ["Z.gen(function* ($) {\n\t$0\n})"],
+    "body": ["Effect.gen(function* ($) {\n\t$0\n})"],
     "description": "Generator function with $ input"
   },
   "Gen Yield $": {
@@ -25,7 +20,7 @@
   },
   "Import Effect as Z": {
     "prefix": "iz",
-    "body": ["import * as Z from '@effect/io/Effect';"]
+    "body": ["import * as Effect from '@effect/io/Effect';"]
   },
   "Import Layer as ZL": {
     "prefix": "izl",
@@ -33,14 +28,14 @@
   },
   "Import Option as O": {
     "prefix": "ioption",
-    "body": ["import * as O from '@effect/data/Option';"]
+    "body": ["import * as Option from '@effect/data/Option';"]
   },
   "Import Either as E": {
     "prefix": "ieither",
-    "body": ["import * as E from '@effect/data/Either';"]
+    "body": ["import * as Either from '@effect/data/Either';"]
   },
   "Import fp-ts module": {
-    "prefix": "ifp",
+    "prefix": "idata",
     "body": ["import * as $0 from '@effect/data/$0';"]
   },
   "Import effect module": {
