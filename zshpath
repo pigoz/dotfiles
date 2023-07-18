@@ -31,6 +31,7 @@ export PATH=$GOPATH/bin:$PATH
 export ANDROID_HOME=~/Library/Android/sdk
 export MACVIM_BIN=/Applications/MacVim.app/Contents/bin
 export PATH=${MACVIM_BIN}:${PATH}:${ANDROID_HOME}/tools
+export PATH=/opt/homebrew/bin:$PATH
 
 
 if command_exists python3-config ; then
