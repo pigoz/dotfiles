@@ -17,7 +17,7 @@ augroup SettingsFileTypes
   au!
   au FileType * set ts=2 sw=2 sts=2 expandtab
   au FileType c,m,h,cpp,hpp,glsl,objc set ts=4 sw=4 sts=4 expandtab
-  au FileType python,php,swift,rust set ts=4 sw=4 sts=4 expandtab
+  au FileType python,swift,rust set ts=4 sw=4 sts=4 expandtab
   au FileType make set noexpandtab " make needs them tabs
 augroup END
 ]])
