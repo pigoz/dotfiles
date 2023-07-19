@@ -19,7 +19,6 @@ augroup SettingsFileTypes
   au FileType c,m,h,cpp,hpp,glsl,objc set ts=4 sw=4 sts=4 expandtab
   au FileType python,php,swift,rust set ts=4 sw=4 sts=4 expandtab
   au FileType make set noexpandtab " make needs them tabs
-  au FileType css set ft=scss
 augroup END
 ]])
 
