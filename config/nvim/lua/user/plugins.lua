@@ -1,20 +1,8 @@
-return require("user.packer").setup(function(use)
-  use({ "wbthomason/packer.nvim" })
-
-  use({ "sheerun/vim-polyglot" })
-
-  local devicons = {
-    "kyazdani42/nvim-web-devicons",
-    config = function()
-      require("nvim-web-devicons").setup({
-        default = true,
-      })
-    end,
-  }
-
-  use({
+return require("user.lazy").setup({
+  "sheerun/vim-polyglot",
+  {
     "neovim/nvim-lspconfig",
-    requires = {
+    dependencies = {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
       "hrsh7th/cmp-nvim-lsp",
@@ -28,17 +16,17 @@ return require("user.packer").setup(function(use)
       "folke/trouble.nvim",
       {
         "jose-elias-alvarez/null-ls.nvim",
-        requires = { "nvim-lua/plenary.nvim" },
+        dependencies = { "nvim-lua/plenary.nvim" },
       },
       "b0o/SchemaStore.nvim", -- schema store for yaml and json files
-      devicons,
+      "nvim-tree/nvim-web-devicons",
     },
     config = require("user.lsp").setup,
-  })
+  },
 
-  use({ "tpope/vim-fugitive" }) -- for :Gblame
+  "tpope/vim-fugitive", -- for :Gblame
 
-  use({
+  {
     "voldikss/vim-floaterm",
     config = function()
       vim.g.floaterm_height = 0.999
@@ -46,27 +34,19 @@ return require("user.packer").setup(function(use)
       vim.g.floaterm_title = ''
       vim.g.floaterm_opener = 'tabe'
     end
-  })
+  },
 
-  use({ 'romgrk/barbar.nvim', config = function()
-    require 'bufferline'.setup({
-      auto_hide = true,
-      animation = false,
-      hide = { current = false, inactive = true, visible = false }
-    })
-  end })
-
-  use({
+  {
     "nvim-lualine/lualine.nvim",
-    requires = { devicons },
+    dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
       require("lualine").setup({})
     end,
-  })
+  },
 
-  use({
+  {
     "nvim-telescope/telescope.nvim",
-    requires = { "nvim-lua/plenary.nvim" },
+    dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
       require("telescope").setup({
         defaults = {
@@ -79,25 +59,25 @@ return require("user.packer").setup(function(use)
         },
       })
     end,
-  })
+  },
 
-  use({
+  {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v2.x",
-    requires = {
+    dependencies = {
       "nvim-lua/plenary.nvim",
       "MunifTanjim/nui.nvim",
-      devicons,
+      "nvim-tree/nvim-web-devicons",
     },
     config = function()
       vim.g.neo_tree_remove_legacy_commands = 1
       require("neo-tree").setup({})
     end,
-  })
+  },
 
-  use({
+  {
     "nvim-treesitter/nvim-treesitter",
-    run = function()
+    build = function()
       require("nvim-treesitter.install").update({ with_sync = true })
     end,
     config = function()
@@ -111,9 +91,12 @@ return require("user.packer").setup(function(use)
         },
       })
     end,
-  })
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter-textobjects"
+    }
+  },
 
-  use({
+  {
     "folke/which-key.nvim",
     config = function()
       local wk = require("which-key")
@@ -122,43 +105,47 @@ return require("user.packer").setup(function(use)
       keys.setup_which_key_bindings(wk)
       keys.setup_global_key_bindings()
     end,
-  })
+  },
 
-  use({
+
+  {
     "goolord/alpha-nvim",
-    requires = { devicons },
+    -- alpha is a fast and fully programmable greeter for neovim
+    dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
       require("alpha").setup(require("alpha.themes.startify").config)
     end,
-  })
+  },
 
-  use({
+  {
     "beauwilliams/focus.nvim",
+    -- auto splits using golden ratio
     config = function()
       require("focus").setup({})
     end,
-  })
+  },
 
-  use({
+  {
     "ggandor/leap.nvim",
     config = function()
       require("leap").add_default_mappings()
       vim.keymap.del({ "x", "o" }, "x")
       vim.keymap.del({ "x", "o" }, "X")
     end,
-  })
+  },
 
-  use({
+  {
     "numToStr/Comment.nvim",
     config = function()
       require("Comment").setup()
     end,
-  })
+  },
 
-  use({
+  {
     "navarasu/onedark.nvim",
     config = function()
+      require("onedark").setup()
       require("onedark").load()
     end,
-  })
-end)
+  },
+})
