@@ -143,5 +143,8 @@ source ~/.zshpath
 
 # pnpm
 export PNPM_HOME="/Users/pigoz/Library/pnpm"
-export PATH="$PNPM_HOME:$PATH"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
 # pnpm end
