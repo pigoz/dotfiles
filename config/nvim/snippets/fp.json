@@ -18,28 +18,16 @@
     "prefix": "ipipe",
     "body": ["import { pipe } from '@effect/data/Function';"]
   },
-  "Import Effect as Z": {
-    "prefix": "iz",
-    "body": ["import * as Effect from '@effect/io/Effect';"]
-  },
-  "Import Layer as ZL": {
-    "prefix": "izl",
-    "body": ["import * as Layer from '@effect/io/Layer';"]
-  },
-  "Import Option as O": {
-    "prefix": "ioption",
-    "body": ["import * as Option from '@effect/data/Option';"]
-  },
-  "Import Either as E": {
-    "prefix": "ieither",
-    "body": ["import * as Either from '@effect/data/Either';"]
-  },
-  "Import fp-ts module": {
+  "Import @effect/data module": {
     "prefix": "idata",
     "body": ["import * as $0 from '@effect/data/$0';"]
   },
-  "Import effect module": {
+  "Import @effect/io module": {
     "prefix": "ieffect",
     "body": ["import * as $0 from '@effect/io/$0';"]
+  },
+  "Import @effect/schema/Schema": {
+    "prefix": "ischema",
+    "body": ["import * as S from '@effect/schema/Schema';"]
   }
 }
