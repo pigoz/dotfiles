@@ -6,3 +6,4 @@ emacs.d/places
 emacs.d/backups
 emacs.d/auto-save-list
 emacs.d/projectile.cache
+bin/zig*
