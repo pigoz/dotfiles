@@ -130,6 +130,10 @@ vim-reset() {
   rm -rf ~/.local/share/nvim ~/.config/nvim/plugin/packer_compiled.lua
 }
 
+ig-portrait() {
+  mogrify -path output -resize 1080x1350 -background black -gravity center -extent 1080x1350 -quality $1 *.jpg && du -sh output/*
+}
+
 bindkey '^[^[[D' backward-word
 bindkey '^[^[[C' forward-word
 bindkey '^[[5D' beginning-of-line
