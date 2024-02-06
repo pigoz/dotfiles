@@ -78,7 +78,7 @@ function M.setup_global_key_bindings()
   set("v", "<", "<gv")
   set("v", ">", ">gv")
 
-  set("n", "<D-d>", ":Neotree filesystem toggle left<cr>")
+  set("n", "<D-d>", ":Neotree filesystem toggle float<cr>")
   set("n", "<D-f>", M.telescope_files)
   set("n", "<D-r>", M.telescope_grep)
   set("n", "<D-b>", M.telescope_buffers)
