@@ -11,6 +11,8 @@ M._config = {
     ['json'] = 'null-ls',
     ['yaml'] = 'null-ls',
     ['html'] = 'null-ls',
+    ['ruby'] = 'null-ls',
+    ['eruby'] = 'null-ls',
   }
 }
 

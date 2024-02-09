@@ -69,7 +69,8 @@ function M.setup()
     sources = {
       formatting.prettierd,
       formatting.rubocop,
-      diagnostics.rubocop
+      formatting.erb_format,
+      diagnostics.rubocop,
     },
   })
 end
