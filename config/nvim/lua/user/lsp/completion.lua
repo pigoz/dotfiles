@@ -31,6 +31,7 @@ function M.setup()
       { name = 'luasnip' },
       { name = 'path' },
       { name = 'buffer' },
+      { name = "html_css" },
     },
     experimental = {
       native_menu = false,
@@ -46,6 +47,7 @@ function M.setup()
           path = "[path]",
           luasnip = "[snip]",
           tn = "[t9]",
+          html_css = "[css]"
         },
       },
     }

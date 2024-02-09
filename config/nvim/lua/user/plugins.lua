@@ -9,7 +9,24 @@ return require("user.lazy").setup({
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-nvim-lua",
-      "hrsh7th/nvim-cmp",
+      {
+        "hrsh7th/nvim-cmp",
+        opts = {
+          sources = {
+            {
+              name = "html_css",
+              option = {
+                max_count = {}, -- not ready yet
+                enable_on = {
+                  "html",
+                  "eruby",
+                },
+                globs = { "mdb.css" },
+              },
+            }
+          }
+        }
+      },
       "onsails/lspkind.nvim",
       "L3MON4D3/LuaSnip",
       "saadparwaiz1/cmp_luasnip",
@@ -20,6 +37,17 @@ return require("user.lazy").setup({
       },
       "b0o/SchemaStore.nvim", -- schema store for yaml and json files
       "nvim-tree/nvim-web-devicons",
+      {
+        "pigoz/nvim-html-css",
+        dir = "~/dev/nvim-html-css",
+        dependencies = {
+          "nvim-treesitter/nvim-treesitter",
+          "nvim-lua/plenary.nvim"
+        },
+        config = function()
+          require("html-css"):setup()
+        end
+      },
     },
     config = require("user.lsp").setup,
   },
@@ -83,7 +111,15 @@ return require("user.lazy").setup({
     config = function()
       require("nvim-treesitter.configs").setup({
         -- A list of parser names, or "all"
-        ensure_installed = { "c", "lua", "typescript", "ruby", "scss", "css" },
+        ensure_installed = {
+          "c",
+          "lua",
+          "typescript",
+          "ruby",
+          "scss",
+          "css",
+          "html",
+        },
 
         highlight = {
           enable = true,
