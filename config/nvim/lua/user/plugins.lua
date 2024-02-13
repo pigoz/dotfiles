@@ -14,13 +14,8 @@ return require("user.lazy").setup({
         opts = {
           sources = {
             {
-              name = "html_css",
+              name = "ruby_css",
               option = {
-                max_count = {}, -- not ready yet
-                enable_on = {
-                  "html",
-                  "eruby",
-                },
                 globs = { "mdb.css" },
               },
             }
@@ -38,14 +33,14 @@ return require("user.lazy").setup({
       "b0o/SchemaStore.nvim", -- schema store for yaml and json files
       "nvim-tree/nvim-web-devicons",
       {
-        "pigoz/nvim-html-css",
-        dir = "~/dev/nvim-html-css",
+        "pigoz/nvim-ruby-css",
+        dir = "~/dev/nvim-ruby-css",
         dependencies = {
           "nvim-treesitter/nvim-treesitter",
           "nvim-lua/plenary.nvim"
         },
         config = function()
-          require("html-css"):setup()
+          require("ruby-css"):setup()
         end
       },
     },
@@ -119,6 +114,7 @@ return require("user.lazy").setup({
           "scss",
           "css",
           "html",
+          "embedded_template",
         },
 
         highlight = {

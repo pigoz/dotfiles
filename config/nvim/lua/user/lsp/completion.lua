@@ -31,7 +31,7 @@ function M.setup()
       { name = 'luasnip' },
       { name = 'path' },
       { name = 'buffer' },
-      { name = "html_css" },
+      { name = 'ruby_css' },
     },
     experimental = {
       native_menu = false,
