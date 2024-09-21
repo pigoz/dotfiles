@@ -12,7 +12,6 @@ function M.setup()
       'cssls',
       'lua_ls',
       'tsserver',
-      -- 'ruby_ls'
     },
     -- automatic_installation = true,
   })
@@ -60,6 +59,22 @@ function M.setup()
       })
     end,
   })
+
+  require('lspconfig').solargraph.setup({
+    cmd = { os.getenv("HOME") .. "/.rbenv/shims/solargraph", 'stdio' },
+    root_dir = require('lspconfig').util.root_pattern("Gemfile", ".git", "."),
+    settings = {
+      solargraph = {
+        autoformat = true,
+        completion = true,
+        diagnostic = true,
+        folding = true,
+        references = true,
+        rename = true,
+        symbols = true
+      },
+    },
+  });
 
   local null_ls = require("null-ls")
   local formatting = null_ls.builtins.formatting;
