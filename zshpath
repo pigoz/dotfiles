@@ -5,6 +5,8 @@ command_exists () {
 # some programs prefer to use ~/Library/App Support otherwise (ie: lazygit)
 export XDG_CONFIG_HOME="$HOME/.config"
 
+export PATH=/opt/homebrew/bin:$PATH
+
 # add rbenv shims to path
 export PATH=$HOME/.rbenv/bin:$PATH
 
@@ -31,7 +33,6 @@ export PATH=$GOPATH/bin:$PATH
 export ANDROID_HOME=~/Library/Android/sdk
 export MACVIM_BIN=/Applications/MacVim.app/Contents/bin
 export PATH=${MACVIM_BIN}:${PATH}:${ANDROID_HOME}/tools
-export PATH=/opt/homebrew/bin:$PATH
 
 
 if command_exists python3-config ; then
