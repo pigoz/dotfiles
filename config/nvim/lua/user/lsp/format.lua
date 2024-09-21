@@ -5,6 +5,7 @@ M._config = {
     ['lua'] = 'sumneko_lua',
     -- prettier
     ['typescript'] = 'null-ls',
+    ['javascript'] = 'null-ls',
     ['typescriptreact'] = 'null-ls',
     ['typescript.jsx'] = 'null-ls',
     ['css'] = 'null-ls',
