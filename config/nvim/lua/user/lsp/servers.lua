@@ -60,8 +60,21 @@ function M.setup()
     end,
   })
 
+  local null_ls = require("null-ls")
+  local formatting = null_ls.builtins.formatting;
+  local diagnostics = null_ls.builtins.diagnostics;
+
+  null_ls.setup({
+    sources = {
+      formatting.prettierd,
+      formatting.rubocop,
+      formatting.erb_format,
+      diagnostics.rubocop,
+    },
+  })
+
   require('lspconfig').solargraph.setup({
-    cmd = { os.getenv("HOME") .. "/.rbenv/shims/solargraph", 'stdio' },
+    cmd = { vim.fn.expand("~/.rbenv/shims/solargraph"), 'stdio' },
     root_dir = require('lspconfig').util.root_pattern("Gemfile", ".git", "."),
     settings = {
       solargraph = {
@@ -76,18 +89,14 @@ function M.setup()
     },
   });
 
-  local null_ls = require("null-ls")
-  local formatting = null_ls.builtins.formatting;
-  local diagnostics = null_ls.builtins.diagnostics;
-
-  null_ls.setup({
-    sources = {
-      formatting.prettierd,
-      formatting.rubocop,
-      formatting.erb_format,
-      diagnostics.rubocop,
-    },
-  })
+  -- require('lspconfig').ruby_lsp.setup({
+  --   cmd = { vim.fn.expand("~/.rbenv/shims/ruby-lsp") },
+  --   root_dir = require('lspconfig').util.root_pattern("Gemfile", ".git", "."),
+  --   init_options = {
+  --     formatter = 'standard',
+  --     linters = { 'standard' },
+  --   },
+  -- })
 end
 
 return M
