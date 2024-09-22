@@ -2,56 +2,48 @@ local u = require('user.utils')
 local M = {}
 
 function M.setup_which_key_bindings(wk)
-  wk.register({
-    ["<D-k>"] = { u.cycle_buffer, "focus split cycle" },
-    ["<D-j>"] = { u.cycle_buffer_reverse, "focus split cycle (reverse)" },
+  wk.add({
+    { "<D-k>", u.cycle_buffer, desc = "focus split cycle" },
+    { "<D-j>", u.cycle_buffer_reverse, desc = "focus split cycle (reverse)" },
 
-    ["<leader>a"] = { vim.lsp.buf.code_action, "lsp line action" },
+    {"<leader>a", vim.lsp.buf.code_action, desc = "lsp line action" },
 
-    ["<leader>c"] = {
-      name = "+config",
-      ['e'] = { ':e $MYVIMRC<cr>', 'edit' },
-      ['r'] = { u.reload_config, 'reload' },
-    },
-    ["<leader>f"] = {
-      name = '+find',
-      f = { M.telescope_files, 'files' },
-      b = { M.telescope_buffers, 'buffers' },
-      h = { M.telescope_help, 'help tags' },
-      g = { M.telescope_grep, 'grep files' },
-      -- f = { 'za', 'fold toggle' },
-      -- d = { 'zR', 'fold clear all' },
-    },
-    ["<leader>j"] = {
-      name = '+lsp',
-      ['q'] = { M.quickfix, 'quickfix' },
-      ['k'] = { vim.lsp.buf.hover, 'show documentation' },
-      ['a'] = { vim.lsp.buf.code_action, 'line action' },
-      ['d'] = { vim.lsp.buf.definition, 'definition' },
-      ['D'] = { vim.lsp.buf.declaration, 'declaration' },
-      ['t'] = { vim.lsp.buf.type_definition, 'type definition' },
-      ['f'] = { require('user.lsp.format').format, 'format' },
-      -- ['g'] = { vim.lsp.buf.range_formatting, 'format ranGe' },
-      ['i'] = { vim.lsp.buf.implementation, 'implementation' },
-      ['n'] = { vim.diagnostic.goto_next, 'next diagnostic' },
-      ['p'] = { vim.diagnostic.goto_prev, 'prev diagnostic' },
-      ['l'] = { vim.lsp.codelens.display, 'code lens' },
-      ['r'] = { vim.lsp.buf.rename, 'rename' },
-      ['R'] = { vim.lsp.buf.references, 'references' },
-    },
-    ['<leader>d'] = {
-      name = '+diagnostics',
-      ['t'] = { ':TroubleToggle<cr>', 'toggle' },
-      ['d'] = { ':TroubleToggle document_diagnostics<cr>', 'document' },
-      ['w'] = { ':TroubleToggle workspace_diagnostics<cr>', 'workspace' },
-      ['l'] = { ':TroubleToggle loclist<cr>', 'loclist' },
-      ['q'] = { ':TroubleToggle quickfix<cr>', 'quickfix' },
-      ['r'] = { ':TroubleToggle lsp_references<cr>', 'lsp references' },
-    },
-    ['<leader>h'] = {
-      name = '+terminal',
-      ['h'] = { M.run_tests, 'run project tests' }
-    }
+    {"<leader>c", group = "config" },
+    {"<leader>ce", ':e $MYVIMRC<cr>', desc = 'edit' },
+    {"<leader>cr", u.reload_config, desc = 'reload' },
+
+    {"<leader>f", group = "find" },
+    {"<leader>ff", M.telescope_files, desc = 'files' },
+    {"<leader>fb", M.telescope_buffers, desc = 'buffers' },
+    {"<leader>fh", M.telescope_help, desc = 'help tags' },
+    {"<leader>fg", M.telescope_grep, desc = 'grep files' },
+
+    {"<leader>j", group = "lsp" },
+    {"<leader>jq", M.quickfix, desc = 'quickfix' },
+    {"<leader>jk", vim.lsp.buf.hover, desc = 'show documentation' },
+    {"<leader>ja", vim.lsp.buf.code_action, desc = 'line action' },
+    {"<leader>jd", vim.lsp.buf.definition, desc = 'definition' },
+    {"<leader>jD", vim.lsp.buf.declaration, desc = 'declaration' },
+    {"<leader>jt", vim.lsp.buf.type_definition, desc = 'type definition' },
+    {"<leader>jf", require('user.lsp.format').format, desc = 'format' },
+    {"<leader>jg", vim.lsp.buf.range_formatting, desc = 'format ranGe' },
+    {"<leader>ji", vim.lsp.buf.implementation, desc = 'implementation' },
+    {"<leader>jn", vim.diagnostic.goto_next, desc = 'next diagnostic' },
+    {"<leader>jp", vim.diagnostic.goto_prev, desc = 'prev diagnostic' },
+    {"<leader>jl", vim.lsp.codelens.display, desc = 'code lens' },
+    {"<leader>jr", vim.lsp.buf.rename, desc = 'rename' },
+    {"<leader>jR", vim.lsp.buf.references, desc = 'references' },
+
+    {"<leader>d", group = "diagnostics" },
+    {"<leader>dt", ':TroubleToggle<cr>', desc = 'toggle' },
+    {"<leader>dd", ':TroubleToggle document_diagnostics<cr>', desc = 'document' },
+    {"<leader>dw", ':TroubleToggle workspace_diagnostics<cr>', desc = 'workspace' },
+    {"<leader>dl", ':TroubleToggle loclist<cr>', desc = 'loclist' },
+    {"<leader>dq", ':TroubleToggle quickfix<cr>', desc = 'quickfix' },
+    {"<leader>dr", ':TroubleToggle lsp_references<cr>', desc = 'lsp references' },
+
+    {"<leader>h", group = "terminal" },
+    {"<leader>ht",  M.run_tests, desc = 'run project tests' }
   })
 end
 
