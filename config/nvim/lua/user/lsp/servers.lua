@@ -73,30 +73,32 @@ function M.setup()
     },
   })
 
-  require('lspconfig').solargraph.setup({
-    cmd = { vim.fn.expand("~/.rbenv/shims/solargraph"), 'stdio' },
-    root_dir = require('lspconfig').util.root_pattern("Gemfile", ".git", "."),
-    settings = {
-      solargraph = {
-        autoformat = true,
-        completion = true,
-        diagnostic = true,
-        folding = true,
-        references = true,
-        rename = true,
-        symbols = true
+  if os.getenv("RUBYLSP") then
+    require('lspconfig').ruby_lsp.setup({
+      cmd = { vim.fn.expand("~/.rbenv/shims/ruby-lsp") },
+      root_dir = require('lspconfig').util.root_pattern("Gemfile", ".git", "."),
+      init_options = {
+        formatter = 'standard',
+        linters = { 'standard' },
       },
-    },
-  });
-
-  -- require('lspconfig').ruby_lsp.setup({
-  --   cmd = { vim.fn.expand("~/.rbenv/shims/ruby-lsp") },
-  --   root_dir = require('lspconfig').util.root_pattern("Gemfile", ".git", "."),
-  --   init_options = {
-  --     formatter = 'standard',
-  --     linters = { 'standard' },
-  --   },
-  -- })
+    });
+  else
+    require('lspconfig').solargraph.setup({
+      cmd = { vim.fn.expand("~/.rbenv/shims/solargraph"), 'stdio' },
+      root_dir = require('lspconfig').util.root_pattern("Gemfile", ".git", "."),
+      settings = {
+        solargraph = {
+          autoformat = true,
+          completion = true,
+          diagnostic = true,
+          folding = true,
+          references = true,
+          rename = true,
+          symbols = true
+        }
+      },
+    });
+  end
 end
 
 return M
