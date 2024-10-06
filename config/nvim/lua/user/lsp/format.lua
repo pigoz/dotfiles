@@ -1,27 +1,32 @@
 local M = {}
 
 M._config = {
-  client_whitelist = {
+  autosave = {
+    'lua',
+    'typescript',
+    'javascript',
+    'typescriptreact',
+    'typescript.jsx',
+    'css',
+    'scss',
+    'json',
+    'yaml',
+    'html',
+    'ruby',
+    'erbuy'
+  },
+  overrides = {
     ['lua'] = 'sumneko_lua',
-    -- prettier
-    ['typescript'] = 'null-ls',
-    ['javascript'] = 'null-ls',
-    ['typescriptreact'] = 'null-ls',
-    ['typescript.jsx'] = 'null-ls',
-    ['css'] = 'null-ls',
-    ['json'] = 'null-ls',
-    ['yaml'] = 'null-ls',
-    ['html'] = 'null-ls',
-    ['ruby'] = 'null-ls',
-    ['eruby'] = 'null-ls',
-  }
+    ['ruby'] = 'rubocop',
+  },
+  default = 'dprint',
 }
 
 function M.format(bufnr)
   vim.lsp.buf.format({
     filter = function(client)
-      local config = require('user.lsp.format')._config
-      local wl_client_name = config.client_whitelist[vim.bo.filetype]
+      local config = require('user.lsp.format')._config;
+      local wl_client_name = config.overrides[vim.bo.filetype] or config.default
       return wl_client_name == client.name
     end,
     bufnr = bufnr or vim.api.nvim_get_current_buf(),
@@ -30,7 +35,7 @@ end
 
 function M.setup()
   local group = vim.api.nvim_create_augroup("LspFormat", { clear = true })
-  local patterns = require('user.utils.table').keys(M._config.client_whitelist)
+  local patterns = M._config.autosave
   vim.api.nvim_create_autocmd("FileType", {
     group = group,
     pattern = patterns,

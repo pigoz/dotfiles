@@ -26,10 +26,6 @@ return require("user.lazy").setup({
       "L3MON4D3/LuaSnip",
       "saadparwaiz1/cmp_luasnip",
       "folke/trouble.nvim",
-      {
-        "jose-elias-alvarez/null-ls.nvim",
-        dependencies = { "nvim-lua/plenary.nvim" },
-      },
       "b0o/SchemaStore.nvim", -- schema store for yaml and json files
       "nvim-tree/nvim-web-devicons",
       {
