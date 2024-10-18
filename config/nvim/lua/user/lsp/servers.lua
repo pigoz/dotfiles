@@ -91,21 +91,22 @@ function M.setup()
     init_options = {},
     filetypes = { 'ruby', 'eruby' }
   });
-  -- require('lspconfig').solargraph.setup({
-  --   cmd = { vim.fn.expand("~/.rbenv/shims/solargraph"), 'stdio' },
-  --   root_dir = util.root_pattern("Gemfile", ".git", "."),
-  --   settings = {
-  --     solargraph = {
-  --       autoformat = false,
-  --       completion = true,
-  --       diagnostic = true,
-  --       folding = true,
-  --       references = true,
-  --       rename = true,
-  --       symbols = true
-  --     }
-  --   },
-  -- });
+
+  require('lspconfig').solargraph.setup({
+    cmd = { vim.fn.expand("~/.rbenv/shims/solargraph"), 'stdio' },
+    root_dir = util.root_pattern("Gemfile", ".git", "."),
+    settings = {
+      solargraph = {
+        autoformat = false,
+        completion = true,
+        diagnostic = false,
+        folding = false,
+        references = true,
+        rename = true,
+        symbols = true
+      }
+    },
+  });
 end
 
 return M
