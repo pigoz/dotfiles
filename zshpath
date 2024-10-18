@@ -18,6 +18,7 @@ export PATH=node_modules/.bin:$PATH
 
 # add dotfiles bin path
 export PATH=$HOME/.bin:$PATH
+export PATH=$HOME/.local/bin:$PATH
 
 # system bin
 export PATH=/usr/local/sbin:$PATH
