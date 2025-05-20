@@ -1,100 +1,70 @@
 local M = {}
 
 function M.setup()
-  -- advertise lsp completion capabilities to the language server
-  local capabilities = require('cmp_nvim_lsp').default_capabilities()
+  local root_pattern = require('lspconfig').util.root_pattern;
 
-  require("mason").setup()
-
-  require('mason-lspconfig').setup({
-    ensure_installed = {
-      'emmet_language_server',
-      'jsonls',
-      'yamlls',
-      'cssls',
-      'lua_ls',
-      'ts_ls',
+  vim.lsp.config('lua_ls', {
+    settings = {
+      Lua = {
+        runtime = {
+          version = 'LuaJIT',
+        },
+        diagnostics = {
+          globals = {
+            'vim',
+            'require',
+          },
+        },
+      },
     },
   })
 
-  require('mason-lspconfig').setup_handlers({
-    function(server)
-      require("lspconfig")[server].setup({
-        capabilities = capabilities,
-        on_attach = function(client, bufnr)
-          require('user.keys').setup_lsp_keybindings(client, bufnr)
-        end
-      })
-    end,
-    ['lua_ls'] = function()
-      require('lspconfig').lua_ls.setup({
-        settings = {
-          Lua = {
-            runtime = {
-              version = 'LuaJIT',
-            },
-            diagnostics = {
-              globals = { 'vim', 'mp', 'jit' },
-            },
-          },
-        },
-      })
-    end,
-    ['yamlls'] = function()
-      require('lspconfig').yamlls.setup({
-        settings = {
-          yaml = {
-            schemas = require('user.lsp.schemastore').yaml(),
-          }
-        }
-      })
-    end,
-    ['jsonls'] = function()
-      require('lspconfig').jsonls.setup({
-        settings = {
-          json = {
-            schemas = require('user.lsp.schemastore').json(),
-            validate = { enable = true },
-          },
-        },
-      })
-    end,
+  vim.lsp.config('yamlls', {
+    settings = {
+      yaml = {
+        schemas = require('user.lsp.schemastore').yaml(),
+        -- To use yamlls' built-in schemastore access:
+        -- schemastore = { enable = true, url = "https://www.schemastore.org/api/json/catalog.json" },
+        -- validation = true,
+        -- hover = true,
+        -- completion = true,
+      }
+    },
   })
 
-  local util = require('lspconfig').util;
+  vim.lsp.config('jsonls', {
+    settings = {
+      json = {
+        schemas = require('user.lsp.schemastore').json(),
+        validate = { enable = true },
+      },
+    },
+  })
 
-  require('lspconfig').rubocop.setup({
+  vim.lsp.config('emmet_ls', {
+    filetypes = {
+      'html', 'css', 'scss', 'less', 'sass', 'stylus',
+      'javascriptreact', 'typescriptreact',
+      'eruby', 'php', 'vue', 'svelte', 'astro', 'haml', 'pug',
+    },
+  })
+
+  vim.lsp.config('rubocop', {
     cmd = { vim.fn.expand("~/.rbenv/shims/rubocop"), '--lsp' },
     filetypes = { 'ruby' },
-    root_dir = util.root_pattern('Gemfile', '.git'),
+    root_dir = root_pattern('Gemfile', '.git'),
   })
 
-  require('lspconfig').dprint.setup({
-    filetypes = {
-      "javascript",
-      "javascriptreact",
-      "typescript",
-      "typescriptreact",
-      "css",
-      "scss",
-      "json",
-      "jsonc",
-      "markdown",
-      "html",
-      "eruby"
-    }
-  });
-
-  require('lspconfig').ruby_lsp.setup({
+  vim.lsp.config('ruby_lsp', {
     cmd = { vim.fn.expand("~/.rbenv/shims/ruby-lsp") },
-    root_dir = util.root_pattern("Gemfile", ".git", "."),
+    filetypes = { 'ruby', 'eruby' },
+    root_dir = root_pattern("Gemfile", ".git", ".ruby-lsp"),
     init_options = {},
-    filetypes = { 'ruby', 'eruby' }
-  });
+  })
 
-  require('lspconfig').solargraph.setup({
+  vim.lsp.config('solargraph', {
     cmd = { vim.fn.expand("~/.rbenv/shims/solargraph"), 'stdio' },
-    root_dir = util.root_pattern("Gemfile", ".git", "."),
+    root_dir = root_pattern("Gemfile", ".git", "."),
     settings = {
       solargraph = {
         autoformat = false,
@@ -106,7 +76,39 @@ function M.setup()
         symbols = true
       }
     },
-  });
+  })
+
+  vim.lsp.config('dprint', {
+    filetypes = {
+      "javascript",
+      "javascriptreact",
+      "typescript",
+      "typescriptreact",
+      "css",
+      "scss",
+      "json",
+      "jsonc",
+      "markdown",
+      "html",
+      "eruby",
+      "lua"
+    }
+  })
+
+  -- install language servers
+  require("mason").setup({})
+
+  require('mason-lspconfig').setup({
+    ensure_installed = {
+      'emmet_ls',
+      'jsonls',
+      'yamlls',
+      'cssls',
+      'lua_ls',
+      'ts_ls'
+    },
+    automatic_installation = true
+  })
 end
 
 return M

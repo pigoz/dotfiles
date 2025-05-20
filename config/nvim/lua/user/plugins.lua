@@ -3,42 +3,21 @@ return require("user.lazy").setup({
   {
     "neovim/nvim-lspconfig",
     dependencies = {
-      "williamboman/mason.nvim",
-      "williamboman/mason-lspconfig.nvim",
+      "mason-org/mason.nvim",
+      "mason-org/mason-lspconfig.nvim",
+
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-nvim-lua",
-      {
-        "hrsh7th/nvim-cmp",
-        opts = {
-          sources = {
-            {
-              name = "ruby_css",
-              option = {
-                globs = { "mdb.css" },
-              },
-            }
-          }
-        }
-      },
+      "hrsh7th/nvim-cmp",
+
       "onsails/lspkind.nvim",
       "L3MON4D3/LuaSnip",
       "saadparwaiz1/cmp_luasnip",
       "folke/trouble.nvim",
       "b0o/SchemaStore.nvim", -- schema store for yaml and json files
       "nvim-tree/nvim-web-devicons",
-      {
-        "pigoz/nvim-ruby-css",
-        dir = "~/dev/nvim-ruby-css",
-        dependencies = {
-          "nvim-treesitter/nvim-treesitter",
-          "nvim-lua/plenary.nvim"
-        },
-        config = function()
-          require("ruby-css"):setup()
-        end
-      },
     },
     config = require("user.lsp").setup,
   },
