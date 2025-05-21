@@ -80,11 +80,7 @@ return require("user.lazy").setup({
               inputs.confirm(msg, function(confirmed)
                 if not confirmed then return end
 
-                local script = string.format(
-                  'tell application "Finder" to move POSIX file "%s" to trash',
-                  vim.fn.fnamemodify(vim.fn.fnameescape(path), ":p"))
-
-                vim.fn.system { "osascript", "-e", script }
+                require('user.utils.io').trash(path)
 
                 require("neo-tree.sources.manager").refresh(state.name)
               end)

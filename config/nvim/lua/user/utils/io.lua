@@ -10,4 +10,12 @@ function M.read(file, amount)
   return content
 end
 
+function M.trash(path)
+  local script = string.format(
+    'tell application "Finder" to move POSIX file "%s" to trash',
+    vim.fn.fnamemodify(vim.fn.fnameescape(path), ":p"))
+
+  vim.fn.system { "osascript", "-e", script }
+end
+
 return M
