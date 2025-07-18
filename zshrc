@@ -139,6 +139,16 @@ bindkey '^[^[[C' forward-word
 bindkey '^[[5D' beginning-of-line
 bindkey '^[[5C' end-of-line
 
+kimi() {
+  export ANTHROPIC_BASE_URL=https://api.moonshot.ai/anthropic
+  export ANTHROPIC_AUTH_TOKEN=$KIMI_AUTH_TOKEN
+  bunx @anthropic-ai/claude-code --dangerously-skip-permissions "$@"
+}
+
+gemini() {
+  bunx @google/gemini-cli -y "$@"
+}
+
 # Aliases
 source ~/.localrc
 
