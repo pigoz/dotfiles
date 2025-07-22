@@ -6,6 +6,7 @@ function M.setup_which_key_bindings(wk)
     { "<D-k>", u.cycle_buffer, desc = "focus split cycle" },
     { "<D-j>", u.cycle_buffer_reverse, desc = "focus split cycle (reverse)" },
 
+    {"yp", u.yank_buffer_filepath, desc = "yank buffer path" },
     {"<leader>a", vim.lsp.buf.code_action, desc = "lsp line action" },
 
     {"<leader>c", group = "config" },

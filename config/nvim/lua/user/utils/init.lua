@@ -28,4 +28,16 @@ function M.cycle_buffer_reverse()
   vim.api.nvim_command('FocusSplitCycle reverse')
 end
 
+function M.yank_buffer_filepath()
+  local filepath = vim.fn.expand('%')
+
+  if filepath == '' then
+    vim.notify("Buffer has no file path", vim.log.levels.WARN, { title = "Clipboard" })
+    return
+  end
+
+  vim.fn.setreg('+', filepath)
+  vim.notify("Yanked: " .. filepath, vim.log.levels.INFO, { title = "Clipboard" })
+end
+
 return M
