@@ -5,6 +5,9 @@ Clean up TV show directory and filenames by removing piracy tags, adding TMDB ID
 ## Usage Examples
 
 ```bash
+# Clean up all directories in the current directory which is a TV Shows folder
+/tmdb-shows
+
 # Clean up a single TV show directory
 /tmdb-shows "/path/to/TV Shows/[Judas] Bocchi the Rock! (Season 01) [BD 1080p][HEVC x265 10bit][Multi-Sub]"
 
