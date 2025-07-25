@@ -149,6 +149,10 @@ gemini() {
   bunx @google/gemini-cli -y "$@"
 }
 
+oc() {
+  bunx opencode-ai "$@"
+}
+
 # Aliases
 source ~/.localrc
 
