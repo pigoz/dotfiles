@@ -95,7 +95,7 @@ f() {
 }
 
 brewcurl() {
-  PATH="/usr/local/opt/curl/bin:$PATH" curl $*
+  PATH="/usr/local/opt/curl/bin:/opt/homebrew/opt/curl/bin:$PATH" curl $*
 }
 
 upload-file() {
@@ -143,6 +143,10 @@ kimi() {
   export ANTHROPIC_BASE_URL=https://api.moonshot.ai/anthropic
   export ANTHROPIC_AUTH_TOKEN=$KIMI_AUTH_TOKEN
   bunx @anthropic-ai/claude-code --dangerously-skip-permissions "$@"
+}
+
+claude() {
+  bunx @anthropic-ai/claude-code "$@"
 }
 
 gemini() {
