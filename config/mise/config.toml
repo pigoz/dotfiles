@@ -1,0 +1,11 @@
+# Global defaults. Projects override them with mise.toml or with
+# .ruby-version / .nvmrc / .node-version / .python-version
+[tools]
+ruby = "4.0"
+python = "3.14"
+bun = "latest"
+uv = "latest"
+
+[settings]
+# Read rbenv/nodenv/pyenv version files, so old projects keep working
+idiomatic_version_file_enable_tools = ["ruby", "node", "python"]

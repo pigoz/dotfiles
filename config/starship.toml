@@ -1,0 +1,48 @@
+# Same look as the old oh-my-zsh jreese theme: user@host ~/dir ±branch »
+add_newline = false
+format = "$username$hostname $directory$git_branch${custom.git_dirty}$git_status$character"
+right_format = "$status"
+continuation_prompt = '[\\ ](red)'
+
+[username]
+show_always = true
+format = "[$user]($style)"
+style_user = "green"
+style_root = "red"
+
+[hostname]
+ssh_only = false
+format = "[@$hostname]($style)"
+style = "green"
+
+[directory]
+format = "$path"
+truncation_length = 100
+truncate_to_repo = false
+
+[git_branch]
+format = " [±](green)[$branch]($style)"
+style = "yellow"
+
+# ⚡ when there are uncommitted changes, like jreese
+[custom.git_dirty]
+when = 'test -n "$(git status --porcelain 2>/dev/null)"'
+require_repo = true
+shell = ["sh"]
+format = "[⚡]($style)"
+style = "yellow"
+
+# only ⇡ ⇣ for commits to push / pull
+[git_status]
+format = "([$ahead_behind]($style))"
+style = "red"
+
+[character]
+format = " $symbol "
+success_symbol = "[»](red)"
+error_symbol = "[»](red)"
+
+[status]
+disabled = false
+format = "[$status ↵]($style)"
+style = "red"

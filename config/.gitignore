@@ -9,3 +9,11 @@ nvim/plugin/packer_compiled.lua
 !lazygit/config.yml
 
 !.gitignore
+
+!mise
+!mise/config.toml
+
+!iterm2
+!iterm2/com.googlecode.iterm2.plist
+
+!starship.toml

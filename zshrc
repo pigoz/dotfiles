@@ -1,19 +1,35 @@
-fpath=(/usr/local/share/zsh/site-functions $fpath)
-autoload -U compinit
-compinit
+# PATH setup (before compinit, so it sees brew completions)
+source ~/.zshpath
 
-export ZSH=$HOME/.oh-my-zsh
-export ZSH_THEME="jreese"
-plugins=(git ruby)
-source $ZSH/oh-my-zsh.sh
-unsetopt correct_all
+autoload -Uz compinit && compinit
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
+zstyle ':completion:*' menu select
+
+HISTFILE=~/.zsh_history
+HISTSIZE=50000
+SAVEHIST=10000
+setopt extended_history hist_expire_dups_first hist_ignore_dups hist_ignore_space hist_verify share_history
+setopt interactive_comments
+
+# emacs keys: zsh would pick vi mode because EDITOR is nvim
+bindkey -e
+# up/down search history for what's already typed
+autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey '^[[A' up-line-or-beginning-search
+bindkey '^[OA' up-line-or-beginning-search
+bindkey '^[[B' down-line-or-beginning-search
+bindkey '^[OB' down-line-or-beginning-search
 
 # some utf-8 support
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 alias ls='ls -Gw'
-alias ll='ls -Glw'         # standard vertical listing
-alias la='ls -GAlw'        # show hidden files
+# oh-my-zsh colors: bold cyan directories (macOS default is blue)
+export LSCOLORS="Gxfxcxdxbxegedabagacad"
+export LS_COLORS="di=1;36:ln=35:so=32:pi=33:ex=31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43"
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 mvim() {
   nvim-qt $*
@@ -22,116 +38,21 @@ mvim() {
 export EDITOR=nvim
 export VISUAL=nvim-qt
 
-pg_dir='/usr/local/var/postgres'
-
-lg() {
-  lazygit
-}
+export CLAUDE_CODE_DISABLE_ADAPTIVE_THINKING=1
 
 gitx() {
   lazygit
 }
 
-pg.start() {
-  pg_ctl -D $pg_dir -l $pg_dir/server.log start
-}
-
-pg.stop() {
-  pg_ctl -D $pg_dir stop -s -m fast
-}
-
-mongo_plist='/usr/local/opt/mongodb/homebrew.mxcl.mongodb.plist'
-
-mongo.start() {
-  launchctl load $mongo_plist
-}
-
-mongo.stop() {
-  launchctl unload $mongo_plist
-}
-
-redis_plist="/usr/local/opt/redis/homebrew.mxcl.redis.plist"
-
-redis.start() {
-  launchctl load $redis_plist
-}
-
-redis.stop() {
-  launchctl unload $redis_plist
-}
-
-mc() {
-  # brew install switchaudio-osx
-  SwitchAudioSource -s HDMI
-  ~/dev/fps/fps.rb ${@: -1}
-  mpv -fs -screen=1 $*
-  SwitchAudioSource -s "Built-in Output"
-}
-
-mch() {
-  # ~/dev/fps/fps.rb ${@: -1}
-  mpv-cli --volume=70 --fullscreen --display=1 $*
-}
-
 # aliases
 alias -g be='bundle exec'
-alias -g sudo='nocorrect sudo'
-
-# $1 search
-# $2 replace
-# prjreplace() {
-#   ag -Sl "$1" | xargs perl -pi -E "s/\Q$1\E/\Q$2\E/g"
-# }
-#
-prjreplace() {
-  self=$(readlink ~/.zshrc)
-  dir=$(dirname $self)
-  replacebin=$dir/bin/replace
-  ag -Sl "$1" | xargs -L 1 "$replacebin" "$1" "$2"
-}
-
-f() {
-  ag --smart-case --skip-vcs-ignores $1
-}
-
-brewcurl() {
-  PATH="/usr/local/opt/curl/bin:/opt/homebrew/opt/curl/bin:$PATH" curl $*
-}
 
 upload-file() {
-  brewcurl -F "file=@$1" https://0x0.st
+  curl -F "file=@$1" https://0x0.st
 }
 
 upload-cb() {
-  pbpaste | brewcurl -F'file=@-' https://0x0.st
-}
-
-upload() {
-  brewcurl -F'file=@-' https://0x0.st
-}
-
-remote-sha1() {
-  curl $1 | openssl sha1
-}
-
-bigscp() {
-  rsync -avz --partial --progress --rsh=ssh $1 $2
-}
-
-subs.ass2srt() {
-  find . -name \*.ass | sed 's/\.ass$//' | xargs -I{} ffmpeg -i {}.ass -c:s text {}.srt
-}
-
-subs.retimemkv() {
-  find . -name \*.srt | sed 's/\.srt$//' | xargs -I{} alass-cli {}.mkv {}.srt {}.srt
-}
-
-vim-reset() {
-  rm -rf ~/.local/share/nvim ~/.config/nvim/plugin/packer_compiled.lua
-}
-
-ig-portrait() {
-  mogrify -path output -resize 1080x1350 -background black -gravity center -extent 1080x1350 -quality $1 *.jpg && du -sh output/*
+  pbpaste | curl -F'file=@-' https://0x0.st
 }
 
 bindkey '^[^[[D' backward-word
@@ -139,40 +60,15 @@ bindkey '^[^[[C' forward-word
 bindkey '^[[5D' beginning-of-line
 bindkey '^[[5C' end-of-line
 
-kimi() {
-  export ANTHROPIC_BASE_URL=https://api.moonshot.ai/anthropic
-  export ANTHROPIC_AUTH_TOKEN=$KIMI_AUTH_TOKEN
-  bunx @anthropic-ai/claude-code --dangerously-skip-permissions "$@"
-}
-
-claude() {
-  bunx @anthropic-ai/claude-code "$@"
-}
-
-gemini() {
-  bunx @google/gemini-cli -y "$@"
-}
-
 oc() {
   bunx opencode-ai "$@"
 }
 
-# Aliases
-source ~/.localrc
+playwright-cli() {
+  bunx @playwright/cli "$@"
+}
 
-# PATH setup
-source ~/.zshpath
+# Secrets
+[ -f ~/.localrc ] && source ~/.localrc
 
-# pnpm
-export PNPM_HOME="/Users/pigoz/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
-# bun completions
-[ -s "/Users/pigoz/.bun/_bun" ] && source "/Users/pigoz/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
+eval "$(starship init zsh)"
