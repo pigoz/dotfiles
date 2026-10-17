@@ -1,10 +1,8 @@
 quitOnTopLevelReturn: true
 notARepository: 'quit'
 promptToReturnFromSubprocess: false
-
 gui:
   showIcons: true
-
 keybinding:
   files:
     commitChanges: 'こ'
@@ -12,10 +10,9 @@ keybinding:
   commits:
     renameCommit: 'れ'
     renameCommitWithEditor: 'r'
-
 customCommands:
   - key: 'I'
     command: "git rebase -i {{.SelectedLocalCommit.Sha}}^"
     context: 'commits'
     description: 'start interactive rebase'
-    subprocess: true
+    output: terminal
