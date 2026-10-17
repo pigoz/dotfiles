@@ -10,6 +10,9 @@ setopt err_exit no_unset pipe_fail
 cd ${0:A:h}
 
 step_brew() {
+  # not installed by default; OrbStack uses it for linux/amd64 images
+  arch -x86_64 /usr/bin/true 2> /dev/null \
+    || sudo softwareupdate --install-rosetta --agree-to-license
   [[ -x /opt/homebrew/bin/brew ]] \
     || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   brew bundle --file=Brewfile
