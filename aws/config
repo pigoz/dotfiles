@@ -1,0 +1,11 @@
+# Keys come from the project's bin/secrets (INFRA.md, Access), as
+# credential_process JSON, so none is stored in this directory.
+[profile superagent-backups-ro]
+region = eu-central-1
+credential_process = /Users/pigoz/dev/superagent/bin/secrets get operator.aws_backups_reader
+
+# Administrator of the Gromia account (AdministratorAccess), for Claude and
+# the owner on this Mac.
+[profile gromia-admin]
+region = eu-central-1
+credential_process = /Users/pigoz/dev/superagent/bin/secrets get operator.aws_gromia_admin

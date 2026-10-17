@@ -1,15 +1,19 @@
 pigoz's dotfiles
 ================
 
-These are my dotfiles. They are hosted here so it's easy for me to setup
-new machines and keep them synchronized.
+My Mac setup. They aren't made to be used by other people, but I hope they
+are at least useful as reference.
 
-They aren't made to be used by other people (for example the gitconfig
-has my name and email hardcoded), but I hope they are at least useful as
-reference.
+On a new Mac, from Terminal.app before opening iTerm2:
 
-Credits
--------
-The `Rakefile` is based on [ryanb dotfiles](https://github.com/ryanb/dotfiles),
-with some changes. Some stuff is taken from
-[garybernhardt](https://github.com/garybernhardt/dotfiles) because it's awesome!
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    git clone https://github.com/pigoz/dotfiles ~/dev/dotfiles
+    ~/dev/dotfiles/bootstrap
+
+`bootstrap` installs the Brewfile, links the dotfiles into `~`, points iTerm2
+at `config/iterm2`, installs the runtimes with mise, restores the secrets from
+Bitwarden and logs in to gh and gcloud. It's safe to run again.
+
+Secrets that can't live in this repo (ssh and age keys, `~/.localrc`) are kept
+in Bitwarden with `secrets push` / `secrets pull`; the shell says when they
+need a push.

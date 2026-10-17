@@ -70,5 +70,9 @@ playwright-cli() {
 
 # Secrets
 [ -f ~/.localrc ] && source ~/.localrc
+secrets() {
+  ~/dev/dotfiles/secrets "$@"
+}
+secrets status
 
 eval "$(starship init zsh)"

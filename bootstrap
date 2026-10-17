@@ -1,0 +1,77 @@
+#!/bin/zsh
+# Set up a Mac. On a new one, from Terminal.app before opening iTerm2:
+#
+#   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+#   git clone https://github.com/pigoz/dotfiles ~/dev/dotfiles
+#   ~/dev/dotfiles/bootstrap
+#
+# Safe to run again; `bootstrap links secrets` runs only those steps.
+setopt err_exit no_unset pipe_fail
+cd ${0:A:h}
+
+step_brew() {
+  [[ -x /opt/homebrew/bin/brew ]] \
+    || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  brew bundle --file=Brewfile
+}
+
+link() {
+  local src=$PWD/$1 dest=$2
+  [[ -L $dest && $(readlink $dest) == $src ]] && return
+  mkdir -p -m 700 ${dest:h}
+  if [[ -e $dest || -L $dest ]]; then
+    mv $dest $dest.bak
+    print "backup  $dest.bak"
+  fi
+  ln -s $src $dest
+  print "linked  $dest"
+}
+
+# every top-level entry becomes ~/.<name>; ssh and aws only get their config,
+# since those directories also hold keys and caches
+step_links() {
+  local f
+  for f in *; do
+    [[ $f == (bootstrap|secrets|README.md|ssh|aws) ]] && continue
+    link $f ~/.$f
+  done
+  link ssh/config ~/.ssh/config
+  link aws/config ~/.aws/config
+}
+
+step_iterm() {
+  # iTerm2 writes its in-memory settings back on quit, overwriting these
+  if [[ -n ${(M)${(f)"$(ps -axo comm=)"}:#*/MacOS/iTerm2} ]]; then
+    print "iTerm2 is running, skipped: quit it and run \`bootstrap iterm\` from Terminal.app"
+    return
+  fi
+  local domain=com.googlecode.iterm2
+  defaults write $domain PrefsCustomFolder -string $PWD/config/iterm2
+  defaults write $domain LoadPrefsFromCustomFolder -bool true
+  # "Save changes: Automatically"
+  defaults write $domain NoSyncNeverRemindPrefsChangesLostForFile -bool true
+  defaults write $domain NoSyncNeverRemindPrefsChangesLostForFile_selection -int 2
+  print "iTerm2 settings: $PWD/config/iterm2"
+}
+
+step_mise() {
+  mise install
+}
+
+step_secrets() {
+  ./secrets pull
+}
+
+step_logins() {
+  gh auth status > /dev/null 2>&1 || gh auth login
+  [[ -n $(gcloud auth list --filter=status:ACTIVE --format='value(account)' 2> /dev/null) ]] \
+    || gcloud auth login
+}
+
+[[ -x /opt/homebrew/bin/brew ]] && eval "$(/opt/homebrew/bin/brew shellenv zsh)"
+for s in ${@:-brew links iterm mise secrets logins}; do
+  print -P "\n%B==> $s%b"
+  step_$s
+  [[ $s == brew ]] && eval "$(/opt/homebrew/bin/brew shellenv zsh)"
+done
+print "\nDone."
