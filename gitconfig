@@ -3,9 +3,6 @@
 [user]
   name = Stefano Pigozzi
   email = stefano.pigozzi@gmail.com
-[color]
-  ui = auto
-  interactive = auto
 [color "branch"]
   current = yellow reverse
   local = yellow
@@ -22,43 +19,11 @@
 [core]
   excludesfile = ~/.gitignore
   editor = nvim
-[merge]
-  tool = opendiff
-[mergetool "nvim"]
-  cmd=nvim -d -g $LOCAL $MERGED $REMOTE
-  keepbackup=false
 [alias]
   st = status
-  ci = commit
   co = checkout
-  di = diff
-  dc = diff --cached
-  ca = commit --amend
   cad = commit --amend --date=now
-  aa = add --all
   ff = merge --ff-only
-  l = "!source ~/.githelpers && pretty_git_log"
-  la = !git l --all
-  r = !git l -20
-  ra = !git r --all
-  head = !git l -1
-  h = !git head
-  fa = fetch --all
-  pom = push origin master
-  b = branch
-  ds = diff --stat=160,120
-  dh1 = diff HEAD~1
-  wc = whatchanged -p --abbrev-commit --pretty=medium
-  pullify = config --add remote.origin.fetch '+refs/pull/*/head:refs/remotes/origin/pr/*'
-[i18n]
-  commitencoding = UTF-8
-  logoutputencoding = UTF-8
-[tig]
-  show-date = relative
-  author-width = 8
-  show-rev-graph = yes
-[push]
-  default = simple
 [pull]
   rebase = true
 [init]

@@ -1,7 +1,0 @@
-color_patches=no
-diff_cmd=diff
-plain=off
-newtext=green
-oldtext=red
-diffstuff=magenta
-cvsstuff=off
