@@ -66,11 +66,6 @@ step_secrets() {
 
 # owner/repo[:dir], cloned into ~/dev; ssh keys come from the secrets step
 repos=(
-  pigoz/fiamma
-  pigoz/home
-  pigoz/koka-cloudflare
-  pigoz/kyo-cloudflare
-  pigoz/notwhisky
   gromia/backend:gromia-backend
   gromia/website:gromia-website
   gromia/superagent:superagent
