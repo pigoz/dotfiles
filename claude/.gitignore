@@ -7,3 +7,4 @@
 !skills/codex/**
 !skills/playwright-cli/
 !skills/playwright-cli/**
+!settings.json
