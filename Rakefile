@@ -1,16 +1,6 @@
 require 'rake'
 require 'erb'
 
-task :install_vim do
-  `brew install macvim --override-system-vim`
-end
-
-task :install_vundle do
-  unless File.exists?(File.expand_path('~/.vim/bundle/vundle'))
-    `git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle`
-  end
-end
-
 desc "install the dot files into user's home directory"
 task :install do
   replace_all = false
@@ -41,7 +31,22 @@ task :install do
   end
 end
 
-task :default => [:install]
+desc "make iTerm2 load and save its settings in config/iterm2"
+task :iterm do
+  # iTerm2 writes its in-memory settings back on quit, overwriting these
+  if `ps -axo comm=`.lines.any? { |l| l.chomp.end_with?('/MacOS/iTerm2') }
+    abort "quit iTerm2 and run `rake iterm` from Terminal.app"
+  end
+  domain = 'com.googlecode.iterm2'
+  system 'defaults', 'write', domain, 'PrefsCustomFolder', '-string', File.expand_path('config/iterm2')
+  system 'defaults', 'write', domain, 'LoadPrefsFromCustomFolder', '-bool', 'true'
+  # "Save changes: Automatically"
+  system 'defaults', 'write', domain, 'NoSyncNeverRemindPrefsChangesLostForFile', '-bool', 'true'
+  system 'defaults', 'write', domain, 'NoSyncNeverRemindPrefsChangesLostForFile_selection', '-int', '2'
+  puts "iTerm2 settings: #{File.expand_path('config/iterm2')}"
+end
+
+task :default => [:install, :iterm]
 
 def no_copy_files_list
   %w[Rakefile README.md LICENSE]
