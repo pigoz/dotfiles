@@ -2,3 +2,8 @@
 !.gitignore
 !commands/
 !commands/*
+!skills/
+!skills/codex/
+!skills/codex/**
+!skills/playwright-cli/
+!skills/playwright-cli/**
