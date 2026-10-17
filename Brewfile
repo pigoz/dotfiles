@@ -33,7 +33,6 @@ cask "font-hack-nerd-font" # iTerm2 font
 cask "alt-tab"
 cask "orbstack"
 cask "postico"
-cask "cyberduck"
 cask "transmission"
 cask "brave-browser"
 cask "claude"
