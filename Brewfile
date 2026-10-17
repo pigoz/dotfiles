@@ -21,8 +21,7 @@ brew "vips"
 # needed by mise to compile ruby
 brew "openssl@3"
 brew "libyaml"
-
-brew "postgresql@18", restart_service: :changed
+brew "libpq"
 
 brew "awscli"
 brew "hcloud"

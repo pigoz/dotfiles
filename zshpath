@@ -4,6 +4,7 @@ export XDG_CONFIG_HOME="$HOME/.config"
 eval "$(/opt/homebrew/bin/brew shellenv zsh)"
 
 export PATH=$HOME/.local/bin:$PATH
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH" # libpq is keg only
 
 # ruby, python, bun & co. (see ~/.config/mise/config.toml)
 eval "$(mise activate zsh)"
