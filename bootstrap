@@ -58,7 +58,33 @@ step_mise() {
   mise install
 }
 
+# one master password prompt for this step and the repos one
 step_secrets() {
+  export BW_SESSION=${BW_SESSION:-$(./secrets session)}
+  ./secrets pull
+}
+
+# owner/repo[:dir], cloned into ~/dev; ssh keys come from the secrets step
+repos=(
+  pigoz/fiamma
+  pigoz/home
+  pigoz/koka-cloudflare
+  pigoz/kyo-cloudflare
+  pigoz/notwhisky
+  gromia/backend:gromia-backend
+  gromia/website:gromia-website
+  gromia/superagent:superagent
+)
+
+step_repos() {
+  local r dir
+  for r in $repos; do
+    dir=~/dev/${r##*[/:]}
+    [[ -d $dir ]] && continue
+    GIT_SSH_COMMAND='ssh -o StrictHostKeyChecking=accept-new' \
+      git clone --recursive git@github.com:${r%%:*}.git $dir
+  done
+  # the files that git ignores in those repos (.env, master.key)
   ./secrets pull
 }
 
@@ -69,7 +95,7 @@ step_logins() {
 }
 
 [[ -x /opt/homebrew/bin/brew ]] && eval "$(/opt/homebrew/bin/brew shellenv zsh)"
-for s in ${@:-brew links iterm mise secrets logins}; do
+for s in ${@:-brew links iterm mise secrets repos logins}; do
   print -P "\n%B==> $s%b"
   step_$s
   [[ $s == brew ]] && eval "$(/opt/homebrew/bin/brew shellenv zsh)"

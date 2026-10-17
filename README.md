@@ -12,8 +12,10 @@ On a new Mac, from Terminal.app before opening iTerm2:
 
 `bootstrap` installs the Brewfile, links the dotfiles into `~`, points iTerm2
 at `config/iterm2`, installs the runtimes with mise, restores the secrets from
-Bitwarden and logs in to gh and gcloud. It's safe to run again.
+Bitwarden, clones my repos into `~/dev` and logs in to gh and gcloud. It's
+safe to run again.
 
-Secrets that can't live in this repo (ssh and age keys, `~/.localrc`) are kept
-in Bitwarden with `secrets push` / `secrets pull`; the shell says when they
-need a push.
+Secrets that can't live in this repo (ssh and age keys, `~/.localrc`, the
+`.env` and `master.key` files that git ignores in my repos) are kept in
+Bitwarden with `secrets push` / `secrets pull`; the shell says when they need
+a push.
