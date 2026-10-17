@@ -11,7 +11,8 @@ On a new Mac, from Terminal.app before opening iTerm2:
     ~/dev/dotfiles/bootstrap
 
 `bootstrap` installs the Brewfile, links the dotfiles into `~`, points iTerm2
-at `config/iterm2`, installs the runtimes with mise, restores the secrets from
+at `config/iterm2`, applies my macOS settings (shortcuts, Dock, Finder,
+input sources), installs the runtimes with mise, restores the secrets from
 Bitwarden, clones my repos into `~/dev` and logs in to gh and gcloud. It's
 safe to run again.
 

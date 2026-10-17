@@ -54,6 +54,71 @@ step_iterm() {
   print "iTerm2 settings: $PWD/config/iterm2"
 }
 
+# keyboard shortcut: id, on|off, then ascii keycode modifiers (optional when off)
+hotkey() {
+  local d="<key>enabled</key><$([[ $2 == on ]] && print true || print false)/>"
+  if (( $# > 2 )); then
+    d+="<key>value</key><dict><key>type</key><string>standard</string>"
+    d+="<key>parameters</key><array><integer>$3</integer><integer>$4</integer><integer>$5</integer></array></dict>"
+  fi
+  defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add $1 "<dict>$d</dict>"
+}
+
+step_macos() {
+  # ⌃Q Mission Control, ⌃S show desktop, with ⇧ for the slow versions
+  hotkey 32 on 113 12 262144
+  hotkey 34 on 113 12 393216
+  hotkey 36 on 115 1 262144
+  hotkey 37 on 115 1 393216
+  # off, keeping their keys: ⌃↓ application windows, ⌃space and ⌃⌥space input sources
+  hotkey 33 off 65535 125 8650752
+  hotkey 60 off 32 49 262144
+  hotkey 61 off 32 49 786432
+  # off: zoom, contrast and other accessibility keys
+  local id
+  for id in 15 16 17 18 19 20 21 22 23 24 25 26 38 40 44 45 46 48 49; do
+    hotkey $id off
+  done
+
+  defaults write com.apple.dock orientation -string left
+  defaults write com.apple.dock autohide -bool true
+  defaults write com.apple.dock tilesize -float 39
+  defaults write com.apple.dock mineffect -string scale
+  # bottom right hot corner: nothing instead of Quick Note
+  defaults write com.apple.dock wvous-br-corner -int 1
+  defaults write com.apple.dock wvous-br-modifier -int 0
+
+  defaults write -g AppleInterfaceStyle -string Dark
+  defaults write -g com.apple.swipescrolldirection -bool false
+  defaults write -g com.apple.mouse.scaling -float 1.5
+  defaults write -g AppleLanguages -array en-IT it-IT ja-IT
+  defaults write -g AppleLocale -string en_IT
+
+  defaults write com.apple.finder FXPreferredViewStyle -string clmv
+  defaults write com.apple.finder NewWindowTarget -string PfHm
+  defaults write com.apple.finder NewWindowTargetPath -string "file://$HOME/"
+  defaults write com.apple.finder ShowHardDrivesOnDesktop -bool true
+
+  mkdir -p ~/Screenshots
+  defaults write com.apple.screencapture location -string '~/Screenshots'
+
+  # U.S. keyboard and Japanese (Romaji), plus the system's own input methods
+  local kotoeri=com.apple.inputmethod.Kotoeri.RomajiTyping
+  defaults write com.apple.HIToolbox AppleEnabledInputSources -array \
+    '<dict><key>Bundle ID</key><string>com.apple.CharacterPaletteIM</string><key>InputSourceKind</key><string>Non Keyboard Input Method</string></dict>' \
+    '<dict><key>Bundle ID</key><string>com.apple.PressAndHold</string><key>InputSourceKind</key><string>Non Keyboard Input Method</string></dict>' \
+    '<dict><key>Bundle ID</key><string>com.apple.50onPaletteIM</string><key>InputSourceKind</key><string>Non Keyboard Input Method</string></dict>' \
+    '<dict><key>InputSourceKind</key><string>Keyboard Layout</string><key>KeyboardLayout ID</key><integer>0</integer><key>KeyboardLayout Name</key><string>U.S.</string></dict>' \
+    "<dict><key>Bundle ID</key><string>$kotoeri</string><key>Input Mode</key><string>com.apple.inputmethod.Japanese</string><key>InputSourceKind</key><string>Input Mode</string></dict>" \
+    "<dict><key>Bundle ID</key><string>$kotoeri</string><key>InputSourceKind</key><string>Keyboard Input Method</string></dict>" \
+    '<dict><key>Bundle ID</key><string>com.apple.inputmethod.ironwood</string><key>InputSourceKind</key><string>Non Keyboard Input Method</string></dict>'
+
+  local activate=/System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings
+  [[ -x $activate ]] && $activate -u
+  killall Dock Finder SystemUIServer 2> /dev/null || true
+  print "log out and back in for input sources, languages and dark mode"
+}
+
 step_mise() {
   mise install
 }
@@ -91,7 +156,7 @@ step_logins() {
 }
 
 [[ -x /opt/homebrew/bin/brew ]] && eval "$(/opt/homebrew/bin/brew shellenv zsh)"
-for s in ${@:-brew links iterm mise secrets repos logins}; do
+for s in ${@:-brew links iterm macos mise secrets repos logins}; do
   print -P "\n%B==> $s%b"
   step_$s
   [[ $s == brew ]] && eval "$(/opt/homebrew/bin/brew shellenv zsh)"
