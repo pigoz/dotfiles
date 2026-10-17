@@ -32,7 +32,7 @@ link() {
 step_links() {
   local f
   for f in *; do
-    [[ $f == (bootstrap|secrets|README.md|ssh|aws) ]] && continue
+    [[ $f == (bootstrap|secrets|README.md|ssh|aws|prefs) ]] && continue
     link $f ~/.$f
   done
   link ssh/config ~/.ssh/config
@@ -112,6 +112,13 @@ step_macos() {
     "<dict><key>Bundle ID</key><string>$kotoeri</string><key>Input Mode</key><string>com.apple.inputmethod.Japanese</string><key>InputSourceKind</key><string>Input Mode</string></dict>" \
     "<dict><key>Bundle ID</key><string>$kotoeri</string><key>InputSourceKind</key><string>Keyboard Input Method</string></dict>" \
     '<dict><key>Bundle ID</key><string>com.apple.inputmethod.ironwood</string><key>InputSourceKind</key><string>Non Keyboard Input Method</string></dict>'
+
+  # app settings saved by prefs/export (replaces each app's whole domain)
+  local p
+  for p in prefs/*.plist; do
+    defaults import ${p:t:r} $p
+    print "imported ${p:t:r}"
+  done
 
   local activate=/System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings
   [[ -x $activate ]] && $activate -u

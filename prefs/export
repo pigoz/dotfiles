@@ -1,0 +1,19 @@
+#!/bin/zsh
+# Save the settings of these apps here; `bootstrap macos` imports them.
+# Leaves out window frames, update and crash-reporter state.
+setopt err_exit no_unset pipe_fail
+cd ${0:A:h}
+
+domains=(
+  com.lwouis.alt-tab-macos
+)
+
+for d in $domains; do
+  defaults export $d $d.plist
+  plutil -convert xml1 $d.plist
+  for k in ${(f)"$(/usr/libexec/PlistBuddy -c Print $d.plist | LC_ALL=C sed -nE 's/^    ([^ =][^=]*[^ =]) = .*/\1/p')"}; do
+    [[ $k == (MSAppCenter*|NSWindow\ Frame*|NSStatusItem*|SU*|settingsWindowShownOnFirstLaunch) ]] || continue
+    plutil -remove "$k" $d.plist
+  done
+  print "saved prefs/$d.plist"
+done
