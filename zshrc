@@ -73,6 +73,5 @@ playwright-cli() {
 secrets() {
   ~/dev/dotfiles/secrets "$@"
 }
-secrets status
 
 eval "$(starship init zsh)"

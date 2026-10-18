@@ -18,5 +18,4 @@ safe to run again.
 
 Secrets that can't live in this repo (ssh and age keys, `~/.localrc`, the
 `.env` and `master.key` files that git ignores in my repos) are kept in
-Bitwarden with `secrets push` / `secrets pull`; the shell says when they need
-a push.
+Bitwarden with `secrets push` / `secrets pull`.
