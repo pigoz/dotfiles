@@ -16,6 +16,8 @@ step_brew() {
   [[ -x /opt/homebrew/bin/brew ]] \
     || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   brew bundle --file=Brewfile
+  # fontd ignores ~/Library/Fonts if the font casks created it after login
+  killall -u $USER fontd 2> /dev/null || true
 }
 
 link() {

@@ -27,7 +27,17 @@ function M.setup(table)
     augroup end
   ]])
 
-  require('lazy').setup(table)
+  require('lazy').setup(table, {
+    performance = {
+      rtp = {
+        -- lazy resets the runtimepath, which drops neovim-qt's runtime and
+        -- with it :GuiFont & co., so ginit.vim couldn't set the font
+        paths = vim.tbl_filter(function(path)
+          return path:match('nvim%-qt') ~= nil
+        end, vim.opt.rtp:get()),
+      },
+    },
+  })
 end
 
 return M
