@@ -6,6 +6,9 @@ python = "3.14"
 bun = "latest"
 uv = "latest"
 bitwarden = "latest"
+lua-language-server = "latest" # nvim lua_ls
+dprint = "latest"              # default formatter in nvim
+ripgrep = "latest"             # telescope live_grep
 
 [settings]
 # Read rbenv/nodenv/pyenv version files, so old projects keep working

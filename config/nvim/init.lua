@@ -1,4 +1,5 @@
 require('user.globals')
 require('user.settings')
+require('user.mise').setup()
 require('user.plugins')
 require('user.keys').setup_global_key_bindings()

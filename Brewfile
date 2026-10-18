@@ -1,7 +1,11 @@
 # `rake install` links this to ~/.Brewfile, so: brew bundle --global
 #
 # Only what was actually used in the last year (shell history, Claude Code
-# sessions, app last-used dates). Language runtimes come from mise.
+# sessions, app last-used dates).
+#
+# Apps, system libraries and general CLIs. What's for programming (runtimes,
+# language servers, formatters, anything nvim runs) comes from mise instead,
+# see config/mise/config.toml.
 
 brew "mise"
 brew "starship"
@@ -9,9 +13,7 @@ brew "neovim"
 brew "neovim-qt"
 brew "lazygit"
 brew "gh"
-brew "ripgrep"             # telescope live_grep
 brew "jq"
-brew "dprint"              # default formatter in nvim
 brew "wget"
 brew "age"
 brew "sops"
