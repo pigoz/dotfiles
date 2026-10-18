@@ -31,10 +31,10 @@ local palettes = {
 }
 
 -- onedark.nvim uses grey for both comments and the UI chrome: comments get
--- their own level, listchars a fainter one
+-- their own level, line numbers and listchars a fainter one
 local levels = {
-  dark = { comment = "#b1b8c7", invisible = "#787f8d" },
-  light = { comment = "#87888d", invisible = "#c0c1c8" },
+  dark = { comment = "#9ca3b1", invisible = "#787f8d" },
+  light = { comment = "#9fa0a5", invisible = "#c0c1c8" },
 }
 
 local function highlights(style)
@@ -46,6 +46,7 @@ local function highlights(style)
     ["@comment"] = comment,
     TSComment = comment,
     LspCodeLens = comment,
+    LineNr = invisible,
     NonText = invisible,
     Whitespace = invisible,
     SpecialKey = invisible,

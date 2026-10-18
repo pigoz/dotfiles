@@ -53,14 +53,16 @@ glyph pixels reach the nominal color.
   light background colored text has to be dark, and dark colors can't be
   saturated. Keeping the syntax colors at Lc 60–71 leaves room for lighter,
   livelier ones
+- comments at Lc 60 stood out too much in practice: onedark's are grey, so
+  only their lightness sets them apart from the text. Line numbers too, at 45
 
 | role                                          | Lc     |
 |-----------------------------------------------|--------|
 | text                                          | 74     |
 | syntax colors                                 | 60–71  |
-| comments                                      | 60     |
-| line numbers, borders, ANSI bright black      | 45     |
-| listchars (`¬ · ▸`)                           | 30     |
+| comments                                      | 48     |
+| borders, ANSI bright black                    | 45     |
+| line numbers, listchars (`¬ · ▸`)             | 30     |
 | faint text (SGR 2, used a lot by Codex)       | 60     |
 
 The colors keep OneDark's and One Light's hue and chroma: only the OKLCH
@@ -90,10 +92,10 @@ onedark.nvim palette keys, with the original values:
 | yellow       | `#e5c07b` |                   | `#d7660b` | `#986801` Lc 70   |
 | cyan         | `#66c6d2` | `#56b6c2` Lc 51   | `#0184bc` |                   |
 | red          | `#fe9da1` | `#e86671` Lc 39   | `#e45649` |                   |
-| comments     | `#b1b8c7` | `#5c6370` Lc 17   | `#87888d` | `#a0a1a7` Lc 47   |
+| comments     | `#9ca3b1` | `#5c6370` Lc 17   | `#9fa0a5` | `#a0a1a7` Lc 47   |
 | grey         | `#969dac` | `#5c6370` Lc 17   | `#a4a5ac` | `#a0a1a7` Lc 47   |
 | light_grey   | `#a3abb8` | `#848b98` Lc 36   | `#96999d` | `#818387` Lc 63   |
-| listchars    | `#787f8d` | `#5c6370` Lc 17   | `#c0c1c8` | `#a0a1a7` Lc 47   |
+| line numbers, listchars | `#787f8d` | `#5c6370` Lc 17 | `#c0c1c8` | `#a0a1a7` Lc 47 |
 
 The iTerm2 ANSI colors are the same as nvim's. Bright colors sit on the edge
 of the band (Lc 71 on dark, 60 on light), and on light ANSI yellow is the
