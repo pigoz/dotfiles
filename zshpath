@@ -6,5 +6,8 @@ eval "$(/opt/homebrew/bin/brew shellenv zsh)"
 export PATH=$HOME/.local/bin:$PATH
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH" # libpq is keg only
 
+# Ferrum (superagent's system tests) looks for Chrome, Brave is the Chromium here
+export BROWSER_PATH="/Applications/Brave Browser.app/Contents/MacOS/Brave Browser"
+
 # ruby, python, bun & co. (see ~/.config/mise/config.toml)
 eval "$(mise activate zsh)"
