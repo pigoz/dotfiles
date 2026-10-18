@@ -23,6 +23,7 @@ augroup END
 ]])
 
 -- editor ui
+vim.o.guifont = 'Hack Nerd Font Mono:h24' -- nvim-qt
 vim.o.number = true
 vim.o.numberwidth = 3
 vim.o.signcolumn = 'yes:2'
