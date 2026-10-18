@@ -2,7 +2,7 @@ quitOnTopLevelReturn: true
 notARepository: 'quit'
 promptToReturnFromSubprocess: false
 gui:
-  showIcons: true
+  nerdFontsVersion: "3"
 keybinding:
   files:
     commitChanges: 'こ'

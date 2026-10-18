@@ -338,7 +338,7 @@
 			<key>Non-ASCII Ligatures</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>HackNerdFontCompleteM-Regular 24</string>
+			<string>HackNFM-Regular 24</string>
 			<key>Option Key Sends</key>
 			<integer>2</integer>
 			<key>Prompt Before Closing 2</key>
