@@ -3,6 +3,11 @@ notARepository: 'quit'
 promptToReturnFromSubprocess: false
 gui:
   nerdFontsVersion: "3"
+  theme:
+    # the default blue background hides the text with the calibrated
+    # palette (THEME.md), and reverse works in both light and dark mode
+    selectedLineBgColor:
+      - reverse
 keybinding:
   files:
     commitChanges: 'こ'

@@ -16,6 +16,9 @@ input sources), installs the runtimes with mise, restores the secrets from
 Bitwarden, clones my repos into `~/dev` and logs in to gh and gcloud. It's
 safe to run again.
 
+The terminal and editor colors are tuned for readability, see
+[THEME.md](THEME.md).
+
 Secrets that can't live in this repo (ssh and age keys, `~/.localrc`, the
 `.env` and `master.key` files that git ignores in my repos) are kept in
 Bitwarden with `secrets push` / `secrets pull`.

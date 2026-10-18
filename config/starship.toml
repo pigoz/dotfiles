@@ -37,9 +37,10 @@ style = "yellow"
 format = "([$ahead_behind]($style))"
 style = "red"
 
+# red only when the last command failed
 [character]
 format = " $symbol "
-success_symbol = "[»](red)"
+success_symbol = "»"
 error_symbol = "[»](red)"
 
 [status]

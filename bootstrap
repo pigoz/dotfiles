@@ -37,7 +37,7 @@ link() {
 step_links() {
   local f
   for f in *; do
-    [[ $f == (bootstrap|secrets|README.md|ssh|aws|prefs) ]] && continue
+    [[ $f == (bootstrap|secrets|README.md|THEME.md|ssh|aws|prefs) ]] && continue
     link $f ~/.$f
   done
   link ssh/config ~/.ssh/config

@@ -137,5 +137,5 @@
   "agentPushNotifEnabled": true,
   "skipAutoPermissionPrompt": true,
   "voiceEnabled": true,
-  "theme": "dark"
+  "theme": "auto"
 }
