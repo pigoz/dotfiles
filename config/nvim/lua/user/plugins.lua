@@ -164,7 +164,7 @@ return require("user.lazy").setup({
   },
 
   {
-    "navarasu/onedark.nvim",
+    "olimorris/onedarkpro.nvim",
     config = function()
       require("user.theme").setup()
     end,

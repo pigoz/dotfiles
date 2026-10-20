@@ -1,67 +1,6 @@
--- OneDark / One Light with the contrast recalibrated for all-day reading,
--- following the macOS light/dark mode like iTerm2. Rationale in THEME.md
+-- onedarkpro.nvim as it comes, OneDark or One Light following the macOS
+-- light/dark mode like iTerm2. Rationale in THEME.md
 local M = {}
-
--- onedark.nvim palette overrides: same hues, only the lightness changed
-local palettes = {
-  dark = {
-    fg = "#c9d1de",
-    purple = "#e79cfe",
-    green = "#99c57a",
-    orange = "#e6ad79",
-    blue = "#73bffd",
-    yellow = "#e5c07b",
-    cyan = "#66c6d2",
-    red = "#fe9da1",
-    grey = "#969dac",
-    light_grey = "#a3abb8",
-  },
-  light = {
-    fg = "#676a72",
-    purple = "#b537b2",
-    green = "#479847",
-    orange = "#b57c0b",
-    blue = "#4078f2",
-    yellow = "#d7660b", -- types: One Light's dark yellow can't be saturated
-    cyan = "#0184bc",
-    red = "#e45649",
-    grey = "#a4a5ac",
-    light_grey = "#96999d",
-  },
-}
-
--- onedark.nvim uses grey for both comments and the UI chrome: comments get
--- their own level, line numbers and listchars a fainter one
-local levels = {
-  dark = { comment = "#9ca3b1", invisible = "#787f8d" },
-  light = { comment = "#9fa0a5", invisible = "#c0c1c8" },
-}
-
-local function highlights(style)
-  local comment = { fg = levels[style].comment }
-  local invisible = { fg = levels[style].invisible }
-  return {
-    Comment = comment,
-    SpecialComment = comment,
-    ["@comment"] = comment,
-    TSComment = comment,
-    LspCodeLens = comment,
-    LineNr = invisible,
-    NonText = invisible,
-    Whitespace = invisible,
-    SpecialKey = invisible,
-  }
-end
-
-local function configure()
-  local style = vim.o.background
-  require("onedark").setup({
-    style = style,
-    code_style = { comments = "none" },
-    colors = palettes[style],
-    highlights = highlights(style),
-  })
-end
 
 -- nvim-qt has no terminal to ask for its background, so read the mode
 -- from macOS for both
@@ -70,24 +9,24 @@ local function system_background()
   return style:match("Dark") and "dark" or "light"
 end
 
+local themes = { dark = "onedark", light = "onelight" }
+
+local function apply(style)
+  -- onedarkpro doesn't set it, and setting it reloads the current colorscheme
+  vim.o.background = style
+  vim.cmd.colorscheme(themes[style])
+end
+
 function M.setup()
-  local group = vim.api.nvim_create_augroup("UserTheme", {})
-  -- nvim reloads the colorscheme by itself when 'background' changes
-  vim.api.nvim_create_autocmd("ColorSchemePre", {
-    group = group,
-    pattern = "onedark",
-    callback = configure,
-  })
-  vim.o.background = system_background()
-  vim.cmd.colorscheme("onedark")
+  apply(system_background())
 
   -- catch a light/dark switch made while nvim was open
   vim.api.nvim_create_autocmd("FocusGained", {
-    group = group,
+    group = vim.api.nvim_create_augroup("UserTheme", {}),
     callback = function()
       local style = system_background()
-      if style ~= vim.o.background then
-        vim.o.background = style
+      if vim.g.colors_name == themes[vim.o.background] and style ~= vim.o.background then
+        apply(style)
       end
     end,
   })

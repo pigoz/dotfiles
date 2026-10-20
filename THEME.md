@@ -2,8 +2,9 @@ Theme
 =====
 
 Colors I can read all day, with astigmatism and myopia: OneDark at night and
-One Light by day, both with the contrast recalibrated, everywhere following
-the macOS light/dark mode.
+One Light by day, everywhere following the macOS light/dark mode. The
+terminal's colors have the contrast recalibrated, nvim's are onedarkpro.nvim's
+own.
 
 Why
 ---
@@ -65,43 +66,42 @@ glyph pixels reach the nominal color.
 | line numbers, listchars (`¬ · ▸`)             | 30     |
 | faint text (SGR 2, used a lot by Codex)       | 60     |
 
-The colors keep OneDark's and One Light's hue and chroma: only the OKLCH
-lightness moves until the APCA level is met, and a syntax color already
-inside 60–71 is left alone. The one hue change is One Light's types: its dark
-yellow `#986801` was already as saturated as a yellow that dark can be (dark
-yellow turns olive), while an orange `#d7660b` (OKLCH hue 50°) is much more
-saturated at the same contrast.
+iTerm2's colors keep OneDark's and One Light's hue and chroma: only the OKLCH
+lightness moves until the APCA level is met, and a color already inside 60–71
+is left alone.
+
+Not in nvim, though. Calibrating each color on its own flattens a theme's
+balance: onedarkpro keeps types, symbols and punctuation quieter than the
+text on purpose, and lifted into the band they all competed with it. A theme
+is better taken as it comes, chosen by its overall level, and onedarkpro's
+One Light already has the text at Lc 74 and comments at 49 (line numbers 24).
 
 The backgrounds are the themes' own. Near white is better than a grey
 background, which would need darker, duller text colors for the same Lc:
 glare is for the screen brightness to handle.
 
-Palettes
---------
+Terminal palette
+----------------
 
-onedark.nvim palette keys, with the original values:
+iTerm2's colors, from OneDark and Atom's One Light:
 
-| key          | dark      | was               | light     | was               |
-|--------------|-----------|-------------------|-----------|-------------------|
-| background   | `#282c34` |                   | `#fafafa` |                   |
-| fg           | `#c9d1de` | `#abb2bf` Lc 56   | `#676a72` | `#383a42` Lc 93   |
-| purple       | `#e79cfe` | `#c678dd` Lc 42   | `#b537b2` | `#a626a4` Lc 76   |
-| green        | `#99c57a` | `#98c379` Lc 59   | `#479847` | `#50a14f` Lc 56   |
-| orange       | `#e6ad79` | `#d19a66` Lc 49   | `#b57c0b` | `#c18401` Lc 56   |
-| blue         | `#73bffd` | `#61afef` Lc 51   | `#4078f2` |                   |
-| yellow       | `#e5c07b` |                   | `#d7660b` | `#986801` Lc 70   |
-| cyan         | `#66c6d2` | `#56b6c2` Lc 51   | `#0184bc` |                   |
-| red          | `#fe9da1` | `#e86671` Lc 39   | `#e45649` |                   |
-| comments     | `#9ca3b1` | `#5c6370` Lc 17   | `#9fa0a5` | `#a0a1a7` Lc 47   |
-| grey         | `#969dac` | `#5c6370` Lc 17   | `#a4a5ac` | `#a0a1a7` Lc 47   |
-| light_grey   | `#a3abb8` | `#848b98` Lc 36   | `#96999d` | `#818387` Lc 63   |
-| line numbers, listchars | `#787f8d` | `#5c6370` Lc 17 | `#c0c1c8` | `#a0a1a7` Lc 47 |
+| color        | dark      | light     |
+|--------------|-----------|-----------|
+| background   | `#282c34` | `#fafafa` |
+| text         | `#c9d1de` | `#676a72` |
+| black        | `#3f4451` | `#4d4f58` |
+| red          | `#fe9da1` | `#e45649` |
+| green        | `#99c57a` | `#479847` |
+| yellow       | `#e5c07b` | `#b57c0b` |
+| blue         | `#73bffd` | `#4078f2` |
+| magenta      | `#e79cfe` | `#b537b2` |
+| cyan         | `#66c6d2` | `#0184bc` |
+| white        | `#c9d1de` | `#c0c1c8` |
+| bright black | `#969dac` | `#a4a5ac` |
 
-The iTerm2 ANSI colors are the same as nvim's. Bright colors sit on the edge
-of the band (Lc 71 on dark, 60 on light), and on light ANSI yellow is the
-amber `#b57c0b`, since there it marks branches and warnings rather than types.
-Black is `#3f4451` on dark and the Lc 85 `#4d4f58` on light, white the text
-color on dark and the Lc 30 `#c0c1c8` on light.
+Bright colors sit on the edge of the band (Lc 71 on dark, 60 on light). On
+light yellow is an amber, since there it marks branches and warnings, black
+is Lc 85 and white Lc 30.
 
 Where
 -----
@@ -109,9 +109,10 @@ Where
 - iTerm2 (`config/iterm2`): separate colors for light and dark mode. Bold
   text isn't brightened, faint text is drawn at alpha 0.854 on dark and 0.788
   on light to sit at Lc 60
-- nvim (`config/nvim/lua/user/theme.lua`): onedark.nvim with the palettes
-  above, comments not italic. Reads the mode from macOS at startup and when
-  it gets focus, so nvim-qt follows it too
+- nvim (`config/nvim/lua/user/theme.lua`): onedarkpro.nvim as it comes,
+  which also colors LSP semantic tokens and has per-language rules (Ruby
+  among them) from VS Code's One Dark Pro. Reads the mode from macOS at
+  startup and when it gets focus, so nvim-qt follows it too
 - starship and lazygit use ANSI color names, so they follow the terminal.
   The `»` is red only after a failed command, lazygit's selected line is
   reversed since its default blue background hides the text
