@@ -16,4 +16,9 @@ nvim/plugin/packer_compiled.lua
 !iterm2
 !iterm2/com.googlecode.iterm2.plist
 
+!ghostty
+!ghostty/config
+!ghostty/themes
+!ghostty/themes/*
+
 !starship.toml

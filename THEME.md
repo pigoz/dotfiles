@@ -2,9 +2,9 @@ Theme
 =====
 
 Colors I can read all day, with astigmatism and myopia: OneDark at night and
-One Light by day, everywhere following the macOS light/dark mode. The
-terminal's colors have the contrast recalibrated, nvim's are onedarkpro.nvim's
-own.
+One Light by day, everywhere following the macOS light/dark mode. iTerm2's
+colors have the contrast recalibrated, nvim's and Ghostty's are
+onedarkpro.nvim's own.
 
 Why
 ---
@@ -109,6 +109,10 @@ Where
 - iTerm2 (`config/iterm2`): separate colors for light and dark mode. Bold
   text isn't brightened, faint text is drawn at alpha 0.854 on dark and 0.788
   on light to sit at Lc 60
+- Ghostty (`config/ghostty`): onedarkpro.nvim's terminal themes, with the
+  cursor in the text color (the comments' on light) and nvim's selection
+  colors instead of their purple, which drew the eye and hid the selected
+  text. Faint text at opacity 0.79, Lc 60 on light
 - nvim (`config/nvim/lua/user/theme.lua`): onedarkpro.nvim as it comes,
   which also colors LSP semantic tokens and has per-language rules (Ruby
   among them) from VS Code's One Dark Pro. Reads the mode from macOS at

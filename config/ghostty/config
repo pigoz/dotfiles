@@ -1,0 +1,27 @@
+# Same setup as config/iterm2. Colors in THEME.md
+
+font-family = Hack Nerd Font Mono
+font-size = 24
+font-style-italic = false
+font-style-bold-italic = false
+
+# onedarkpro.nvim's own, following the macOS light/dark mode
+theme = light:onedarkpro_onelight,dark:onedarkpro_onedark
+# faint text (SGR 2, used a lot by Codex) at Lc 60 on light
+faint-opacity = 0.79
+
+maximize = true
+cursor-style-blink = false
+confirm-close-surface = false
+
+# new windows and tabs in ~/dev, splits in the current directory
+working-directory = ~/dev
+window-inherit-working-directory = false
+tab-inherit-working-directory = false
+
+# left option as alt for the shell and nvim, right option for typing
+macos-option-as-alt = left
+
+# block cursor at the prompt too, TERM=xterm-256color over ssh, where
+# xterm-ghostty is unknown
+shell-integration-features = no-cursor,ssh-env

@@ -30,7 +30,8 @@ brew "hcloud"
 cask "gcloud-cli"
 
 cask "iterm2"
-cask "font-hack-nerd-font" # iTerm2 and nvim-qt font
+cask "ghostty"
+cask "font-hack-nerd-font" # terminal and nvim-qt font
 cask "font-sf-mono"        # first in Neovim's default guifont on macOS
 cask "alt-tab"
 cask "orbstack"
