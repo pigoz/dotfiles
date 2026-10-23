@@ -1,0 +1,60 @@
+# Xiaomi 17 (pudding_eea, HyperOS OS3.0.335.0.XPCEUXM, Android 17) — debloat via adb, 2026-10-22
+# lista: UAD-ng (Universal Android Debloater Next Generation), livello Recommended
+# rimossi con: adb shell pm uninstall -k --user 0 <pkg>
+# ripristino:  grep -v '^#' xiaomi17/debloat.txt | xargs -n1 adb shell cmd package install-existing
+cn.wps.moffice_eng
+cn.wps.xiaomi.abroad.lite
+com.alibaba.aliexpresshd
+com.amazon.appmanager
+com.amazon.mp3
+com.amazon.mShop.android.shopping
+com.facebook.katana
+com.instagram.android
+com.mi.global.bbs
+com.mi.global.shop
+com.miui.android.fashiongallery
+com.miui.huanji
+com.netflix.mediaclient
+com.opera.app.news
+com.xiaomi.calendar
+com.xiaomi.smarthome
+com.zhiliaoapp.musically
+
+# app di sistema bloccate da HyperOS 3 via adb ("only root can delete system app for a particular user";
+# anche pm disable-user fallisce con "Cannot disable system packages")
+# android.autoinstalls.config.Xiaomi.model
+# com.android.chrome
+# com.android.providers.partnerbookmarks
+# com.facebook.appmanager
+# com.facebook.services
+# com.facebook.system
+# com.mi.globalbrowser
+# com.mi.globalminusscreen
+# com.microsoft.appmanager
+# com.microsoft.deviceintegrationservice
+# com.microsoftsdk.crossdeviceservicebroker
+# com.miui.analytics
+# com.miui.backup
+# com.miui.bugreport
+# com.miui.cloudbackup
+# com.miui.cloudservice
+# com.miui.daemon
+# com.miui.micloudsync
+# com.miui.miservice
+# com.miui.misightservice
+# com.miui.msa.global
+# com.miui.player
+# com.miui.touchassistant
+# com.miui.videoplayer
+# com.miui.yellowpage
+# com.orange.update
+# com.xiaomi.glgm
+# com.xiaomi.mipicks
+
+# preinstallate bloccate via adb (Failure [-1000], "MIUILOG- can't uninstall pkg"): da disinstallare a mano dal telefono
+# com.miui.calculator
+# com.miui.compass
+# com.miui.notes
+# com.miui.screenrecorder
+# com.miui.weather2
+# com.xiaomi.scanner
